@@ -1,13 +1,13 @@
 import React from "react"
 import { connect } from "react-redux"
 
-function Listings() {
+function ListingCard() {
   return (
     <div className="container">
-      <p>Listings</p>
+      <p>Listing card</p>
 
     </div>
     )
 }
 
-export default connect()(Listings)
+export default connect()(ListingCard)
