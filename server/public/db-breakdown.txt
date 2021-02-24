@@ -1,0 +1,54 @@
+Table users {
+  id integer [pk, increment]
+  username string
+  first_name string
+  last_name string
+  password hash
+  email string
+  bio string
+  image string
+  location string
+  phone integer
+}
+
+Table tags {
+  id integer [pk, increment]
+  tag_name string
+}
+
+Table listings_tags {
+  id integer [pk, increment]
+  listing_id integer
+  tag_id integer
+}
+
+Table listings {
+  id integer [pk, increment]
+  user_id integer
+  type string
+  title string
+  description string
+  image string
+  time timestamp
+}
+
+Table comms {
+  id integer [pk, increment]
+  listing_id integer
+  user_id integer
+  text string
+  time timestamp
+}
+
+
+
+
+Ref: "listings"."id" < "listings_tags"."listing_id"
+
+Ref: "tags"."id" < "listings_tags"."tag_id"
+
+Ref: "users"."id" < "listings"."user_id"
+
+Ref: "users"."id" < "comms"."user_id"
+
+Ref: "listings"."id" < "comms"."listing_id"
