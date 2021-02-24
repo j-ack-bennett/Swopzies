@@ -1,11 +1,15 @@
 exports.up = function(knex) {
   return knex.schema.createTable('users', table => {
-    table.increments('id')
+    table.increments('id').primary()
     table.string('username')
     table.string('hash')
     table.string('first_name')
     table.string('last_name')
-    table.decimal('hourly_wage')
+    table.string('email')
+    table.string('bio')
+    table.string('location')
+    table.string('image')
+    table.integer('phone')
     table.timestamps(true,true)
   })
 };
