@@ -5,8 +5,7 @@ import {connect} from 'react-redux'
 import Login from './Login'
 import Register from './Register'
 import Nav from './Nav'
-import Meeting from './Meeting'
-import History from './History'
+import Landing from './Landing'
 
 import {checkAuth} from '../actions/auth'
 
@@ -24,7 +23,7 @@ function App ({auth, dispatch}) {
           <div className="hero is-small is-primary">
             <div className="hero-body has-text-centered">
               <Link to='/' className="">
-                <h1 className="title is-1">$how Me The Money</h1>
+                <h1 className="title is-1">Jack Of All Trades</h1>
               </Link>
               <Route path="/" component={Nav} />
             </div>
@@ -36,8 +35,7 @@ function App ({auth, dispatch}) {
             }
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
-            <Route path="/meeting" component={Meeting} />
-            <Route path="/history" component={History} />
+            <Route path="/landing" component={Landing} />
           </div>
 
         </div>
