@@ -29,7 +29,7 @@ exports.seed = function (knex) {
           { id: 23, tag_name: 'art' },
           { id: 24, tag_name: 'housework' },
           { id: 25, tag_name: 'handy work' },
-    
+          { id: 26, tag_name: 'well being'}
         ])
       })
   }
