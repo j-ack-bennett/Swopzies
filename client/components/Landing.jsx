@@ -1,10 +1,12 @@
-import React from 'react'
-import {connect} from 'react-redux'
+import React from "react"
+import { connect } from "react-redux"
 
-function Landing () {
-  return <div className="container">
-    <h2 className="title is-2">Start Meeting</h2>
-  </div>
+function Landing() {
+  return (
+    <div className="container">
+
+    </div>
+    )
 }
 
 export default connect()(Landing)
