@@ -1,0 +1,11 @@
+node_modules
+static
+npm-debug.log
+dev.sqlite3
+bundle.js
+bundle.js.map
+styles.css
+styles.css.map
+.env
+coverage
+public/styles.css*
