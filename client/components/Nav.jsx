@@ -1,9 +1,10 @@
 import React from 'react'
 import { Link }from 'react-router-dom'
-import { logOff } from 'authenticare/client'
+import { logoutUser } from '../actions/auth'
 import { connect } from 'react-redux'
 
 const Nav = (props) => {
+  const logout = props.logout
     const auth = props.auth
   return (
       <nav className='navbar'>
@@ -16,11 +17,11 @@ const Nav = (props) => {
             ?   (<>
                     <span className='navbar__links--link'><Link to="">Home</Link></span>
                     <span className='navbar__links--link'><Link to="">Profile</Link></span>
-                    <span className='navbar__links--link'><Link onClick={() => logOff()}>Log Off</Link></span>
+                    <span className='navbar__links--link'><Link to='/' onClick={() => logout()}>Log Off</Link></span>
                 </>):
                 (<>
-                    <span className='navbar__links--link'><Link to="">Sign in</Link></span>
-                    <span className='navbar__links--link'><Link to="">Register</Link></span>
+                    <span className='navbar__links--link'><Link to="/login">Sign in</Link></span>
+                    <span className='navbar__links--link'><Link to="/register">Register</Link></span>
                 </>)
             }
           </div>
@@ -36,4 +37,13 @@ const mapStateToProps = ({auth}) => {
   }
 }
 
-export default connect(mapStateToProps)(Nav)
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    logout: () => {
+      const confirmSuccess = () => ownProps.history.push('/')
+      dispatch(logoutUser(confirmSuccess))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Nav)
