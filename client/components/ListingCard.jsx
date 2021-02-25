@@ -4,11 +4,10 @@ import { connect } from "react-redux"
 function ListingCard(props) {
 
   const listing = props.listing 
-  const type = props.type
 
   return (
     <div className="container">
-      {type=="looking"
+      {props.listingType=="looking"
       ? <p>I am looking for: {listing.title} <br></br>I can give: {listing.description}</p> 
       : <p>I can offer: {listing.title} <br></br> I am looking for: {listing.description}</p> 
       }
@@ -16,4 +15,10 @@ function ListingCard(props) {
     )
 }
 
-export default connect()(ListingCard)
+const mapStateToProps = (globalState) => {
+  return {
+    listingType: globalState.listingType
+  }
+}
+
+export default connect(mapStateToProps)(ListingCard)

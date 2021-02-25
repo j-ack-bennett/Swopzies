@@ -11,6 +11,7 @@ import Listings from "./Listings"
 import Profile from "./Profile"
 import ListingForm from "./ListingForm"
 import Listing from "./Listing"
+import { fetchListings } from '../actions/listings'
 
 import { checkAuth } from "../actions/auth"
 
@@ -18,6 +19,7 @@ function App({ auth, dispatch }) {
   useEffect(() => {
     const confirmSuccess = () => {}
     dispatch(checkAuth(confirmSuccess))
+    dispatch(fetchListings())
   }, [])
 
   return (
