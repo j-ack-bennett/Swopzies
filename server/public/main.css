@@ -1,0 +1,5 @@
+/*This file is only used to import custom fonts. Use styling within SCSS.*/
+@font-face {
+  font-family: "Lego Blocks";
+  src: url("legoBlocks.ttf");
+}
