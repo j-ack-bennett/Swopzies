@@ -4,6 +4,7 @@ const connection = require("knex")(config);
 module.exports = {
   getListings,
   addNewListing,
+  addNewListingTag,
   getListingById,
   deleteById,
   updateListing,
@@ -19,6 +20,14 @@ function addNewListing(newListing, db = connection) {
   return db("listings")
     .insert(newListing)
     .then(ids => ids[0])
+}
+
+function addNewListingTag(listingId, tagId, db = connection) {
+  return db("listings_tags")
+    .insert({
+      listing_id: listingId,
+      tag_id: tagId,
+    })
 }
 
 function getListingById(id, db = connection) {
