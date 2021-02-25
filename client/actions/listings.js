@@ -31,9 +31,9 @@ export function fetchListings() {
 export function newListing(newListing) {
   console.log(newListing)
   return dispatch => {
-    return postListing(newListing)
+    return postListing(newListing) //this is being sent off to the DB
       .then(() => {
-        dispatch(addListing(newListing))
+        dispatch(addListing(newListing.newListing)) // this is being sent off to reducer
         return null
       })
   }

@@ -11,7 +11,7 @@ export function getListings () {
 }
 
 export function postListing (data) {
-  console.log('hello')
+  console.log('hello from the Api')
   return request
     .post(baseUrl)
     .send(data)
