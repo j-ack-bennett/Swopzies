@@ -25,7 +25,7 @@ router.post("/", (req, res) => {
   return addNewListing(newListing)
     .then(listingId => {
       console.log(listingId)
-      addNewListingTag(addNewListing, tagId)
+      addNewListingTag(listingId, tagId)
         .then(() => {
           res.sendStatus(200)
           return null 
