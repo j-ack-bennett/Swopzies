@@ -5,7 +5,7 @@ const router = express.Router()
 module.exports = router
 
 //Get all listings
-router.get("/listings", (req,res) => {
+router.get("/", (req,res) => {
   db.getListings()
     .then((listings) => {
       res.json(listings)
