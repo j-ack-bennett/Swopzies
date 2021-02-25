@@ -6,12 +6,14 @@ import { fetchTags } from "../actions/tags"
 
 function ListingForm(props) {
   const [ form, setForm ] = useState({})
+  const [ tag, setTag ] = useState (0)
 
   const tags = props.tags
 
   useEffect(() => {
     props.dispatch(fetchTags())
-  })
+  },[]
+  )
 
   const handleChange = (e) => {
     e.preventDefault()
@@ -21,15 +23,28 @@ function ListingForm(props) {
     })
   }
 
-  const handleSubmit = (e) => {
+const handleSelect = (e) => {
+  setTag(e.target.value)
+}
+
+ const handleSubmit = (e) => {
     e.preventDefault()
-    const listingData = {
+    
+    console.log(tag)
+    const newestListing = {
       ...form,
       user_id: props.auth.user.id,
       time: new Date()
     }
-    props.dispatch(newListing(listingData))
-    .then(() => setForm({}))
+
+    const data = {
+      newListing: newestListing,
+      tagId: tag
+    }
+    console.log(data)
+
+    props.dispatch(newListing(data))
+      .then(() => setForm({}))
   }
 
   return (
@@ -37,11 +52,11 @@ function ListingForm(props) {
       <div>
         <form className="listingForm">
           <label>category tags: </label>
-          <select name='tag'>
+          <select onChange={handleSelect}  name='tag' >
             <option value='placeholder'>placeholder</option>
             {tags.map(tag => {
-              return <option key={tag.id}>{tag.tag_name}</option>
-            })
+              return <option value={tag.id} key={tag.id}>{tag.tag_name}</option>
+            }) // on change on the select tag, value on the option tag.
 
             }
           </select>
@@ -64,7 +79,7 @@ function ListingForm(props) {
             placeholder="In here you should add the specifics of what you're needing/offering, also put some details of what you might like in return or have to offer in return" />
           </label>
           <button className='button' 
-            onClick={handleSubmit}>
+            onClick={ (e) => handleSubmit (e, tag.id)}>
             Add    
           </button>
         </form>
@@ -82,3 +97,7 @@ const mapStateToProps = (globalState) => {
 }
 
 export default connect(mapStateToProps)(ListingForm)
+    
+    
+    
+    
