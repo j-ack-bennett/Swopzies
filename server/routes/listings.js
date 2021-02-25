@@ -39,6 +39,6 @@ router.delete("/:id", (req, res) => {
   deleteById(id)
   // console.log(id)
     .then(() => {
-      return null
+      res.json({})
     })
 })
