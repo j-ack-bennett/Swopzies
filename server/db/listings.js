@@ -6,6 +6,7 @@ module.exports = {
   addNewListing,
   getListingById,
   deleteById,
+  updateListing,
 }
 
 function getListings(db = connection) {
@@ -30,4 +31,13 @@ function deleteById(id, db = connection) {
   return db("listings")
     .where("id", id)
     .delete()
+}
+
+function updateListing(id, updatedListing, db = connection) {
+  return db("listings")
+    .update(updatedListing)
+      .where("listings.id", id)
+        .then(() => {
+          return getListingById(id)
+        })
 }
