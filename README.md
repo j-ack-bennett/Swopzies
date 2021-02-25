@@ -39,8 +39,8 @@ As a registered user:
   * I want to view my user profile through a button on the nav bar and see a list of all of my current post(s).
   * I want to update/edit my current post(s) through my profile.
   * I want to delete my current post(s) through my profile.
-  * I want to comment on "I'm looking for. . ." listings to let the author know I am interested in trading for the good/service they require. 
-  * I want to comment on "I can offer . ." listings to let the author know in the goods/services they're offering. 
+  * I want to comment on "I'm looking for. . ." listings, to let the author know I am interested in trading for the good/service they require. 
+  * I want to comment on "I can offer . ." listings, to let the author know i'm interested the goods/services they're offering. 
 
 ### Stretch
 
