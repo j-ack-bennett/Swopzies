@@ -8,19 +8,19 @@ const Nav = (props) => {
   return (
       <nav className='navbar'>
           <div className='navbar__title'>
-            <h1>Jack Of All Trades</h1>
+            <h1 className='title'>Jack Of All Trades</h1>
             <img src='' alt='Logo for Jack of all Trades' />
           </div>
           <div className='navbar__links'>
             { auth.isAuthenticated
             ?   (<>
-                    <Link to="">Home</Link>
-                    <Link to="">Profile</Link>
-                    <Link onClick={() => logOff()}>Log Off</Link>
+                    <span className='navbar__links--link'><Link to="">Home</Link></span>
+                    <span className='navbar__links--link'><Link to="">Profile</Link></span>
+                    <span className='navbar__links--link'><Link onClick={() => logOff()}>Log Off</Link></span>
                 </>):
                 (<>
-                    <Link to="">Sign in</Link>
-                    <Link to="">Register</Link>
+                    <span className='navbar__links--link'><Link to="">Sign in</Link></span>
+                    <span className='navbar__links--link'><Link to="">Register</Link></span>
                 </>)
             }
           </div>

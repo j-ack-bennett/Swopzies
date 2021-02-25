@@ -19,9 +19,19 @@
 
 .navbar {
     display: flex;
+    justify-content: space-between;
+    align-content: flex-end;
 
     &__title {
         display: flex;
+    }
+
+    &__links {
+
+        &--link {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
     }
 }
 
