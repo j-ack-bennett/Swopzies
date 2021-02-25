@@ -1,50 +1,63 @@
-# $how Me The Money
+# Jack Of All Trades
 
-## Week 7 Large group project
+## Final Group Project
 
-Meetings are expensive, but sometimes we forget how expensive they are and feel the need to talk for too long about topics that are unimportant for the meeting purpose.
+Preamable - I don't always have money, but I still need stuff done. 
 
-This is an app to display the costs of meetings, and track the costs of your meetings over time.
+What is this app? 
 
-The idea of the App is to be able to display the real-time cost of a meeting as it occurs.
-This cost is calculated based on the hourly wages of the meeting's attendees and the current duration of the meeting.
+What is the idea of the app? Small local community.
 
-The intended effect of this App is to make meeting attendees aware of how much this time is costing the business.
+What is the intended effect of this App?
 
 ## The Tech
 
-A Boilerplate is already set up for you (Thanks Harrison!) with everything you will need to get started. This boilerplate is set up to use:
+This is a list of tech we will be using throughout our project:
 
 * [React](https://reactjs.org/docs/getting-started.html)
 * [Redux](https://redux.js.org/)
 * [Express](https://expressjs.com/en/api.html)
 * [Knex.js (SQL)](https://knexjs.org/)
-* [Bulma (CSS framework)](https://bulma.io/documentation/)
+* [Bulma (CSS framework)](https://bulma.io/documentation/) (MAYBE)
 * [JWT Auth (Local)](https://jwt.io/)
-
-The Migration and seeds for the users table, and all login functionality is already set up!
-
-The mobile responsiveness is also being handled by some neat JS and Bulma classes, be sure to incorporate that view in your project goals!
 
 ## User Stories
 
 ### MVP
 
-As a user:
-  * I want to register for the App under my name, and state my hourly wage
-  * I want to start a new meeting, and add all the meeting members. (MVP: Add member names and wages manually)
-  * I want to start my created meeting, and see a ($) cost tracker display the current meeting cost every second
-  * I want to be able to save a meeting's cost, attendess, duration and date/time when it is finished for later viewing
-  * I want to be able to view previous meetings in date/time order, and see more information about a past meeting.
-  * I want to see a graph of meeting costs over time
+As a non-registered user:
+  * I want to register for the App under my name.
+  
+As a registered user:
+  * I want to login with my registered details.
+  * I want to browse "I'm looking for. . ." on the site to see what goods/services are needed in my community. 
+  * I want to browse "I can offer. . ." on the site to see what other goods/services are offered in my community. 
+  * On either page, I want to filter via tag/category to find specific a specific good/service.
+  * I want to create and add a new post for the "I'm looking for. . ." on the site and provide a MAXIMUM of one tag. 
+  * I want to create and add a new post for the "I can offer. . ." on the site and provide a MAXIMUM of one tag. 
+  * I want to view my user profile through a button on the nav bar and see a list of all of my current posts.
+  * I want to update/edit my current post(s) through my profile.
+  * I want to delete my current post(s) through my profile.
+  * I want to comment on "I'm looking for. . ." listings to let the author know I am interested in trading for the good/service they require. 
+  * I want to comment on "I can offer . ." listings to let the author know in the goods/services they're offering. 
 
 ### Stretch
-  * I want to be able to select existing users of the App as meeting attendees, so that our wages don't have to be shown / inputted manually. If a meeting attendee doesn't have an account, I want to be able to manually add them to the App.
-  * I want to set a Maximum Cost an Maximum Duration for my Meeting, and see colourised progress bar displaying both a these
-  * I want to be able to state my yearly salary rather than hourly rate as an option on register
-  * I want to be able to view all meetings that I am an attenee for, and I want information about my meetings to not be visible to all users of the app.
-  * I want to create a group of regular attendees for my meeting group to make setting up my meeting easier.
-  * I want to be able to write notes or summaries for meetings upon saving them.
+
+As a registered user:
+  * I want to create and add a new post for the "I'm looking for. . ." section on the site and provide a MINIMUM of one tag. 
+  * I want to create and add a new post for the "I can offer. . ." section on the site and provide a MINIMUM of one tag. 
+  * I want to view posts by region in NZ, not just my local community.
+  * I want to browse "Free stuff" on the site, to see what goods people are offering free of charge in my community.
+  * I want to create and add a new post for "Free stuff" I am offering on the site.
+  * I want the option to upload a profile picture to my user profile.
+  * I want the option to upload pictures to my post(s).
+  * I want to provide a user with feedback, if I have traded with them previously.
+  * I want to see the page view count for each post on the site.
+  * I want to see the comment count for each post on the site.
+  * I want to be able to edit my user profile details (name, location, phone number etc.).
+  * I want to save/bookmark any post(s) on the site to view later on my profile.
+  * I want to be notified on my profile when another user comments on my post(s).
+  * I want the ability to trade between three people.
 
   ---
 
@@ -53,44 +66,39 @@ As a user:
   | --- | --- |
   | Login | View for user to enter their login credentials |
   | Register | View for user to sign up for the App |
-  | CreateMeeting | View for user to arrange meeting attendees and information before starting the timer |
-  | Meeting | View to display current meeting time, cost and other information while the meeting is in progress |
-  | History | Display a list of past meetings the user has attended with select preview information |
-  | PastMeeting | Display a single meeting from the history list, displaying more information and a list of attendees for the past meeting |
-
+  | LandingPage | View for user when they first enter the App |
+  | Home | View to display each section of the App (I'm looking for. . .  I can offer . . .  and Add a post) |
 
 ## Reducers (Client Side)
 
   | name | purpose |
   | --- | --- |
-  | auth | Store information regarding user logins, auth status and auth errors |
-  | currentMeeting | Track meeting progress such as current cost and current duration |
-  | meetings | store the list of meetings the user has attended in the past |
-  | users | store the list of users who can attend meetings |
+  | auth | Store information regarding user logins, auth status and auth errors (TO BE CHANGED)|
+  | currentMeeting | Track meeting progress such as current cost and current duration (TO BE CHANGED)|
+  | meetings | store the list of meetings the user has attended in the past (TO BE CHANGED)|
+  | users | store the list of users who can attend meetings (TO BE CHANGED)|
 
  ## Actions
 
- ### meetings
+ ### meetings (TO BE CHANGED)
 
  | type | data | purpose |
  | --- | --- | --- |
- | RECEIVE_MEETINGS | meetings | retreive meetings from the db and store in redux |
- | ADD_MEETING | meeting | Add a single meeting to the history after it is created |
+ | RECEIVE_MEETINGS | meetings | retreive meetings from the db and store in redux (TO BE CHANGED)|
+ | ADD_MEETING | meeting | Add a single meeting to the history after it is created (TO BE CHANGED)|
 
- ### users
+ ### users (TO BE CHANGED)
  | type | data | purpose |
  | --- | --- | --- |
- | RECEIVE_USERS | users | retreive the users from the server |
+ | RECEIVE_USERS | users | retreive the users from the server (TO BE CHANGED)|
 
- ### currentMeeting
+ ### currentMeeting (TO BE CHANGED)
   | type | data | purpose |
 | --- | --- | --- |
-| START_MEETING | attendees ([]), meeting_name | a meeting has started, set initial meeting state |
-| END_MEETING | null | Set meeting in progress flag to false |  
-| TICK_ONE_SECOND | null | Increase running total by 1s worth of $ |
-| RESET_MEETING | null | Revert to initial state |
-
-
+| START_MEETING | attendees ([]), meeting_name | a meeting has started, set initial meeting state (TO BE CHANGED)|
+| END_MEETING | null | Set meeting in progress flag to false (TO BE CHANGED)|
+| TICK_ONE_SECOND | null | Increase running total by 1s worth of $ (TO BE CHANGED)|
+| RESET_MEETING | null | Revert to initial state (TO BE CHANGED)|
 
 ## API (Client - Server)
 
@@ -104,7 +112,7 @@ As a user:
 | Get | /api/users | Yes | Get the users of the app | An Array of User Objects |
 
 ## DB (Server Side)
-  There should be three tables for MVP
+  There should be five tables for MVP
 
 ### Users
   | Column Name | Data Type |
@@ -113,16 +121,23 @@ As a user:
   | username | String |
   | first_name | String |
   | last_name | String |
-  | hash | text |
+  | password | Hash |
+  | email | String |
+  | bio | String |
+  | image | String |
+  | location | String |
+  | phone | Integer |
 
-### Meetings
+### Listings
   | Column Name | Data Type |
   | --- | --- |
   | id | Integer |
-  | meeting_name | String |
+  | user_id | Integer |
+  | type | String |
+  | title | String |
+  | description | String |
+  | image | String |
   | time | Timestamp |
-  | attendees | integer |
-  | cost | Decimal |
 
 ### Attendees (Join Table M2M)
 
