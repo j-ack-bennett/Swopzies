@@ -25,9 +25,7 @@ function App({ auth, dispatch }) {
       <div className="container has-text-centered">
         <div className="hero is-small is-primary">
           <div className="hero-body has-text-centered">
-            <Link to="/" className="">
-              <h1 className="title is-1">Jack Of All Trades</h1>
-            </Link>
+            
             <Route path="/" component={Nav} />
           </div>
         </div>
