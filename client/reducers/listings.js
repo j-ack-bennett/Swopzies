@@ -9,8 +9,7 @@ const reducer = (state = initialState, action) => {
     case ADD_LISTING:
       return [...state, action.listing]
     default:
-      return state
+    return state
   }
 }
-
 export default reducer
