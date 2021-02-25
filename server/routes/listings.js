@@ -1,7 +1,7 @@
 const express = require("express")
 const db = require("../db/listings")
 const router = express.Router()
-const {addNewListing, getListingById} = require("../db/listings")
+const { addNewListing, getListingById, deleteById } = require("../db/listings")
 
 module.exports = router
 
@@ -31,5 +31,14 @@ router.get("/:id", (req, res) => {
   getListingById(id)
     .then(listing => {
       res.json(listing)
+    })
+})
+
+router.delete("/:id", (req, res) => {
+  const id = req.params.id;
+  deleteById(id)
+  // console.log(id)
+    .then(() => {
+      return null
     })
 })
