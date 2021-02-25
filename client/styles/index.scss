@@ -40,6 +40,29 @@ body {
     }
 }
 
+.listing {
+
+    &__title {
+        display: block;
+        &--input {
+            display: block;
+        }
+    }
+    
+    &__description {
+        display: block;
+
+        &--input {
+            display: block;
+        }
+    }
+}
+
+.listingForm {
+    display: flex;
+    flex-direction: column;
+}
+
 .title {
     font-family: "Lego Blocks", sans-serif;
     font-size: 60px;

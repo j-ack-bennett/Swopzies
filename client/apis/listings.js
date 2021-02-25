@@ -10,3 +10,11 @@ export function getListings () {
     return res.body
   })
 }
+
+export function postListing (data) {
+  console.log('hello')
+  return request
+    .post(baseUrl)
+    .send(data)
+    .then(res => res.body)
+}
