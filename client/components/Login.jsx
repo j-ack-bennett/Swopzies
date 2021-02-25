@@ -42,6 +42,10 @@ function Login(props) {
             <div className="box">
 
               <form onSubmit={handleSubmit}>
+                {
+                  auth.errorMessage && (
+                    <span className="has-text-danger is-large">{auth.errorMessage}</span>
+                  )}
                 <div className="field">
                   <div className="control">
                     <input
