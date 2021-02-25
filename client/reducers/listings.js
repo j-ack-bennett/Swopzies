@@ -1,10 +1,10 @@
-// IMPORT SET_LISTINGS
+import { SET_LISTINGS} from '../actions/listings'
 
 const initialState = []
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case "SET_LISTINGS":
+    case SET_LISTINGS:
       return action.listings
     default:
       return state

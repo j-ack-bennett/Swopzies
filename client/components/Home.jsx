@@ -1,21 +1,12 @@
-import React, { useEffect, useState} from "react"
+import React, { useEffect } from "react"
 import { connect } from "react-redux"
-// import Listings from './Listings'
-import { getListings } from '../apis/listings'
+import { fetchListings } from "../actions/listings"
 
-function Home() {
+function Home(props) {
 
-  const [listings, setListings] = useState([])
-
-  const fetchListings = () => {
-    getListings()
-      .then(listings => {
-        setListings(listings)
-      })
-  }
 
   useEffect(() => {
-    fetchListings()
+    props.dispatch(fetchListings())
   }, [])
 
   return (
@@ -23,10 +14,6 @@ function Home() {
       <div>
       <h1>I'm looking for. . .</h1>
 
-
-        {console.log(listings)}
-
-      
       </div>
       
       <div>

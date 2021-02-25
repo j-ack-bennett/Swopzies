@@ -4,15 +4,16 @@ export const SET_LISTINGS = "SET_LISTINGS"
 
 export function setListings(listings) {
   return {
-    type: SET_TASKS,
+    type: SET_LISTINGS,
     listings
   }
 }
 
 export function fetchListings() {
-  return (dispatch) => {
+  console.log("fetching")
+  return dispatch => {
     return getListings()
-    .then((listings) => {
+    .then(listings => {
       dispatch(setListings(listings))
       return null
     })
