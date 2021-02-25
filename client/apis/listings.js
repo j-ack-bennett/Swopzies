@@ -6,7 +6,6 @@ export function getListings () {
   return request
   .get(baseUrl)
   .then(res => {
-    console.log(res.body)
     return res.body
   })
 }

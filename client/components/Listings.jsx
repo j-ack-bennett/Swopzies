@@ -1,25 +1,23 @@
 import React from "react"
 import { connect } from "react-redux"
 import ListingCard from "./ListingCard"
-import ListingCard2 from "./ListingCard2"
+
 
 
 function Listings(props) {
-  // if props.listingType == "offer" display offering posts
-  //else display looking posts
+  const type = props.location.type.type
 
   return (
-    <div className="container">
-      {props.listings.map((listing) => {
-        if (listing.type == "offer") {
-          console.log(listing.id, listing.type)
-          // line 15 changed to key={listing.id}, was previously listing={listing.id} and Warning message said Each child in a list should have a unique "key" prop. Yay! Begone, warning. 
-          return <ListingCard key={listing.id}/>
-        } else if (listing.type == "looking") {
-          console.log(listing.id, listing.type)
-          return <ListingCard2 key={listing.id}/>
+
+    <div className="container"> 
+
+    <h1 className="title"> People are seeking!</h1>
+      {props.listings.map(listing => {
+        if(listing.type == type){
+          return <ListingCard key={listing.id} listing={listing} type={type}/>
         }
       })}
+
     </div>
   )
 }

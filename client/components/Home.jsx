@@ -14,13 +14,13 @@ function Home(props) {
     <div className="container">
       <div>
       {/* <h1>I'm looking for. . .</h1> */}
-      <Link to="Listings">I'm looking for...</Link>
+      <Link to={{pathname: "/listings", type:{type:"looking"}}}>I'm looking for...</Link>
 
       </div>
       
       <div>
       {/* <h1>I can offer. . . </h1> */}
-      <Link to="Listings">I can offer...</Link>
+      <Link to={{pathname: "/listings", type:{type:"offer"}}}>I can offer...</Link>
       </div>
     </div>
     )
