@@ -6,13 +6,12 @@ import { connect } from 'react-redux'
 const Nav = (props) => {
     const auth = props.auth
   return (
-      <nav className='navBar'>
-        <div className="container">
-          <div className='Title'>
+      <nav className='navbar'>
+          <div className='navbar__title'>
             <h1>Jack Of All Trades</h1>
             <img src='' alt='Logo for Jack of all Trades' />
           </div>
-          <div className='Navlinks'>
+          <div className='navbar__links'>
             { auth.isAuthenticated
             ?   (<>
                     <Link to="">Home</Link>
@@ -25,7 +24,6 @@ const Nav = (props) => {
                 </>)
             }
           </div>
-        </div>
       </nav>
   )
   
