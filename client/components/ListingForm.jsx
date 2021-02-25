@@ -38,7 +38,7 @@ const handleSelect = (e) => {
     }
 
     const data = {
-      newListing: newestListing,
+      listing: newestListing,
       tagId: tag
     }
     console.log(data)

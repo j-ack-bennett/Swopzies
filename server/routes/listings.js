@@ -18,16 +18,17 @@ router.get("/", (req, res) => {
 })
 
 router.post("/", (req, res) => {
+  console.log(req.body)
   // let newListing = {user_id: null, type: req.body.type, title: req.body.title, description: req.body.description, image: "", time: null}
   const newListing = req.body.listing
-  const tagId = req.body.tag.tagId
+  const tagId = req.body.tagId
   return addNewListing(newListing)
     .then(listingId => {
       console.log(listingId)
       addNewListingTag(addNewListing, tagId)
         .then(() => {
           res.sendStatus(200)
-          return null
+          return null 
         })
     })
 })
