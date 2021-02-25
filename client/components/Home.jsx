@@ -1,11 +1,24 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { connect } from "react-redux"
+import { fetchListings } from "../actions/listings"
 
-function Home() {
+function Home(props) {
+
+
+  useEffect(() => {
+    props.dispatch(fetchListings())
+  }, [])
+
   return (
     <div className="container">
-      <p>Home</p>
+      <div>
+      <h1>I'm looking for. . .</h1>
 
+      </div>
+      
+      <div>
+      <h1>I can offer. . . </h1>
+      </div>
     </div>
     )
 }
