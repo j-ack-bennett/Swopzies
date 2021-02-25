@@ -36,7 +36,7 @@ As a registered user:
   * On either page, I want to filter via tag/category to find specific a specific good/service.
   * I want to create and add a new post for the "I'm looking for. . ." section of the site and provide a MAXIMUM of one tag. 
   * I want to create and add a new post for the "I can offer. . ." section of the site and provide a MAXIMUM of one tag. 
-  * I want to view my user profile through a button on the nav bar and see a list of all of my current posts.
+  * I want to view my user profile through a button on the nav bar and see a list of all of my current post(s).
   * I want to update/edit my current post(s) through my profile.
   * I want to delete my current post(s) through my profile.
   * I want to comment on "I'm looking for. . ." listings to let the author know I am interested in trading for the good/service they require. 
