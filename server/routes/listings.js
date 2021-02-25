@@ -18,8 +18,9 @@ router.get("/", (req,res) => {
 })
 
 router.post("/", (req, res) => {
-  let newListing = {user_id: null, type: req.body.type, title: req.body.title, description: req.body.description, image: "", time: null}
-// console.log(newListing)
+  // let newListing = {user_id: null, type: req.body.type, title: req.body.title, description: req.body.description, image: "", time: null}
+  const newListing = req.body
+  console.log(newListing)
   addNewListing(newListing)
     .then((listing) => {
       // res.json(listing)

@@ -14,26 +14,26 @@ function ListingForm(props) {
     })
   }
 
-  const handleSubmit = () => {
-    console.log(props.auth)
+  const handleSubmit = (e) => {
+    e.preventDefault()
     const listingData = {
       ...form,
       user_id: props.auth.user.id,
       time: new Date()
     }
     props.dispatch(newListing(listingData))
-    setForm({})
+    .then(() => setForm({}))
   }
 
   return (
     <div className="container">
       <div>
         <form className="listingForm">
-          <h3>Type of listing: </h3>
           <label>category tags: </label>
           <select name='tag'>
             <option value='placeholder'>placeholder</option>
           </select>
+          <h3>Type of listing: </h3>
           <label>I'm looking for something...
             <input onChange={handleChange} type='radio' name='type' value='looking' />
           </label>
