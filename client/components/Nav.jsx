@@ -9,8 +9,8 @@ const Nav = (props) => {
   return (
       <nav className='navbar'>
           <div className='navbar__title'>
+            <img className='logo' src='duck.jpg' alt='Logo for Jack of all Trades' />
             <h1 className='title'>Jack Of All Trades</h1>
-            <img src='' alt='Logo for Jack of all Trades' />
           </div>
           <div className='navbar__links'>
             { auth.isAuthenticated
