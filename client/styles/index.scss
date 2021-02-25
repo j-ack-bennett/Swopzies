@@ -17,6 +17,10 @@
 @import "bulma/sass/layout/hero.sass";
 @import "bulma/sass/layout/section.sass";
 
+body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -24,6 +28,7 @@
 
     &__title {
         display: flex;
+        margin-top: 1.5rem;
     }
 
     &__links {
@@ -35,6 +40,14 @@
     }
 }
 
+.title {
+    font-family: "Lego Blocks", sans-serif;
+    font-size: 60px;
+    font-weight: 400;
+    margin-left: 20px;
+}
 
-
-
+.logo {
+    max-width: 100px;
+    max-height: 100px;
+}
