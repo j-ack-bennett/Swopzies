@@ -2,13 +2,13 @@
 
 ## Final Group Project
 
-Preamable - I don't always have money, but I still need stuff done. 
+Goods and services are expensive... why not offer a way for the community to come together and trade skills, knowledge and home baked goods.
 
-What is this app? 
+This is an app for people to list goods and services that they need, or want to share within their community.
 
-What is the idea of the app? Small local community.
+The idea of the app is for people to add posts when they are in need of specific goods and services for trade, or are wanting to provide their own goods and services for trade. It is aimed at people of all demographics, whether it's someone who is retired and offering their services in their spare time, or a busy young professional wanting someone to walk their dog.
 
-What is the intended effect of this App?
+The hope is to provide a platform for people who are wanting to trade their skills and crafts, but don't have money in mind while doing so. Who doesn't like a good old barter??
 
 ## The Tech
 
@@ -18,8 +18,9 @@ This is a list of tech we will be using throughout our project:
 * [Redux](https://redux.js.org/)
 * [Express](https://expressjs.com/en/api.html)
 * [Knex.js (SQL)](https://knexjs.org/)
-* [Bulma (CSS framework)](https://bulma.io/documentation/) (MAYBE)
+* [Bulma (CSS framework)](https://bulma.io/documentation/)
 * [JWT Auth (Local)](https://jwt.io/)
+* [SCSS/Sass (CSS pre-processor)](https://sass-lang.com/install)
 
 ## User Stories
 
@@ -62,54 +63,43 @@ As a registered user:
   ---
 
 ## Views (Client Side)
+
   | name | purpose |
   | --- | --- |
+  | Home | View to display each section of the App (I'm looking for. . .), (I can offer . . .) and (Add a post) |
+  | Landing | View for user when they first enter the App |
+  | Listing | View to display a specific listing and all the details provided by the author |
+  | ListingCard | View of each specific post on the *Listings* page |
+  | ListingForm | View of the edit form within the user's own post |
+  | Listings | View to display the whole page of listings within (I'm looking for. . .) and (I can offer . . .)  |
   | Login | View for user to enter their login credentials |
+  | Nav | View to display the navigation bar at the top of each component |
+  | Profile | View for the user to see their profile information |
   | Register | View for user to sign up for the App |
-  | LandingPage | View for user when they first enter the App |
-  | Home | View to display each section of the App (I'm looking for. . .  I can offer . . .  and Add a post) |
 
 ## Reducers (Client Side)
 
   | name | purpose |
   | --- | --- |
-  | auth | Store information regarding user logins, auth status and auth errors (TO BE CHANGED)|
-  | currentMeeting | Track meeting progress such as current cost and current duration (TO BE CHANGED)|
-  | meetings | store the list of meetings the user has attended in the past (TO BE CHANGED)|
-  | users | store the list of users who can attend meetings (TO BE CHANGED)|
+  | auth | Store information regarding user logins, auth status and auth errors |
+  |MORE TO BE ADDED|MORE TO BE ADDED|
 
  ## Actions
 
- ### meetings (TO BE CHANGED)
-
  | type | data | purpose |
  | --- | --- | --- |
- | RECEIVE_MEETINGS | meetings | retreive meetings from the db and store in redux (TO BE CHANGED)|
- | ADD_MEETING | meeting | Add a single meeting to the history after it is created (TO BE CHANGED)|
-
- ### users (TO BE CHANGED)
- | type | data | purpose |
- | --- | --- | --- |
- | RECEIVE_USERS | users | retreive the users from the server (TO BE CHANGED)|
-
- ### currentMeeting (TO BE CHANGED)
-  | type | data | purpose |
-| --- | --- | --- |
-| START_MEETING | attendees ([]), meeting_name | a meeting has started, set initial meeting state (TO BE CHANGED)|
-| END_MEETING | null | Set meeting in progress flag to false (TO BE CHANGED)|
-| TICK_ONE_SECOND | null | Increase running total by 1s worth of $ (TO BE CHANGED)|
-| RESET_MEETING | null | Revert to initial state (TO BE CHANGED)|
+ |TO BE ADDED|TO BE ADDED|
 
 ## API (Client - Server)
 
 | Method | Endpoint | Protected | Usage | Response |
 | --- | --- | --- | --- | --- |
-| Post | /api/auth/login | Yes | Log In a User | The Users JWT Token |
-| Post | /api/auth/register | Yes | Register a User | The Users JWT Token |
-| Get | /api/meetings | Yes | Get a Users Meeting Histroy | An Array of Meetings |
-| Post | /api/meetings | Yes | Save a completed meeting | The Meeting that has been saved in db read format |
-| Get | /api/meetings/:id/users | Yes | Get the attendees of a Meeting | An Array of User objects |
-| Get | /api/users | Yes | Get the users of the app | An Array of User Objects |
+| Post | /api/auth/login | Yes | Log In a User | The Users JWT Token (TO BE CHANGED)|
+| Post | /api/auth/register | Yes | Register a User | The Users JWT Token (TO BE CHANGED)|
+| Get | /api/meetings | Yes | Get a Users Meeting Histroy | An Array of Meetings (TO BE CHANGED)|
+| Post | /api/meetings | Yes | Save a completed meeting | The Meeting that has been saved in db read format (TO BE CHANGED)|
+| Get | /api/meetings/:id/users | Yes | Get the attendees of a Meeting | An Array of User objects (TO BE CHANGED)|
+| Get | /api/users | Yes | Get the users of the app | An Array of User Objects (TO BE CHANGED)|
 
 ## DB (Server Side)
   There should be five tables for MVP
@@ -138,15 +128,28 @@ As a registered user:
   | description | String |
   | image | String |
   | time | Timestamp |
-
-### Attendees (Join Table M2M)
-
-  Many Users attend Many Meetings
-
- | Column Name | Data Type |
- | --- | --- |
- | user_id | Integer |
- | meeting_id | Integer |
+  
+### Comms
+  | Column Name | Data Type |
+  | --- | --- |
+  | id | Integer |
+  | listing_id | Integer |
+  | user_id | Integer |
+  | text | String |
+  | time | Timestamp |
+  
+### Listing_Tags
+  | Column Name | Data Type |
+  | --- | --- |
+  | id | Integer |
+  | listing_id | Integer |
+  | tag_id | Integer |
+  
+### Tags (Join Table M2M)
+  | Column Name | Data Type |
+  | --- | --- |
+  | id | Integer |
+  | tag_name | String |
 
  ---
 
