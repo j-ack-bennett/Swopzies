@@ -3,7 +3,8 @@ import { Link }from 'react-router-dom'
 import { logOff } from 'authenticare/client'
 import { connect } from 'react-redux'
 
-const Nav = () => {
+const Nav = (props) => {
+    const auth = props.auth
   return (
       <nav className='navBar'>
         <div className="container">
