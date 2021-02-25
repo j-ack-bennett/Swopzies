@@ -19,7 +19,8 @@ function Home(props) {
       </div>
       
       <div>
-      <h1>I can offer. . . </h1>
+      {/* <h1>I can offer. . . </h1> */}
+      <Link to="Listings">I can offer...</Link>
       </div>
     </div>
     )
