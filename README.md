@@ -34,8 +34,8 @@ As a registered user:
   * I want to browse "I'm looking for. . ." on the site to see what goods/services are needed in my community. 
   * I want to browse "I can offer. . ." on the site to see what other goods/services are offered in my community. 
   * On either page, I want to filter via tag/category to find specific a specific good/service.
-  * I want to create and add a new post for the "I'm looking for. . ." on the site and provide a MAXIMUM of one tag. 
-  * I want to create and add a new post for the "I can offer. . ." on the site and provide a MAXIMUM of one tag. 
+  * I want to create and add a new post for the "I'm looking for. . ." section of the site and provide a MAXIMUM of one tag. 
+  * I want to create and add a new post for the "I can offer. . ." section of the site and provide a MAXIMUM of one tag. 
   * I want to view my user profile through a button on the nav bar and see a list of all of my current posts.
   * I want to update/edit my current post(s) through my profile.
   * I want to delete my current post(s) through my profile.
