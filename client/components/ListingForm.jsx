@@ -1,7 +1,9 @@
 import React, { useState } from "react"
 import { connect } from "react-redux"
 
-function ListingForm() {
+import { newListing } from '../actions/listings'
+
+function ListingForm(props) {
   const [ form, setForm ] = useState({})
 
   const handleChange = (e) => {
@@ -13,7 +15,14 @@ function ListingForm() {
   }
 
   const handleSubmit = () => {
-
+    console.log(props.auth)
+    const listingData = {
+      ...form,
+      user_id: props.auth.user.id,
+      time: new Date()
+    }
+    props.dispatch(newListing(listingData))
+    setForm({})
   }
 
   return (
@@ -21,7 +30,7 @@ function ListingForm() {
       <div>
         <form className="listingForm">
           <h3>Type of listing: </h3>
-          <label for='tag'>category tags: </label>
+          <label>category tags: </label>
           <select name='tag'>
             <option value='placeholder'>placeholder</option>
           </select>
@@ -38,7 +47,8 @@ function ListingForm() {
           <label className='listing__description'>
             Add a description of your listing:
             <input className='listing__description--input'
-            type='text' name='description' onChange={handleChange} 
+            type='text' name='description' 
+            onChange={handleChange} 
             placeholder="In here you should add the specifics of what you're needing/offering, also put some details of what you might like in return or have to offer in return" />
           </label>
           <button className='button' 
@@ -58,4 +68,4 @@ const mapStateToProps = (globalState) => {
   }
 }
 
-export default connect()(ListingForm)
+export default connect(mapStateToProps)(ListingForm)
