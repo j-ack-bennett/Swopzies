@@ -11,8 +11,13 @@ function Register (props) {
     first_name: '',
     last_name: '',
     password: '',
-    confirm_password: ''
-  })
+    confirm_password: '',
+    email: '',
+    bio: '',
+    location: '',
+    image: '',
+    phone: null
+})
    
   useEffect(() => {
     props.dispatch(loginError(''))
@@ -30,10 +35,10 @@ function Register (props) {
   const handleSubmit = (e) => {
     e.preventDefault()
     e.target.reset()
-    let {username, password, confirm_password, first_name, last_name} = formData
+    let {username, password, confirm_password, first_name, last_name, bio, email, location, phone} = formData
     if (confirm_password != password) return props.dispatch(loginError("Passwords don't match"))
     const confirmSuccess = () => { props.history.push('/') }
-    props.dispatch(registerUserRequest({username, password, first_name, last_name}, confirmSuccess))
+    props.dispatch(registerUserRequest({username, password, first_name, last_name, bio, email, location, phone}, confirmSuccess))
   }
 
     return (
@@ -53,6 +58,20 @@ function Register (props) {
           </label>
         </div>
         <br />
+        <div>
+          <label className="column is-6 label is-large has-text-centered">email
+            <input required className="input is-large has-text-centered is-fullwidth" placeholder="Email" type="text" name="email"  onChange={handleChange} value={formData.email}/>
+          </label>
+          <label className="column is-6 label is-large has-text-centered">bio
+            <input required className="input is-large has-text-centered is-fullwidth" placeholder="Bio" type="text" name="bio"  onChange={handleChange} value={formData.bio}/>
+          </label>
+          <label className="column is-6 label is-large has-text-centered">location
+            <input required className="input is-large has-text-centered is-fullwidth" placeholder="Location" type="text" name="location"  onChange={handleChange} value={formData.location}/>
+          </label>
+          <label className="column is-6 label is-large has-text-centered">phone
+            <input required className="input is-large has-text-centered is-fullwidth" placeholder="021 1234 567" type="text" name="phone"  onChange={handleChange} value={formData.phone}/>
+          </label>
+        </div>
         <div className="columns">
           <label className="column is-6 label is-large has-text-centered">Password
             <input required className="input is-large has-text-centered is-fullwidth" placeholder="Password" type="password" name="password"  autoComplete="new-password" onChange={handleChange} value={formData.password}/>
@@ -73,3 +92,5 @@ const mapStateToProps = ({auth}) => {
 }
 
 export default connect(mapStateToProps)(Register)
+
+
