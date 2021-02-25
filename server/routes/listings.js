@@ -1,7 +1,7 @@
 const express = require("express")
 const db = require("../db/listings")
 const router = express.Router()
-const { addNewListing, getListingById, deleteById } = require("../db/listings")
+const { addNewListing, getListingById, deleteById, updateListing } = require("../db/listings")
 
 module.exports = router
 
@@ -39,6 +39,14 @@ router.delete("/:id", (req, res) => {
   deleteById(id)
   // console.log(id)
     .then(() => {
-      return null
+      res.json({})
     })
+})
+
+router.patch ("/:id", (req, res) => {
+  const id = req.params.id
+    updateListing(id, req.body)
+      .then((listing) => {
+        res.json(listing)
+      })
 })
