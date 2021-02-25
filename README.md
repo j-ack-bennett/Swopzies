@@ -70,7 +70,7 @@ As a registered user:
   | Landing | View for user when they first enter the App |
   | Listing | View to display a specific listing and all the details provided by the author |
   | ListingCard | View of each specific post on the *Listings* page |
-  | ListingForm | View of the edit form within the user's own post |
+  | ListingForm | View of the edit form, so a user can update their own post |
   | Listings | View to display the whole page of listings within (I'm looking for. . .) and (I can offer . . .)  |
   | Login | View for user to enter their login credentials |
   | Nav | View to display the navigation bar at the top of each component |
