@@ -51,7 +51,7 @@ As a registered user:
   * I want to browse "Free stuff" on the site, to see what goods people are offering free of charge in my community.
   * I want to create and add a new post for "Free stuff" I am offering on the site.
   * I want the option to upload a profile picture to my user profile.
-  * I want the option to upload pictures to my post(s).
+  * I want the option to upload a picture to my post(s).
   * I want to provide a user with feedback, if I have traded with them previously.
   * I want to see the page view count for each post on the site.
   * I want to see the comment count for each post on the site.
