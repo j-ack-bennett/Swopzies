@@ -1,10 +1,17 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { connect } from "react-redux"
 
 import { newListing } from '../actions/listings'
+import { fetchTags } from "../actions/tags"
 
 function ListingForm(props) {
   const [ form, setForm ] = useState({})
+
+  const tags = props.tags
+
+  useEffect(() => {
+    props.dispatch(fetchTags())
+  })
 
   const handleChange = (e) => {
     e.preventDefault()
@@ -32,6 +39,11 @@ function ListingForm(props) {
           <label>category tags: </label>
           <select name='tag'>
             <option value='placeholder'>placeholder</option>
+            {tags.map(tag => {
+              return <option key={tag.id}>{tag.tag_name}</option>
+            })
+
+            }
           </select>
           <h3>Type of listing: </h3>
           <label>I'm looking for something...
@@ -64,7 +76,8 @@ function ListingForm(props) {
 
 const mapStateToProps = (globalState) => {
   return {
-    auth: globalState.auth
+    auth: globalState.auth,
+    tags: globalState.tags
   }
 }
 

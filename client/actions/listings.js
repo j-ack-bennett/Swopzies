@@ -33,7 +33,6 @@ export function newListing(newListing) {
   return dispatch => {
     return postListing(newListing)
       .then(() => {
-        console.log('hi')
         dispatch(addListing(newListing))
         return null
       })
