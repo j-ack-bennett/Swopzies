@@ -82,13 +82,16 @@ As a registered user:
   | name | purpose |
   | --- | --- |
   | auth | Store information regarding user logins, auth status and auth errors |
+  | listings | Store the listings that have been added by users |
   |MORE TO BE ADDED|MORE TO BE ADDED|
 
  ## Actions
 
- | type | data | purpose |
- | --- | --- | --- |
- |TO BE ADDED|TO BE ADDED|
+  | type | data | purpose |
+  | --- | --- | --- |
+  | SET_LISTINGS | listings | Stores listings in global state |
+  | FETCH_LISTINGS | listings | Retreive listings from the db and sends to api |
+  |TO BE ADDED|TO BE ADDED|
 
 ## API (Client - Server)
 
