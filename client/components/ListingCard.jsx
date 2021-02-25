@@ -1,13 +1,24 @@
 import React from "react"
 import { connect } from "react-redux"
 
-function ListingCard() {
+function ListingCard(props) {
+
+  const listing = props.listing 
+
   return (
     <div className="container">
-      <p>Listing card</p>
-
+      {props.listingType=="looking"
+      ? <p>I am looking for: {listing.title} <br></br>I can give: {listing.description}</p> 
+      : <p>I can offer: {listing.title} <br></br> I am looking for: {listing.description}</p> 
+      }
     </div>
     )
 }
 
-export default connect()(ListingCard)
+const mapStateToProps = (globalState) => {
+  return {
+    listingType: globalState.listingType
+  }
+}
+
+export default connect(mapStateToProps)(ListingCard)

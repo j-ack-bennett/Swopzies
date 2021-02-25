@@ -18,7 +18,7 @@ export function addListing(listing) {
 }
 
 export function fetchListings() {
-  console.log("fetching")
+  // console.log("fetching")
   return dispatch => {
     return getListings()
     .then(listings => {
