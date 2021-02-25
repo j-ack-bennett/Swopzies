@@ -5,7 +5,11 @@ function ListingForm() {
   const [ form, setForm ] = useState({})
 
   const handleChange = (e) => {
-
+    e.preventDefault()
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value
+    })
   }
 
   const handleSubmit = () => {
@@ -22,10 +26,10 @@ function ListingForm() {
             <option value='placeholder'>placeholder</option>
           </select>
           <label>I'm looking for something...
-            <input type='radio' name='type' value='looking' />
+            <input onChange={handleChange} type='radio' name='type' value='looking' />
           </label>
           <label>I've got something to offer...
-            <input type='radio' name='type' value='offer' />
+            <input onChange={handleChange} type='radio' name='type' value='offer' />
           </label>
           <label className='listing__title'>
             Title of listing:
@@ -46,6 +50,12 @@ function ListingForm() {
 
     </div>
     )
+}
+
+const mapStateToProps = (globalState) => {
+  return {
+    auth: globalState.auth
+  }
 }
 
 export default connect()(ListingForm)
