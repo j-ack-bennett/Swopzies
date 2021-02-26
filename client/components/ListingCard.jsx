@@ -15,10 +15,6 @@ function ListingCard(props) {
     )
 }
 
-const mapStateToProps = (globalState) => {
-  return {
-    listingType: globalState.listingType
-  }
-}
 
-export default connect(mapStateToProps)(ListingCard)
+
+export default connect()(ListingCard)
