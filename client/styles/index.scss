@@ -7,38 +7,38 @@
 @import "./variables.scss";
 
 // Import only what you need from Bulma
-@import "bulma/sass/utilities/_all.sass";
-@import "bulma/sass/base/_all.sass";
-@import "bulma/sass/elements/button.sass";
-@import "bulma/sass/elements/container.sass";
-@import "bulma/sass/elements/title.sass";
-@import "bulma/sass/form/_all.sass";
-@import "bulma/sass/components/navbar.sass";
-@import "bulma/sass/layout/hero.sass";
-@import "bulma/sass/layout/section.sass";
+// @import "bulma/sass/utilities/_all.sass";
+// @import "bulma/sass/base/_all.sass";
+// @import "bulma/sass/elements/button.sass";
+// @import "bulma/sass/elements/container.sass";
+// @import "bulma/sass/elements/title.sass";
+// @import "bulma/sass/form/_all.sass";
+// @import "bulma/sass/components/navbar.sass";
+// @import "bulma/sass/layout/hero.sass";
+// @import "bulma/sass/layout/section.sass";
 
 body {
     font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-content: flex-end;
+// .navbar {
+//     display: flex;
+//     justify-content: space-between;
+//     align-content: flex-end;
 
-    &__title {
-        display: flex;
-        margin-top: 1.5rem;
-    }
+//     &__title {
+//         display: flex;
+//         margin-top: 1.5rem;
+//     }
 
-    &__links {
+//     &__links {
 
-        &--link {
-            margin-left: 10px;
-            margin-right: 10px;
-        }
-    }
-}
+//         &--link {
+//             margin-left: 10px;
+//             margin-right: 10px;
+//         }
+//     }
+// }
 
 .listing {
 
@@ -70,7 +70,6 @@ body {
     margin-left: 20px;
 }
 
-.logo {
-    max-width: 100px;
-    max-height: 100px;
+.hero.is-primary {
+    background-color: #14213d;
 }
