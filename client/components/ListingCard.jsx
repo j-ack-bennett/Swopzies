@@ -1,24 +1,31 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { connect } from "react-redux"
+import  { fetchTags } from "../actions/tags"
 
 function ListingCard(props) {
+
+  useEffect(() => {
+    props.dispatch(fetchTags())
+  }, [])
 
   const listing = props.listing 
 
   return (
     <div className="container">
       {listing.type=="looking"
-      ? <p>I am looking for: {listing.title} <br></br>I can give: {listing.description}</p> 
-      : <p>I can offer: {listing.title} <br></br> I am looking for: {listing.description}</p> 
+      ? <div>
+          <p><strong>{listing.title}</strong></p> 
+          <br></br>
+          <p>{}</p>
+        </div>
+      : <div>
+        <p><strong>{listing.title}</strong></p> 
+        <br></br>
+
+        </div>
       }
     </div>
     )
 }
 
-const mapStateToProps = (globalState) => {
-  return {
-    listingType: globalState.listingType
-  }
-}
-
-export default connect(mapStateToProps)(ListingCard)
+export default connect()(ListingCard)
