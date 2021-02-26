@@ -1,31 +1,37 @@
 import React, { useEffect } from "react"
 import { connect } from "react-redux"
-import  { fetchTags } from "../actions/tags"
+import { fetchTags } from "../actions/tags"
 
 function ListingCard(props) {
-
   useEffect(() => {
     props.dispatch(fetchTags())
   }, [])
 
-  const listing = props.listing 
+  const listing = props.listing
 
   return (
     <div className="container">
-      {listing.type=="looking"
-      ? <div>
-          <p><strong>{listing.title}</strong></p> 
+      {listing.type == "looking" ? (
+        <div>
+          <p><strong>{listing.title}</strong></p>
+          {/* <p>{ INSERT TAG HERE WHEN THEY'RE READY }</p> */}
+          <p>{listing.username}, {listing.location}</p>
+          <div>
+            <br />
+          </div>
+        </div>
+      ) : (
+        <div>
+          <p><strong>{listing.title}</strong></p>       
+          {/* <p>{ INSERT TAG HERE WHEN THEY'RE READY }</p> */}
+          <p>{listing.username}, {listing.location}</p>
+          <div>
           <br></br>
-          <p>{listing.location}</p>
+          </div>
         </div>
-      : <div>
-        <p><strong>{listing.title}</strong></p> 
-        <br></br>
-
-        </div>
-      }
+      )}
     </div>
-    )
+  )
 }
 
 export default connect()(ListingCard)
