@@ -8,12 +8,16 @@ module.exports = {
   getListingById,
   deleteById,
   updateListing,
+  getListingsByTagId
 }
 
 function getListings(db = connection) {
   // console.log(listings)
   return db("listings")
-    .select(); 
+    .join("users", "users.id", "listings.user_id")
+    .join("listings_tags", "listing_id", "listings.id")
+    .join("tags", "tags.id", "tag_id")
+    .select("listings.id AS id", "*"); 
 }
 
 function addNewListing(newListing, db = connection) {
@@ -50,3 +54,21 @@ function updateListing(id, updatedListing, db = connection) {
           return getListingById(id)
         })
 }
+
+function getListingsByTagId(tagId, db=connection) {
+  console.log("help")
+return db('listings_tags')
+.join('listings', 'listing_id', 'listings.id')
+.join('tags', 'tags.id','listings_tags.tag_id')
+.where('tags.id', tagId)
+.select('*', 'listings.id AS id')
+}
+
+
+
+// function getRecipesWithIngredientsSimpleDoubleJoin(db = connection) {
+//   return db('recipes')
+//   .join('recipes_ingredients', 'recipes.id', 'recipes_ingredients.recipe_id')
+//   .join('ingredients', 'recipes_ingredients.ingredient_id', 'ingredients.id')
+//   .select('recipes.name AS recipe_name', '*')
+// }
