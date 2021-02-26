@@ -18,3 +18,12 @@ export function postListing (data) {
     .then(res => res.body)
 }
 
+
+export function getListingsByTagId (tagId) {
+  return request.get(baseUrl + '/tagId')      
+  .send(tagId)
+  .then(res => {
+    return res.body
+  })
+}
+

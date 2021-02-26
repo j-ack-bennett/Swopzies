@@ -34,4 +34,5 @@ function ListingCard(props) {
   )
 }
 
+
 export default connect()(ListingCard)

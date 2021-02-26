@@ -57,3 +57,11 @@ router.patch("/:id", (req, res) => {
       res.json(listing)
     })
 })
+
+router.get("/tagId", (req, res) => {
+  const id = req.body
+  getListingsByTagId(id)
+  .then((listings) => {
+    res.json(listings)
+    })
+})
