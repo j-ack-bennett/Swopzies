@@ -24,15 +24,9 @@ function getUserByUsername (username, db = connection) {
     .first()
 }
 
-function getUserById (id, db = connection) {
-  return db('users')
-    .where('id', id)
-    .first()
-}
 
 module.exports = {
   createUser,
   userExists,
   getUserByUsername,
-  getUserById
-}
+  }

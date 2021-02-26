@@ -13,7 +13,8 @@ module.exports = {
 function getListings(db = connection) {
   // console.log(listings)
   return db("listings")
-    .select(); 
+    .join("users", "users.id", "listings.user_id")
+    .select("listings.id AS id", "*"); 
 }
 
 function addNewListing(newListing, db = connection) {

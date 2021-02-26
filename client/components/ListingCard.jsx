@@ -16,7 +16,7 @@ function ListingCard(props) {
       ? <div>
           <p><strong>{listing.title}</strong></p> 
           <br></br>
-          <p>{}</p>
+          <p>{listing.location}</p>
         </div>
       : <div>
         <p><strong>{listing.title}</strong></p> 
