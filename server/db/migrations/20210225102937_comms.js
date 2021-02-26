@@ -6,6 +6,7 @@ exports.up = function(knex) {
         table.integer('user_id')
         table.string('text')
         table.timestamp('time')
+        table.integer('thread_id')
     })
 };
 
