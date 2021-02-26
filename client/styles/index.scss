@@ -21,25 +21,6 @@ body {
     font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
-// .navbar {
-//     display: flex;
-//     justify-content: space-between;
-//     align-content: flex-end;
-
-//     &__title {
-//         display: flex;
-//         margin-top: 1.5rem;
-//     }
-
-//     &__links {
-
-//         &--link {
-//             margin-left: 10px;
-//             margin-right: 10px;
-//         }
-//     }
-// }
-
 .listing {
 
     &__title {
@@ -72,4 +53,8 @@ body {
 
 .hero.is-primary {
     background-color: #14213d;
+}
+
+h1 {
+    font-size: 60px;
 }
