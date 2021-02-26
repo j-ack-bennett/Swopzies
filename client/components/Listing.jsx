@@ -19,6 +19,7 @@ function Listing(props) {
     <div className="container">
       {props.listings.map(listingItem => {
         if(listingItem.id == listingId) {
+          console.log("here!")
           return (
             <>
               <div key={listingItem.id}>
