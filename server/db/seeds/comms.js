@@ -7,7 +7,8 @@ exports.seed = function (knex) {
                     listing_id: 4,
                     user_id: 2,
                     text: 'Hello, is it me you\'re looking for?',
-                    time: null
+                    time: null,
+                    thread_id: 1
                 }
             ])
         })

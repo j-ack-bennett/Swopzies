@@ -3,6 +3,7 @@ import { getListings, postListing } from '../apis/listings'
 export const SET_LISTINGS = "SET_LISTINGS"
 export const ADD_LISTING = "ADD_LISTING"
 
+
 export function setListings(listings) {
   return {
     type: SET_LISTINGS,
@@ -16,6 +17,8 @@ export function addListing(listing) {
     listing
   }
 }
+
+
 
 export function fetchListings() {
   // console.log("fetching")
@@ -38,3 +41,5 @@ export function newListing(newListing) {
       })
   }
 }
+
+
