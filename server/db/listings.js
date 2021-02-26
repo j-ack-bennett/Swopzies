@@ -15,6 +15,8 @@ function getListings(db = connection) {
   // console.log(listings)
   return db("listings")
     .join("users", "users.id", "listings.user_id")
+    .join("listings_tags", "listing_id", "listings.id")
+    .join("tags", "tags.id", "tag_id")
     .select("listings.id AS id", "*"); 
 }
 
@@ -54,6 +56,7 @@ function updateListing(id, updatedListing, db = connection) {
 }
 
 function getListingsByTagId(tagId, db=connection) {
+  console.log("help")
 return db('listings_tags')
 .join('listings', 'listing_id', 'listings.id')
 .join('tags', 'tags.id','listings_tags.tag_id')
