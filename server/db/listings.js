@@ -15,6 +15,8 @@ function getListings(db = connection) {
   // console.log(listings)
   return db("listings")
     .join("users", "users.id", "listings.user_id")
+    .join("listings_tags", "listing_id", "listings.id")
+    .join("tags", "tags.id", "tag_id")
     .select("listings.id AS id", "*"); 
 }
 
