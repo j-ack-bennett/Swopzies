@@ -9,7 +9,6 @@ const Comms = (props) => {
   const [comment, setComment] = useState('')
   
 
-
   const handleChange = (e) => {
     setComment(e.target.value)
   }
