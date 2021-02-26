@@ -46,7 +46,7 @@ function App({ auth, dispatch }) {
               <Route path="/listings" component={Listings} />
               <Route path="/profile" component={Profile} />
               <Route path="/listingform" component={ListingForm} />
-              <Route path="/listing" component={Listing} />
+              <Route path="/listing/:id" component={Listing} />
             </>
           )}
         </div>
