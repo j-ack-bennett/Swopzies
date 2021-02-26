@@ -6,13 +6,14 @@ import Comms from './Comms'
 
 function Listing(props) {
 
-  useEffect(() => {
-    props.dispatch(fetchListings())
-  }, [])
-
+  // useEffect(() => {
+  //   props.dispatch(fetchListings())
+  // }, [])
+ 
 
 
   const listingId = props.match.params.id
+  console.log(listingId)
   
   return (
     <div className="container">
