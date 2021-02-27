@@ -7,17 +7,16 @@ import { postToThread, getCommsforListing } from '../apis/comms'
 const CommThread = (props) => {
   const listingId = props.listingId
   const user_id = props.auth.user.id
+
   let threads
   let fuckingThreadID
 
   const [comments, setComments] = useState({})
   const [comment, setComment] = useState('')
 
-
   const getStuff = () => {
     getCommsforListing(listingId)
       .then(sure => {
-        console.log(sortThreads(sure))
         setComments(sortThreads(sure))
       })
   }
@@ -57,13 +56,13 @@ const CommThread = (props) => {
     <>
       {Object.keys(comments).map(key => {
         const fuck = key
-        return <div style={{ borderStyle: "solid" }}>{comments[key].map(comment => {
-          return <p>{comment.text}</p>
+        return <div key={key} style={{ borderStyle: "solid" }}>{comments[key].map(comment => {
+          return <p key={comment.id}>{comment.text}</p>
         })
         } <form onSubmit={(e) => handleSubmit(e, fuck)}>
             <label>
               reply:
-            <input type='text' onChange={handleChange} />
+            <input type='text' onChange={handleChange} name="text"/>
             </label>
             <input type='submit' value='reply' />
           </form> </div>
