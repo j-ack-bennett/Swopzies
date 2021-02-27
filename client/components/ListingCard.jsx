@@ -16,6 +16,7 @@ function ListingCard(props) {
           <p><strong>{listing.title}</strong></p>
           {/* <p>{ INSERT TAG HERE WHEN THEY'RE READY }</p> */}
           <p>{listing.username}, {listing.location}</p>
+          <p>tagged: {listing.tag_name}</p>
           <div>
             <br />
           </div>
@@ -25,6 +26,7 @@ function ListingCard(props) {
           <p><strong>{listing.title}</strong></p>       
           {/* <p>{ INSERT TAG HERE WHEN THEY'RE READY }</p> */}
           <p>{listing.username}, {listing.location}</p>
+          <p>tagged: {listing.tag_name}</p>
           <div>
           <br></br>
           </div>
