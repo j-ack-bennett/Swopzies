@@ -17,3 +17,10 @@ export function postNewComment(newComment) {
     .send(newComment)
     .then(res => res.body) 
 }
+
+export function postToThread(newCommet) {
+  return request.post(baseUrl + 'blah')
+    .send(newCommet)
+    .then(res => res.body)
+}
+

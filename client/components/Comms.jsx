@@ -10,24 +10,18 @@ const Comms = (props) => {
 
   const [comment, setComment] = useState('')
   
-
   const handleChange = (e) => {
     setComment(e.target.value)
   }
 
-  const handleSubmit = (e ,thread_id) => {
-    console.log(thread_id)
+  const handleSubmit = (e) => {
     e.preventDefault()
     const newComment = {
       listing_id,
       user_id,
       text: comment,
       time: new Date()
-    } 
-    if(thread_id) {
-      newComment.thread_id = thread_id
     }
-    console.log(newComment)
     postNewComment(newComment)
   } 
 
@@ -41,7 +35,6 @@ const Comms = (props) => {
       </div>
       <div className='threads'>
         <CommThread listingId={listing_id} 
-          handleSubmit={handleSubmit}
           handleChange={handleChange}
         />
       </div>
