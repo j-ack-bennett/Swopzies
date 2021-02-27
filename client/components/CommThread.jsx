@@ -1,19 +1,22 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
+
+
 import { postNewComment, getCommsforListing } from '../apis/comms'
 
 const CommThread = (props) => {
   const listingId = props.listingId
+  const handleSubmit = props.handleSubmit
+  const handleChange = props.handleChange
 
   const [ comments, setComments ] = useState([])
 
 
   const getStuff = () => {
     getCommsforListing(listingId)
-    .then(sure => {
-      setComments(c => sure)
-    })
-     
+      .then(sure => {
+        setComments(sure)
+      })
   }
 
   useEffect(() => {
@@ -24,7 +27,19 @@ const CommThread = (props) => {
     <>
       {
         comments.map(comment => {
-          <p>{comment.username}: {comment.text}</p>
+          return (
+            <>
+            <h3>{comment.username}</h3>
+            <p>{comment.text}</p>
+            <form onSubmit={(e) => handleSubmit(e, comment.thread_id)}>
+              <label>
+                reply:
+                <input type='text' onChange={handleChange}/>
+              </label>
+              <input type='submit' value='reply'/>
+            </form>
+            </>
+          )
         })
       }
     </>

@@ -3,9 +3,8 @@ import request from 'superagent'
 const baseUrl = '/api/v1/comms/'
 
 export function getCommsforListing(listingId) {
-  request.get(baseUrl + listingId)
+  return request.get(baseUrl + listingId)
     .then(res => {
-      console.log(res.body)
       return res.body
     })
     .catch(err => {
@@ -14,7 +13,7 @@ export function getCommsforListing(listingId) {
 }
 
 export function postNewComment(newComment) {
-  request.post(baseUrl)
+  return request.post(baseUrl)
     .send(newComment)
     .then(res => res.body) 
 }

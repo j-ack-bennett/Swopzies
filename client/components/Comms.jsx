@@ -15,7 +15,8 @@ const Comms = (props) => {
     setComment(e.target.value)
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e ,thread_id) => {
+    console.log(thread_id)
     e.preventDefault()
     const newComment = {
       listing_id,
@@ -23,6 +24,10 @@ const Comms = (props) => {
       text: comment,
       time: new Date()
     } 
+    if(thread_id) {
+      newComment.thread_id = thread_id
+    }
+    console.log(newComment)
     postNewComment(newComment)
   } 
 
@@ -35,7 +40,10 @@ const Comms = (props) => {
         </form>
       </div>
       <div className='threads'>
-        <CommThread listingId={listing_id} />
+        <CommThread listingId={listing_id} 
+          handleSubmit={handleSubmit}
+          handleChange={handleChange}
+        />
       </div>
     </>
   )
