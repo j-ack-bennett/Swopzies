@@ -34,7 +34,7 @@ function Listing(props) {
 
 const mapStateToProps = (globalState) => {
   return {
-    listings: globalState.listings,
+    listings : globalState.listings,
   }
 }
 
