@@ -95,16 +95,17 @@ As a registered user:
 
 ## API (Client - Server)
 
-| Method | Endpoint | Protected | Usage | Response |
+| Method |      Endpoint      |    Protected    | Usage |                 Response |
 | --- | --- | --- | --- | --- |
-| Post | /api/auth/login | Yes | Log In a User | The Users JWT Token (TO BE CHANGED)|
-| Post | /api/auth/register | Yes | Register a User | The Users JWT Token (TO BE CHANGED)|
-| Get | /api/meetings | Yes | Get a Users Meeting Histroy | An Array of Meetings (TO BE CHANGED)|
-| Post | /api/meetings | Yes | Save a completed meeting | The Meeting that has been saved in db read format (TO BE CHANGED)|
-| Get | /api/meetings/:id/users | Yes | Get the attendees of a Meeting | An Array of User objects (TO BE CHANGED)|
-| Get | /api/users | Yes | Get the users of the app | An Array of User Objects (TO BE CHANGED)|
+| Post   | /api/auth/login          | Yes | Log In a User            | The Users JWT Token (TO BE CHANGED)|
+| Post   | /api/auth/register       | Yes | Register a User          | The Users JWT Token (TO BE CHANGED)|
+| Get    | /api/v1/listings         | No  | Get Listings             | All Listings |
+| Post   | /api/v1/listings         | No  | Add New Listing          | All Listings |
+| Get    | /api/v1/listings/:id     | No  | Get Listing By ID        | Listings that match ID |
+| Delete | /api/v1/listings/:id     | No  | Delete Listing By ID     | status 200 |
+| Patch  | /api/v1/listings/:id     | No  | Update A Listing By ID   |  Updated Listing |
+| Get    | /api/v1/listings/tag/:id | No  | Get Listings By Tag ID   | Listings that match Tag id |
 
-## DB (Server Side)
   There should be five tables for MVP
 
 ### Users
@@ -140,6 +141,7 @@ As a registered user:
   | user_id | Integer |
   | text | String |
   | time | Timestamp |
+  | thread_id | integer |
   
 ### Listing_Tags
   | Column Name | Data Type |
