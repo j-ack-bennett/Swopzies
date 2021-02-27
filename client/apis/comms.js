@@ -4,7 +4,13 @@ const baseUrl = '/api/v1/comms/'
 
 export function getCommsforListing(listingId) {
   request.get(baseUrl + listingId)
-    .then(res => res.body)
+    .then(res => {
+      console.log(res.body)
+      return res.body
+    })
+    .catch(err => {
+      console.log("you fucked up: ", err)
+    })
 }
 
 export function postNewComment(newComment) {

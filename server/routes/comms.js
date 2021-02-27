@@ -1,5 +1,4 @@
 const express = require("express")
-const { renderSync } = require("node-sass")
 const router = express.Router()
 
 const { addNewComm, getCommsForListing } = require('../db/comms')

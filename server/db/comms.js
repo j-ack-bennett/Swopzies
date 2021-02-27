@@ -8,8 +8,9 @@ function addNewComm(newComm, db = connection) {
 
 function getCommsForListing(listingId, db = connection) {
   return db('comms')
-    .select()
-    .where('listing_id', listingId)
+  .where('listing_id', listingId)
+  .join('users', 'comms.user_id', 'users.id')
+  .select('comms.*', 'users.username')
 }
 
 module.exports = {
