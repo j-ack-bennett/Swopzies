@@ -15,7 +15,6 @@ const Comms = (props) => {
   }
 
   const handleSubmit = (e) => {
-    e.preventDefault()
     const newComment = {
       listing_id,
       user_id,
@@ -35,7 +34,6 @@ const Comms = (props) => {
       </div>
       <div className='threads'>
         <CommThread listingId={listing_id} 
-          handleChange={handleChange}
         />
       </div>
     </>
