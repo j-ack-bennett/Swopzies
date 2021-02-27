@@ -8,6 +8,7 @@ const CommThread = (props) => {
   const listingId = props.listingId
   const user_id = props.auth.user.id
   let threads
+  let fuckingThreadID
 
   const [comments, setComments] = useState({})
   const [comment, setComment] = useState('')
@@ -16,6 +17,7 @@ const CommThread = (props) => {
   const getStuff = () => {
     getCommsforListing(listingId)
       .then(sure => {
+        console.log(sortThreads(sure))
         setComments(sortThreads(sure))
       })
   }
@@ -41,7 +43,6 @@ const CommThread = (props) => {
   }
 
   const handleSubmit = (e, threadId) => {
-    e.preventDefault()
     const newComm = {
       listing_id: listingId,
       user_id: user_id,
@@ -55,10 +56,11 @@ const CommThread = (props) => {
   return (
     <>
       {Object.keys(comments).map(key => {
+        const fuck = key
         return <div style={{ borderStyle: "solid" }}>{comments[key].map(comment => {
           return <p>{comment.text}</p>
         })
-        } <form onSubmit={(e) => handleSubmit(e, comment.thread_id)}>
+        } <form onSubmit={(e) => handleSubmit(e, fuck)}>
             <label>
               reply:
             <input type='text' onChange={handleChange} />
