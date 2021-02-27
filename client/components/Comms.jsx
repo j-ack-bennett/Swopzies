@@ -9,6 +9,7 @@ const Comms = (props) => {
   const user_id = props.auth.user.id
 
   const [comment, setComment] = useState('')
+  const [value, setValue] = useState(null)
   
   const handleChange = (e) => {
     setComment(e.target.value)
@@ -28,7 +29,7 @@ const Comms = (props) => {
     <>
       <div className='newCommentThread' >
         <form className='message' onSubmit={handleSubmit}>
-          <input type='text' onChange={handleChange} />
+          <input type='text' onChange={handleChange} name="text"/>
           <input type='submit' />
         </form>
       </div>
