@@ -1,7 +1,20 @@
 const express = require("express")
+const { renderSync } = require("node-sass")
 const router = express.Router()
 
-const { addNewComm } = require('../db/comms')
+const { addNewComm, getCommsForListing } = require('../db/comms')
+
+router.get('/:listingId', (req, res) => {
+  const listingId = req.params.listingId
+  getCommsForListing(listingId)
+    .then(comms => {
+      res.json(comms)
+    })
+    .catch((err) => {
+      console.log(err)
+      res.status(500).json({ message: 'Something went wrong' })
+    })
+})
 
 router.post('/', (req, res) => {
   const newComm = req.body

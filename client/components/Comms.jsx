@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { postNewComment } from '../apis/comms'
 
+import CommThread from './CommThread'
+
 const Comms = (props) => {
   const listing_id = props.listingId
   const user_id = props.auth.user.id
@@ -25,16 +27,18 @@ const Comms = (props) => {
   } 
 
   return (
-
-    <div className='thread' >
-      <form className='message' onSubmit={handleSubmit}>
-        <input type='text' onChange={handleChange} />
-        <input type='submit' />
-      </form>
-    </div>
+    <>
+      <div className='newCommentThread' >
+        <form className='message' onSubmit={handleSubmit}>
+          <input type='text' onChange={handleChange} />
+          <input type='submit' />
+        </form>
+      </div>
+      <div className='threads'>
+        <CommThread listingId={listing_id} />
+      </div>
+    </>
   )
-
-
 } 
 
 const mapStateToProps = (globalState) => {
