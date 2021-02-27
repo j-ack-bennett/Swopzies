@@ -20,7 +20,6 @@ function ListingCard(props) {
           to={`/listing/${listing.id}`}>
           <p><strong>{listing.title}</strong></p>
           </ Link>
-          {/* <p>{ INSERT TAG HERE WHEN THEY'RE READY }</p> */}
           <p>{listing.username}, {listing.location}</p>
           <p>tagged: {listing.tag_name}</p>
           <div>
@@ -33,7 +32,6 @@ function ListingCard(props) {
           to={`/listing/${listing.id}`}>
           <p><strong>{listing.title}</strong></p> 
           </ Link>      
-          {/* <p>{ INSERT TAG HERE WHEN THEY'RE READY }</p> */}
           <p>{listing.username}, {listing.location}</p>
           <p>tagged: {listing.tag_name}</p>
           <div>
