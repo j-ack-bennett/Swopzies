@@ -17,7 +17,7 @@ function Register(props) {
     bio: '',
     location: '',
     image: '',
-    phone: null
+    phone: null,
   })
 
   useEffect(() => {
@@ -54,7 +54,7 @@ function Register(props) {
                 {auth.errorMessage && <span className="has-text-danger is-large">{auth.errorMessage}</span>}
                 <div className="field">
                   <div className="control">
-                    <input className="input is-large" placeholder="User Name" type="text" name="username" autoComplete="username" onChange={handleChange} value={formData.username} autofocus="" required />
+                    <input className="input is-large" placeholder="Username" type="text" name="username" autoComplete="username" onChange={handleChange} value={formData.username} autoFocus="" required />
                   </div>
                 </div>
 
