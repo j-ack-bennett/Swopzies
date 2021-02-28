@@ -41,5 +41,10 @@ export function addBookmark(ids) {
 }
 
 export function deleteBookmark(id) {
- 
+ return request
+ .del(baseUrl + '/bookmark')
+ .send(id)
+ .then((res) => {res.body})
 }
+
+

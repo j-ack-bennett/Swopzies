@@ -10,6 +10,7 @@ function Listings(props) {
   const allListings = props.listings
   const [ filter, setFilter ] = useState('all')
   const [ listings, setListings ] = useState(props.listings)
+  
 
   useEffect(() => {
     props.dispatch(fetchTags())

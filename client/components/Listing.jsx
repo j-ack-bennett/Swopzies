@@ -1,7 +1,7 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { connect } from "react-redux"
 import { fetchListings, deleteListing } from "../actions/listings"
-import { addBookmark } from "../apis/listings"
+import { addBookmark, deleteBookmark } from "../apis/listings"
 
 import Comms from "./Comms"
 
@@ -14,11 +14,11 @@ function Listing(props) {
   const killListing = (id) => {
     props.dispatch(deleteListing(id))
     props.history.push('/')
-  } 
+  }
 
   const handleClick = (e) => {
     e.preventDefault()
-    const newBookmark = {listing_id: listingId, user_id: user_id}
+    const newBookmark = { listing_id: listingId, user_id: user_id }
     addBookmark(newBookmark)
   }
 
@@ -28,9 +28,14 @@ function Listing(props) {
         if (listingItem.id == listingId) {
           return (
             <div key={listingItem.id}>
-              {listingItem.user_id == props.auth.user.id &&
-              <button onClick={() => killListing(listingItem.id)} className="deleteButton">Delete Post</button> }
-              <button onClick={handleClick} className="bookmarkButton">Add to watchlist</button>
+              {listingItem.user_id == props.auth.user.id ?
+                <button onClick={() => killListing(listingItem.id)} className="deleteButton">Delete Post</button> :
+                <button onClick={handleClick} className="bookmarkButton">Bookmark this</button>
+                }
+
+              
+
+
               <p>{listingItem.title}</p>
               <p>{listingItem.description}</p>
               <p>
@@ -50,7 +55,7 @@ function Listing(props) {
 
 const mapStateToProps = (globalState) => {
   return {
-    listings: globalState.listings, 
+    listings: globalState.listings,
     auth: globalState.auth
   }
 }

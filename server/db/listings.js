@@ -82,6 +82,8 @@ function deleteBookmark(id, db=connection) {
 
 
 
+
+
 // function getRecipesWithIngredientsSimpleDoubleJoin(db = connection) {
 //   return db('recipes')
 //   .join('recipes_ingredients', 'recipes.id', 'recipes_ingredients.recipe_id')
