@@ -3,6 +3,7 @@ import { connect } from "react-redux"
 import { fetchListings } from "../actions/listings"
 import { Link } from "react-router-dom"
 import ListingCard from './ListingCard'
+import ListingForm from './ListingForm'
 
 function Home(props) {
 
@@ -11,6 +12,11 @@ function Home(props) {
 
   return (
     <div className="container">
+      <div>
+        <Link to="/listingform">
+        <button >+ Add listing</button>
+        </Link>
+      </div>
       <div>
         <h1>I'm Looking For...</h1>
           {listings.reverse().map(listing => {
