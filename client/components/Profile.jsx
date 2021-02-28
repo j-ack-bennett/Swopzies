@@ -1,5 +1,6 @@
 import React from "react";
 import { connect, useStore } from "react-redux";
+import { Link } from "react-router-dom"
 
 function Profile(props) {
   const profile = props.auth.user;
@@ -57,7 +58,9 @@ function Profile(props) {
                   if (listing.user_id === profile.id) {
                     return (
                       <tr key={listing.id}>
-                        <td>{listing.title}</td>
+                        <td>
+                          <Link to={`/listing/${listing.id}`}>{listing.title}</Link>
+                        </td>
                       </tr>
                     )
                   }
