@@ -7,9 +7,9 @@ import CommThread from './CommThread'
 const Comms = (props) => {
   const listing_id = props.listingId
   const user_id = props.auth.user.id
+  const listing_user_id = props.listingUserId
 
   const [comment, setComment] = useState('')
-  const [value, setValue] = useState(null)
   
   const handleChange = (e) => {
     setComment(e.target.value)
@@ -34,7 +34,7 @@ const Comms = (props) => {
         </form>
       </div>
       <div className='threads'>
-        <CommThread listingId={listing_id} 
+        <CommThread listingId={listing_id} listingUserId={listing_user_id}
         />
       </div>
     </>

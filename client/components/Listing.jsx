@@ -15,7 +15,6 @@ function Listing(props) {
     <div className="container">
       {props.listings.map((listingItem) => {
         if (listingItem.id == listingId) {
-          console.log("here!")
           return (
             <div key={listingItem.id}>
               <p>{listingItem.title}</p>
@@ -23,7 +22,7 @@ function Listing(props) {
               <p>
                 <img src={listingItem.img} />
               </p>
-              <Comms listingId={listingItem.id} />
+              <Comms listingId={listingItem.id} listingUserId={listingItem.user_id} />
             </div>
           )
         }
