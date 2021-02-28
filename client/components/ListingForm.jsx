@@ -44,7 +44,9 @@ const handleSelect = (e) => {
     console.log(data)
 
     props.dispatch(newListing(data))
-      .then(() => setForm({}))
+      // .then(() => setForm({}))
+
+     props.history.push("/")
   }
 
   return (

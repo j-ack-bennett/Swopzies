@@ -8,36 +8,80 @@ const Nav = (props) => {
   const auth = props.auth
 
   return (
-    <nav className="navbar">
-      <div className="container">
-        <div className="navbar-brand">
-          <Link to="/" className="navbar-item">
-            <img src="duck.jpg" alt="Logo" />
-          </Link>
-          <h1 className='title'>Jack Of All Trades</h1>
-          <span className="navbar-burger burger" data-target="navbarMenu">
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
-        </div>
-        <div id="navbarMenu" className="navbar-menu">
-          <div className="navbar-end">
-            {auth.isAuthenticated
-              ? (<>
-                <span className='navbar-item'><Link to="/" className="navbar-link is-arrowless">Home</Link></span>
-                <span className='navbar-item'><Link to="/profile" className="navbar-link is-arrowless">Profile</Link></span>
-                <span className='navbar-item'><Link to='/' onClick={() => logout()} className="navbar-link is-arrowless">Log Off</Link></span>
-              </>) :
-              (<>
-                <span className='navbar-item'><Link to="/login" className="navbar-link is-arrowless">Sign in</Link></span>
-                <span className='navbar-item'><Link to="/register" className="navbar-link is-arrowless">Register</Link></span>
-              </>)
-            }
+    <section className="hero is-dark">
+      <div className="hero-head">
+        <nav className="navbar">
+          <div className="container">
+            <div className="navbar-brand">
+              <Link to="/" className="logo">
+                <img src="duck.png" alt="Logo" />
+              </Link>
+              <h1>Jack Of All Trades</h1>
+              <span className="navbar-burger burger" data-target="navbarMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
+            </div>
+
+            <div id="navbarMenu" className="navbar-menu">
+              <div className="navbar-end">
+
+                {auth.isAuthenticated
+                  ? (<>
+                    <span className="navbar-item">
+                      <Link to="/" className="button is-white is-outlined">
+                        <span className="icon">
+                          <i className="fa fa-home"></i>
+                        </span>
+                        <span>Home</span>
+                      </Link>
+                    </span>
+
+                    <span className="navbar-item">
+                      <Link to="/profile" className="button is-white is-outlined">
+                        <span className="icon">
+                          <i className="far fa-id-badge"></i>
+                        </span>
+                        <span>Profile</span>
+                      </Link>
+                    </span>
+
+                    <span className="navbar-item">
+                      <Link to="/" onClick={() => logout()} className="button is-white is-outlined">
+                        <span className="icon">
+                          <i className="fa fa-book"></i>
+                        </span>
+                        <span>Log Off</span>
+                      </Link>
+                    </span>
+                  </>) :
+                  (<>
+                    <span className="navbar-item">
+                      <Link to="/login" className="button is-white is-outlined">
+                        <span className="icon">
+                          <i className="fas fa-sign-in-alt"></i>
+                        </span>
+                        <span>Sign in</span>
+                      </Link>
+                    </span>
+
+                    <span className="navbar-item">
+                      <Link to="/register" className="button is-white is-outlined">
+                        <span className="icon">
+                          <i className="fas fa-user-plus"></i>
+                        </span>
+                        <span>Register</span>
+                      </Link>
+                    </span>
+                  </>)
+                }
+              </div>
+            </div>
           </div>
-        </div>
+        </nav>
       </div>
-    </nav>
+    </section>
   )
 }
 
@@ -57,24 +101,3 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Nav)
-
-
-{/* <nav className='navbar'>
-          <div className='navbar__title'>
-            <img className='logo' src='duck.jpg' alt='Logo for Jack of all Trades' />
-            <h1 className='title'>Jack Of All Trades</h1>
-          </div>
-          <div className='navbar__links'>
-            {auth.isAuthenticated
-            ?   (<>
-                    <span className='navbar-item'><Link to="">Home</Link></span>
-                    <span className='navbar-item'><Link to="">Profile</Link></span>
-                    <span className='navbar-item'><Link to='/' onClick={() => logout()}>Log Off</Link></span>
-                </>):
-                (<>
-                    <span className='navbar-item'><Link to="/login">Sign in</Link></span>
-                    <span className='navbar-item'><Link to="/register">Register</Link></span>
-                </>)
-            }
-          </div>
-      </nav> */}

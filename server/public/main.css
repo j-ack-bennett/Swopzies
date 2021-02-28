@@ -3,3 +3,8 @@
   font-family: "Lego Blocks";
   src: url("legoBlocks.ttf");
 }
+
+@font-face {
+  font-family: "Mortal Coil";
+  src: url("Coil.otf");
+}
