@@ -1,75 +1,41 @@
 import React from "react"
-import { connect } from "react-redux"
+import { connect, useStore } from "react-redux"
 
 function Profile(props) {
   const profile = props.auth.user
+  console.log(props)
   return (
-    <div className="container">
-      <p>Profile</p>
-
-      {Object.keys(profile).map((key) => {
-        const keyStr = key.split("").map((char) => {
-          if (char === "_") {
-            char = " "
-          }
-          return char
-        })
-
-        const capitalised = keyStr[0].toUpperCase + keyStr.substring(1)
-
-        return (
-          <div className="field">
-            <div className="control">
-              <label>{capitalised}</label>
-              <p>{profile[key]}</p>
-            </div>
-          </div>
-        )
-      })}
-
-      {/* <div className="field">
-        <div className="control">First Name: 
-        <input className="profile data" placeholder={profile.first_name} type="text" />
-        </div>
+    <div className="profileContainer">
+      <div className="fieldName">
+        <div>Username</div>
+        <div>First Name</div>
+        <div>Last Name</div>
+        <div>Email</div>
+        <div>Bio</div>
+        <div>Phone</div>
+        <div>Location</div>
       </div>
-
-      <div className="field">
-        <div className="control">Last Name: 
-        <input className="profile data" placeholder={profile.last_name} type="text" />
-        </div>
+      <div className="profileDetails">
+        <div>{profile.username}</div>
+        <div>{profile.first_name}</div>
+        <div>{profile.last_name}</div>
+        <div>{profile.email}</div>
+        <div>{profile.bio}</div>
+        <div>{profile.phone}</div>
+        <div>{profile.location}</div>
       </div>
-
-      <div className="field">
-        <div className="control">Email: 
-        <input className="profile data" placeholder={profile.email} type="text" />
-        </div>
+      <div className="profileButton">
+        <button>Edit</button>
       </div>
-
-      <div className="field">
-        <div className="control">Bio: 
-        <input className="profile data" placeholder={profile.bio} type="text" />
-        </div>
-      </div>
-
-      <div className="field">
-        <div className="control">Location: 
-        <input className="profile data" placeholder={profile.location} type="text" />
-        </div>
-      </div>
-
-      <div className="field">
-        <div className="control">Phone: 
-        <input className="profile data" placeholder={profile.phone} type="text" />
-        </div>
-      </div> */}
     </div>
-  )
-}
+   ) 
+  }
+
 
 const mapStateToProps = (globalState) => {
   return {
-    auth: globalState.auth,
-  }
+    auth: globalState.auth,  
 }
-
+}
 export default connect(mapStateToProps)(Profile)
+
