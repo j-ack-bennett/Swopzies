@@ -17,7 +17,7 @@ function Register(props) {
     bio: '',
     location: '',
     image: '',
-    phone: null,
+    phone: '',
   })
 
   useEffect(() => {
@@ -79,6 +79,12 @@ function Register(props) {
                 <div className="field">
                   <div className="control">
                     <input className="input is-large" placeholder="Bio" type="text" name="bio" onChange={handleChange} value={formData.bio} required/>
+                  </div>
+                </div>
+
+                <div className="field">
+                  <div className="control">
+                    <input className="input is-large" placeholder="Location" type="text" name="location" onChange={handleChange} value={formData.location} required/>
                   </div>
                 </div>
 
