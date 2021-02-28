@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import { HashRouter as Router, Route, Link } from "react-router-dom"
+import { HashRouter as Router, Route } from "react-router-dom"
 import { connect } from "react-redux"
 
 import Login from "./Login"
@@ -24,15 +24,7 @@ function App({ auth, dispatch }) {
 
   return (
     <Router>
-      <div className="container has-text-centered">
-        <div className="hero is-small is-primary">
-          <div className="hero-body has-text-centered">
-            
-            <Route path="/" component={Nav} />
-          </div>
-        </div>
-
-        <div className="">
+        <Route path="/" component={Nav} />
           {!auth.isAuthenticated 
           ? ( <>
             <Route exact path="/" component={Landing} />
@@ -49,8 +41,6 @@ function App({ auth, dispatch }) {
               <Route path="/listing/:id" component={Listing} />
             </>
           )}
-        </div>
-      </div>
     </Router>
   )
 }
