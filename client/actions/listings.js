@@ -25,6 +25,7 @@ export function fetchListings() {
   return dispatch => {
     return getListings()
     .then(listings => {
+      listings.reverse()
       dispatch(setListings(listings))
       return null
     })
