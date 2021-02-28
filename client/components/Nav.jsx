@@ -14,9 +14,11 @@ const Nav = (props) => {
           <div className="container">
             <div className="navbar-brand">
               <Link to="/" className="logo">
-                <img src="duck.png" alt="Logo" />
+                <img src="duckie.png" alt="Logo" />
               </Link>
-              <h1>Jack Of All Trades</h1>
+              <div className="nav-title-container">
+                <h1 className="nav-title">swopsies</h1>
+              </div>
               <span className="navbar-burger burger" data-target="navbarMenu">
                 <span></span>
                 <span></span>
@@ -62,7 +64,7 @@ const Nav = (props) => {
                         <span className="icon">
                           <i className="fas fa-sign-in-alt"></i>
                         </span>
-                        <span>Sign in</span>
+                        <span>Login</span>
                       </Link>
                     </span>
 

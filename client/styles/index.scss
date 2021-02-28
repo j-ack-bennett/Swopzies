@@ -1,7 +1,8 @@
 @charset "utf-8";
 
 // Import a Google Font
-@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+// @import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round');
 
 // Import custom variables and Bulma overides
 @import "./variables.scss";
@@ -40,21 +41,14 @@
     flex-direction: column;
 }
 
-.title {
-    font-family: "Mortal Coil", sans-serif;
-    font-size: 100px;
-    font-weight: 400;
-    margin-left: 20px;
-}
-
 h1 {
     font-size: 80px;
+    font-weight: bold;
 }
 
 h2 {
     font-size: 32px;
     padding-bottom: 20px;
-    font-weight: bold;
 }
 
 h3 {
@@ -77,6 +71,10 @@ p {
 .hero.is-info {
     background-color: white;
     color: grey;
+}
+
+.hero .navbar {
+  background-color: coral;
 }
 
 .col {
@@ -130,4 +128,19 @@ p {
 
 .section {
     padding: 0;
+}
+
+.nav-title-container {
+  width: 100%;
+  display: inline-block;
+  margin: auto;
+  padding: 0;
+}
+
+.nav-title {
+  font-family: "Varela Round", sans-serif;
+  font-size: 75px;
+  padding-left: 50px;
+  display: inline-block;
+  text-align: center;
 }
