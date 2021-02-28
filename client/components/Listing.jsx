@@ -1,6 +1,7 @@
 import React, { useEffect } from "react"
 import { connect } from "react-redux"
 import { fetchListings, deleteListing } from "../actions/listings"
+import { Link } from 'react-router-dom'
 
 import Comms from "./Comms"
 
@@ -24,7 +25,10 @@ function Listing(props) {
           return (
             <div key={listingItem.id}>
               {listingItem.user_id == props.auth.user.id &&
-              <button onClick={() => killListing(listingItem.id)} className="deleteButton">Delete Post</button> }
+              <><button onClick={() => killListing(listingItem.id)} className="deleteButton">Delete Post</button>
+              <Link to={`/editlisting/${listingItem.id}`}><button> Edit Post</button></Link>
+              </>
+              }
               <p>{listingItem.title}</p>
               <p>{listingItem.description}</p>
               <p>
