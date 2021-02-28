@@ -3,7 +3,6 @@ import { connect } from "react-redux"
 import { fetchListings } from "../actions/listings"
 import { Link } from "react-router-dom"
 import ListingCard from './ListingCard'
-import ListingForm from './ListingForm'
 
 function Home(props) {
 
