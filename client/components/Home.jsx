@@ -12,8 +12,13 @@ function Home(props) {
   return (
     <div className="container">
       <div>
+        <Link to="/listingform">
+        <button >+ Add listing</button>
+        </Link>
+      </div>
+      <div>
         <h1>I'm Looking For...</h1>
-          {listings.reverse().map(listing => {
+          {listings.map(listing => {
             if(listing.type == "looking"){
               return <ListingCard key={listing.id} listing={listing} />
             }

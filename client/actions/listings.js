@@ -1,4 +1,4 @@
-import { getListings, postListing } from '../apis/listings'
+import { getListings, postListing, delListing } from '../apis/listings'
 
 export const SET_LISTINGS = "SET_LISTINGS"
 export const ADD_LISTING = "ADD_LISTING"
@@ -25,6 +25,7 @@ export function fetchListings() {
   return dispatch => {
     return getListings()
     .then(listings => {
+      listings.reverse()
       dispatch(setListings(listings))
       return null
     })
@@ -32,14 +33,24 @@ export function fetchListings() {
 }
 
 export function newListing(newListing) {
-  console.log(newListing)
   return dispatch => {
     return postListing(newListing) //this is being sent off to the DB
       .then(() => {
-        dispatch(addListing(newListing.newListing)) // this is being sent off to reducer
-        return null
+        dispatch(fetchListings()) // no
       })
   }
 }
+
+export function deleteListing(id) {
+  return dispatch => {
+    return delListing(id)
+    .then(() => {
+      dispatch(fetchListings())
+      return null
+    })
+  }
+}
+
+
 
 

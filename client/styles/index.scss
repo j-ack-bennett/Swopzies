@@ -17,10 +17,6 @@
 // @import "bulma/sass/layout/hero.sass";
 // @import "bulma/sass/layout/section.sass";
 
-body {
-    font-family: "Helvetica Neue", Arial, sans-serif;
-}
-
 .listing {
 
     &__title {
@@ -45,17 +41,93 @@ body {
 }
 
 .title {
-    font-family: "Lego Blocks", sans-serif;
-    font-size: 60px;
+    font-family: "Mortal Coil", sans-serif;
+    font-size: 100px;
     font-weight: 400;
     margin-left: 20px;
-}
-
-.hero.is-primary {
-    background-color: #14213d;
 }
 
 h1 {
     font-size: 60px;
 }
 
+h2 {
+    font-size: 32px;
+    padding-bottom: 20px;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 30px;
+}
+
+p {
+    font-size: 22px;
+}
+
+.logo {
+    max-width: 150px;
+    max-height: 150px;
+}
+
+.hero.is-fullheight {
+    min-height: 85vh;
+}
+
+.hero.is-info {
+    background-color: white;
+    color: grey;
+}
+
+.col {
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+}
+
+.image-shadow {
+    box-shadow: 5px 5px 20px;
+    
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.hero.is-fullheight .hero-body, .hero.is-fullheight-with-navbar .hero-body, .hero.is-halfheight .hero-body {
+    align-items: center;
+    display: block;
+}
+<div cla
+.landing-con {
+    border: 2px solid rgb(187, 187, 187);
+    border-radius: 25px;
+    padding: 30px 0px;
+    margin-bottom: 40px;
+}
+
+.navbar-center {
+    display:flex;
+    justify-content: stretch;
+    align-items: stretch;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-direction: row;
+ }
+ .navbar-link,.navbar-item {
+    align-items: center;
+    display: flex;
+    flex-basis: auto;
+    flex-grow: 1;
+    flex-shrink: 0;
+    justify-content: center;
+ }
+ .navbar-dropdown .navbar-item {
+   justify-content:left;
+ }	
+
+.section {
+    padding: 0;
+}
