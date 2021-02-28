@@ -8,21 +8,34 @@ const {
   deleteById,
   updateListing,
   getListingsByTagId,
+  addBookmark,
+  deleteBookmark
 } = require("../db/listings");
 
-module.exports = router;
+
 
 //Get all listings
 router.get("/", (req, res) => {
   db.getListings()
-    .then((listings) => {
-      res.json(listings);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({ message: "Something went wrong" });
-    });
+  .then((listings) => {
+    res.json(listings);
+  })
+  .catch((err) => {
+    console.log(err);
+    res.status(500).json({ message: "Something went wrong" });
+  });
 });
+
+router.delete('/bookmark', (req, res) => {
+  console.log('fuck it all')
+  const id = req.body.id
+  deleteBookmark(id)
+  .then(() => {
+    res.json('fuck for life')
+    return null
+  })
+  
+})
 
 router.post("/", (req, res) => {
   console.log(req.body);
@@ -73,3 +86,15 @@ router.get("/tag/:id", (req, res) => {
       res.status(500).json({ message: "Something went wrong" });
     });
 });
+
+router.post("/bookmark", (req, res) => {
+  const newBookmark = req.body
+  addBookmark(newBookmark)
+  .then(() => {
+    res.sendStatus(200)
+    return null
+  })
+})
+
+
+module.exports = router;

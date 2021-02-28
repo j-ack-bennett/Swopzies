@@ -8,11 +8,12 @@ module.exports = {
   getListingById,
   deleteById,
   updateListing,
-  getListingsByTagId
+  getListingsByTagId,
+  addBookmark,
+  deleteBookmark
 }
 
 function getListings(db = connection) {
-  // console.log(listings)
   return db("listings")
     .join("users", "users.id", "listings.user_id")
     .join("listings_tags", "listing_id", "listings.id")
@@ -63,6 +64,21 @@ return db('listings_tags')
 .where('tags.id', tagId)
 .select('*', 'listings.id AS id')
 }
+
+function addBookmark( ids, db=connection) {
+  return db('users_listings')
+    .insert(ids)
+    .then(ids => ids[0])
+}
+
+function deleteBookmark(id, db=connection) {
+  console.log('farts')
+ return db('users_listings')
+ .where('id', id)
+ .delete()
+}
+
+
 
 
 

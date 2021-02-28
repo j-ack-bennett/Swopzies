@@ -32,3 +32,14 @@ export function delListing(id) {
       return res.body
     })
 }
+
+export function addBookmark(ids) {
+  return request
+  .post(baseUrl + '/bookmark')
+  .send(ids)
+  .then((res) => {res.body})
+}
+
+export function deleteBookmark(id) {
+ 
+}
