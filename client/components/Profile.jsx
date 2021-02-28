@@ -5,7 +5,6 @@ import { Link } from "react-router-dom"
 function Profile(props) {
   const profile = props.auth.user;
   const listings = props.listings;
-  console.log(listings)
 
   return (
     <div className="card">
@@ -45,6 +44,7 @@ function Profile(props) {
               </tr>
             </tbody>
           </table>
+          <button>Update (funcitonality to be worked on)</button>
         </div>
         <br />
       </div>
