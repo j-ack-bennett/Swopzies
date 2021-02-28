@@ -1,4 +1,4 @@
-import { getListings, postListing, delListing } from '../apis/listings'
+import { getListings, postListing, delListing, patchListing } from '../apis/listings'
 
 export const SET_LISTINGS = "SET_LISTINGS"
 export const ADD_LISTING = "ADD_LISTING"
@@ -17,8 +17,6 @@ export function addListing(listing) {
     listing
   }
 }
-
-
 
 export function fetchListings() {
   // console.log("fetching")
@@ -51,6 +49,13 @@ export function deleteListing(id) {
   }
 }
 
-
-
+export function updateListing(id, newListing) {
+  return dispatch => {
+    return patchListing(id, newListing)
+    .then(() => {
+      dispatch(fetchListing())
+      return null
+    })
+  }
+}
 

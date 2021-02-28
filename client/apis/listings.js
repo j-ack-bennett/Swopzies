@@ -32,3 +32,13 @@ export function delListing(id) {
       return res.body
     })
 }
+
+export function patchListing(id, newListing) {
+  return request
+  .patch(baseUrl + '/' + id)
+  .send(newListing)
+  .then((res) => {
+    return res.body
+  })
+
+}

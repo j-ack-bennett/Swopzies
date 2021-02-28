@@ -56,7 +56,8 @@ router.delete("/:id", (req, res) => {
 
 router.patch("/:id", (req, res) => {
   const id = req.params.id;
-  updateListing(id, req.body).then((listing) => {
+  updateListing(id, req.body)
+  .then((listing) => {
     res.json(listing);
   });
 });
