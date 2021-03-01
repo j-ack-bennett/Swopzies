@@ -61,7 +61,7 @@ function EditListing(props) {
           {/* {console.log("type:", oldListing.type)} */}
           <form className="listingForm" onSubmit={handleSubmit}>
             <label>category tags: </label>
-            <select name="tag" onChange={handleSelect} defaultValue={oldListing.tag_id}>
+            <select autoFocus name="tag" onChange={handleSelect} value={oldListing.tag_id} >
               {
                 tags.map((tag) => {
                   return (
