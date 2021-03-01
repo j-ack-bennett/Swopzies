@@ -7,6 +7,8 @@ import { loginError, registerUserRequest } from '../actions/auth'
 function Register2(props) {
   const { auth } = props
 
+  const locations  = [ 'Norhtland', 'Bay of Plenty', 'Auckland', 'Gisborne', 'Hawke\'s Bay', 'Waikato', 'Taranaki', 'Manawatu', 'Tatooine', 'Wellington', 'Nelson', 'Tasman', 'Marlborough', 'Canterbury', 'West Coast', 'Otago', 'Southland' ]
+
   const userId = auth.user.id
 
   const [formData, setFormData] = useState({
@@ -75,7 +77,16 @@ function Register2(props) {
 
                 <div className="field">
                   <div className="control">
-                    <input className="input is-large" placeholder="Location" type="text" name="location" onChange={handleChange} value={formData.location} required />
+                    {/* <input className="input is-large" placeholder="Location" type="text" name="location" onChange={handleChange} value={formData.location} required /> */}
+                    <select name="location" onChange={handleChange} >
+                      <option value="ChooseLocationYouDick">Choose your location</option>
+                      {locations.map(location => {
+                        return <option key={location} 
+                                value={location}>
+                                {location}
+                               </option> 
+                      }) }
+                    </select>
                   </div>
                 </div>
 
