@@ -9,20 +9,16 @@ function Listings(props) {
   const tags = props.tags
   const allListings = props.listings
   const [ filter, setFilter ] = useState('all')
-  const [ listings, setListings ] = useState(props.listings)
+  const [ listings, setListings ] = useState([{type: ''}])
 
   useEffect(() => {
-    props.dispatch(fetchTags())
-    .then(() => {
-      filterListings()
-    }
-    )
-  }, [])
+    filterListings()
+  }, [filter])
 
-  // useEffect(() => {
-  //   filterListings()
-  //   console.log("are you going")
-  // }, [filter])
+  useEffect(() => {
+    setListings(allListings)
+  }, [allListings])
+
 
   const filterListings = () => {
     if (filter === 'all') {
@@ -38,9 +34,8 @@ function Listings(props) {
   }
 
   const handleChange = (e) => {
-    console.log(listings)
+    // console.log(listings)
     setFilter(e.target.value)
-    // filterListings()
   }
 
   const handleClick = (e) => {
@@ -60,14 +55,14 @@ function Listings(props) {
           className='tagSelect' 
           name='tag' 
           onChange={handleChange}>
-          <option value='all'>All categories</option> 
+          <option value='all' onChange={handleChange}>All categories</option> 
           {tags.map(tag => {
               return <option value={tag.tag_name} key={tag.id}>
                         {tag.tag_name}
                      </option>
             })}
         </select> 
-        <button onClick={handleClick}>Goooo YOU BASTARD!!</button>
+        {/* <button onClick={handleClick}>Goooo YOU BASTARD!!</button> */}
       </div>
       <div className="container"> 
         {listings.map(listing => {

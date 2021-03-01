@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import { HashRouter as Router, Route } from "react-router-dom"
+import { HashRouter as Router, Link, Route } from "react-router-dom"
 import { connect } from "react-redux"
 
 import Login from "./Login"
@@ -12,27 +12,36 @@ import Profile from "./Profile"
 import UpdateProfileForm from "./UpdateProfileForm"
 import ListingForm from "./ListingForm"
 import Listing from "./Listing"
+import Contact from "./Contact"
+import Register2 from "./Register2"
+import EditListing from './EditListing'
 import { fetchListings } from '../actions/listings'
 
+
 import { checkAuth } from "../actions/auth"
+import { fetchTags } from "../actions/tags"
 
 function App({ auth, dispatch }) {
   useEffect(() => {
-    const confirmSuccess = () => {}
+    const confirmSuccess = () => { }
     dispatch(checkAuth(confirmSuccess))
     dispatch(fetchListings())
+    dispatch(fetchTags())
   }, [])
 
+  console.log(auth)
+
   return (
-    <Router>
+    <>
+      <Router>
         <Route path="/" component={Nav} />
-          {!auth.isAuthenticated 
-          ? ( <>
+        {!auth.isAuthenticated
+          ? (<>
             <Route exact path="/" component={Landing} />
             <Route path="/login" component={Login} />
-            <Route path="/register" component={Register} />
-            </>
-          ) 
+            <Route path="/register" exact component={Register} />
+          </>
+          )
           : (
             <>
               <Route exact path="/" component={Home} />
@@ -40,10 +49,30 @@ function App({ auth, dispatch }) {
               <Route path="/profile" component={Profile} />
               <Route path="/update" component={UpdateProfileForm} />
               <Route path="/listingform" component={ListingForm} />
+              <Route path="/editlisting/:id" component={EditListing} />
               <Route path="/listing/:id" component={Listing} />
+              <Route path="/register2" component={Register2} />
             </>
           )}
-    </Router>
+        <Route path="/contact" component={Contact} />
+        <div className="footer">
+          <div className="container">
+            <div className="navbar-brand">
+              <div id="navbarMenu" className="navbar-menu">
+                <div className="navbar-end">
+                  <Link to="/contact" className="button is-black is-outlined">
+                    <div className="icon">
+                      <i className="far fa-id-badge"></i>
+                    </div>
+                    <span>Contact</span>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Router>
+    </>
   )
 }
 
@@ -54,3 +83,4 @@ const mapStateToProps = ({ auth }) => {
 }
 
 export default connect(mapStateToProps)(App)
+
