@@ -51,42 +51,47 @@ const handleSelect = (e) => {
 
   return (
     <div className="container">
-      <div>
-        <form className="listingForm">
-          <label>category tags: </label>
-          <select onChange={handleSelect}  name='tag' >
-            <option value='placeholder'>placeholder</option>
-            {tags.map(tag => {
-              return <option value={tag.id} key={tag.id}>{tag.tag_name}</option>
-            }) // on change on the select tag, value on the option tag.
+      <div className="hero is-fullheight">
+        <div className="hero-body add-listing-center add-listing-centering">
+          <h1 className="center-text">Post a Listing</h1>
+          <form className="listingForm">
+              <label>Category Tags:</label>
+              <select className="capitalize" onChange={handleSelect} name='tag'>
+                <option disabled hidden selected>Select a Category...</option>
+                {tags.map(tag => {
+                  return <option value={tag.id} key={tag.id}>{tag.tag_name}</option>
+                }) // on change on the select tag, value on the option tag.
+                }
+              </select>
+          </form>
 
-            }
-          </select>
-          <h3>Type of listing: </h3>
-          <label>I'm looking for something...
+          <form className="listingForm">
             <input onChange={handleChange} type='radio' name='type' value='looking' />
-          </label>
-          <label>I've got something to offer...
+            <label>I'm looking for something...</label>
+            
             <input onChange={handleChange} type='radio' name='type' value='offer' />
-          </label>
-          <label className='listing__title'>
-            Title of listing:
-            <input type='text' name='title' onChange={handleChange} />
-          </label>
-          <label className='listing__description'>
-            Add a description of your listing:
-            <input className='listing__description--input'
-            type='text' name='description' 
-            onChange={handleChange} 
-            placeholder="In here you should add the specifics of what you're needing/offering, also put some details of what you might like in return or have to offer in return" />
-          </label>
+            <label>I've got something to offer...</label>
+          </form>
+
+          <form className="listingForm">
+            <label className='listing__title'>Title of listing:</label>
+            <input className="input" type='text' name='title' onChange={handleChange} />
+          </form>
+
+          <form className="listingForm">   
+            <label className='listing__description'>Add a description of your listing:</label>
+              <textarea className="textarea"
+              type='text' name='description' 
+              onChange={handleChange} 
+              placeholder="In here you should add the specifics of what you're needing/offering, also put some details of what you might like in return or have to offer in return" />
+          </form>
+
           <button className='button' 
             onClick={ (e) => handleSubmit (e, tag.id)}>
             Add    
           </button>
-        </form>
+        </div>
       </div>
-
     </div>
     )
 }
@@ -99,7 +104,3 @@ const mapStateToProps = (globalState) => {
 }
 
 export default connect(mapStateToProps)(ListingForm)
-    
-    
-    
-    

@@ -30,14 +30,13 @@ const Nav = (props) => {
             <div id="navbarMenu" className="navbar-menu">
               <div className="navbar-start">
                 <span className="navbar-item">
-                  <Link to="/" className="button logo-button">
-                    <span className="logo-font">swopzies</span>
+                  <Link className="nav-title-align" to="/">
+                    <span className="nav-title">swopzies</span>
                   </Link>
                 </span>
               </div>
+              
               <div className="navbar-end">
-
-
                 {auth.isAuthenticated
                   ? (<>
                     <span className="navbar-item">
