@@ -9,7 +9,8 @@ const {
   updateListing,
   getListingsByTagId,
   addBookmark,
-  deleteBookmark
+  deleteBookmark,
+  getBookmarks
 } = require("../db/listings");
 
 
@@ -17,24 +18,24 @@ const {
 //Get all listings
 router.get("/", (req, res) => {
   db.getListings()
-  .then((listings) => {
-    res.json(listings);
-  })
-  .catch((err) => {
-    console.log(err);
-    res.status(500).json({ message: "Something went wrong" });
-  });
+    .then((listings) => {
+      res.json(listings);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ message: "Something went wrong" });
+    });
 });
 
 router.delete('/bookmark', (req, res) => {
   console.log('fuck it all')
   const id = req.body.id
   deleteBookmark(id)
-  .then(() => {
-    res.json('fuck for life')
-    return null
-  })
-  
+    .then(() => {
+      res.json('fuck for life')
+      return null
+    })
+
 })
 
 router.post("/", (req, res) => {
@@ -90,10 +91,22 @@ router.get("/tag/:id", (req, res) => {
 router.post("/bookmark", (req, res) => {
   const newBookmark = req.body
   addBookmark(newBookmark)
-  .then(() => {
-    res.sendStatus(200)
-    return null
-  })
+    .then(() => {
+      res.sendStatus(200)
+      return null
+    })
+})
+
+router.get('/bookmark/:id', (req, res) => {
+  const user_id = req.params.id
+  getBookmarks(user_id)
+    .then((bookmarks) => {
+      res.json(bookmarks)
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ message: "Something went wrong" });
+    })
 })
 
 

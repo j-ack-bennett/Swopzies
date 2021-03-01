@@ -5,7 +5,14 @@ import { addBookmark, deleteBookmark } from "../apis/listings"
 
 import Comms from "./Comms"
 
+
+
 function Listing(props) {
+
+
+  const [bookmarked, setBookmarked] = useState(false)
+
+
   useEffect(() => {
     props.dispatch(fetchListings())
   }, [])
@@ -20,6 +27,9 @@ function Listing(props) {
     e.preventDefault()
     const newBookmark = { listing_id: listingId, user_id: user_id }
     addBookmark(newBookmark)
+    // bookmarked = !bookmarked
+    // console.log(bookmarked)
+    setBookmarked(bookmarked => !bookmarked)
   }
 
   return (
@@ -29,8 +39,10 @@ function Listing(props) {
           return (
             <div key={listingItem.id}>
               {listingItem.user_id == props.auth.user.id ?
-                <button onClick={() => killListing(listingItem.id)} className="deleteButton">Delete Post</button> :
-                <button onClick={handleClick} className="bookmarkButton">Bookmark this</button>
+                <button onClick={() => killListing(listingItem.id)} className="deleteButton">Delete Post</button> 
+                :(bookmarked)
+                ? <button onClick={handleClick} >Unbookmark</button>
+                :<button onClick={handleClick} className="bookmarkButton">Bookmark this</button>
                 }
 
               

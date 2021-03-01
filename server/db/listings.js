@@ -10,7 +10,8 @@ module.exports = {
   updateListing,
   getListingsByTagId,
   addBookmark,
-  deleteBookmark
+  deleteBookmark,
+  getBookmarks
 }
 
 function getListings(db = connection) {
@@ -76,6 +77,12 @@ function deleteBookmark(id, db=connection) {
  return db('users_listings')
  .where('id', id)
  .delete()
+}
+
+function getBookmarks(id, db=connection) {
+  return db('users_listings')
+  .where('user_id', id)
+  
 }
 
 
