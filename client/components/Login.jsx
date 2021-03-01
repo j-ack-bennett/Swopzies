@@ -73,7 +73,6 @@ function Login(props) {
                       autoComplete="current-password"
                       value={formData.password}
                       onChange={handleChange}
-                      autoFocus
                     />
                   </div>
                 </div>
