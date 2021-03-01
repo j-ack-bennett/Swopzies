@@ -1,5 +1,6 @@
 import { getUserTokenInfo, isAuthenticated, removeUser } from '../utils/auth'
 import { login, register } from '../apis/auth'
+import { fetchBookmarksForUser } from './listings'
 
 export function requestLogin () {
   return {
@@ -35,6 +36,7 @@ export function loginUser (creds, confirmSuccess) {
       .then(userInfo => {
         console.log('test 3')
         dispatch(receiveLogin(userInfo))
+        dispatch(fetchBookmarksForUser(userInfo.id))
         confirmSuccess()
       })
       .catch(err => {
@@ -82,8 +84,17 @@ export function registerUserRequest (creds, confirmSuccess) {
 export function checkAuth(confirmSuccess) {
   return dispatch => {
     if(isAuthenticated()) {
+      const userInfo = getUserTokenInfo()
       dispatch(receiveLogin(getUserTokenInfo()))
+      dispatch(fetchBookmarksForUser(userInfo.id))
       confirmSuccess()
     }
+  }
+}
+
+export function setBookmarks (bookmarks) {
+  return {
+    type: 'SET_BOOKMARKS',
+    bookmarks: bookmarks
   }
 }

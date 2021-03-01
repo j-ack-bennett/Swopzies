@@ -77,14 +77,6 @@ function Profile(props) {
     </div>
   );
 }
-const mapStateToProps = (globalState) => {
-  return {
-    listings: globalState.listings,
-    auth: globalState.auth
-  }
-}
-
-export default connect(mapStateToProps)(Profile)
 
 const mapStateToProps = (globalState) => {
   return {

@@ -46,19 +46,18 @@ export function addBookmark(ids) {
   return request
   .post(baseUrl + '/bookmark')
   .send(ids)
-  .then((res) => {res.body
-  })
+  .then((res) => res.body)
   }
 
 export function deleteBookmark(id) {
  return request
  .del(baseUrl + '/bookmark')
- .send(id)
- .then((res) => {res.body})
+ .send({id})
+ .then((res) => res.body)
 }
 
 export function getBookmarked(userId) {
   return request
   .get(baseUrl + '/bookmark/' + userId)
-  .then((res) => {res.body})
+  .then((res) => res.body)
 }

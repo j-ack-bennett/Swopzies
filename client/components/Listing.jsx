@@ -1,20 +1,25 @@
 import React, { useEffect, useState } from "react"
 import { connect } from "react-redux"
-import { fetchListings, deleteListing } from "../actions/listings"
-import { addBookmark, deleteBookmark } from "../apis/listings"
+import { fetchListings, deleteListing, removeBookmark, bookmark } from "../actions/listings"
 import { Link } from 'react-router-dom'
 
 import Comms from "./Comms"
 
-
+// WWRD
 
 function Listing(props) {
-  // useEffect(() => {
-  //   props.dispatch(fetchListings())
-  // }, [])
-
   const listingId = props.match.params.id
-  
+  const user_id = props.auth.user.id
+  console.log(props.auth.user.bookmarks)
+  const bookmarks = props.auth.user.bookmarks || []
+
+  const thisBookmark = bookmarks.find(bookmark => {
+    return bookmark.listing_id == listingId
+  })
+
+  const [ bookmarked, setBookmarked ] = useState(!!thisBookmark)
+  // if user has bookmarked listing useState = true
+
   const killListing = (id) => {
     props.dispatch(deleteListing(id))
     props.history.push('/')
@@ -23,9 +28,11 @@ function Listing(props) {
   const handleClick = (e) => {
     e.preventDefault()
     const newBookmark = { listing_id: listingId, user_id: user_id }
-    addBookmark(newBookmark)
-    // bookmarked = !bookmarked
-    // console.log(bookmarked)
+    if (!bookmarked) {
+      props.dispatch(bookmark(newBookmark))
+    } else {
+      props.dispatch(removeBookmark(thisBookmark.id, user_id))
+    }
     setBookmarked(bookmarked => !bookmarked)
   }
   
@@ -36,10 +43,17 @@ function Listing(props) {
         if (listingItem.id == listingId) {
           return (
             <div key={listingItem.id}>
-              {listingItem.user_id == props.auth.user.id &&
-              <><button onClick={() => killListing(listingItem.id)} className="deleteButton">Delete Post</button>
-              <Link to={`/editlisting/${listingItem.id}`}><button> Edit Post</button></Link>
-              </>
+              {listingItem.user_id == props.auth.user.id ?
+              <>
+                <button onClick={() => killListing(listingItem.id)} className="deleteButton">
+                  Delete Post
+                </button>
+                <Link to={`/editlisting/${listingItem.id}`}><button> Edit Post</button></Link>
+              </> :
+                <>
+                  <button onClick={handleClick}>{!bookmarked ? 'Bookmark Listing' : 'Remove Bookmark' }</button>
+                </>
+                
               }
               <p>{listingItem.title}</p>
               <p>{listingItem.description}</p>
