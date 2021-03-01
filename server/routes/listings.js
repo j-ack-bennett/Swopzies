@@ -8,9 +8,13 @@ const {
   deleteById,
   updateListing,
   getListingsByTagId,
+<<<<<<< HEAD
   addBookmark,
   deleteBookmark,
   getBookmarks
+=======
+  updateListingTag
+>>>>>>> 8f1dee6e8a0e84ce52322fedd92169d0a221647b
 } = require("../db/listings");
 
 
@@ -70,9 +74,14 @@ router.delete("/:id", (req, res) => {
 
 router.patch("/:id", (req, res) => {
   const id = req.params.id;
-  updateListing(id, req.body).then((listing) => {
-    res.json(listing);
-  });
+  console.log(id, req.body.newListing, req.body.tagId)
+  updateListing(id, req.body.newListing)
+  .then(listing => {
+    updateListingTag(listing.id, req.body.tagId)
+    .then(() => {
+      res.sendStatus(200)
+    })
+  })
 });
 
 router.get("/tag/:id", (req, res) => {

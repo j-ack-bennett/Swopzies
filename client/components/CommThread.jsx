@@ -67,6 +67,7 @@ const CommThread = (props) => {
                       </p>
                     )
                   })}{" "}
+                  <p>Reply:</p>
                   <form onSubmit={(e) => handleSubmit(e, fuck)}>
                     <label>
                       reply:

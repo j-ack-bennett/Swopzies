@@ -27,8 +27,16 @@ export function getListingsByTagId(tagId) {
 }
 
 export function delListing(id) {
+  return request.del(baseUrl + "/" + id)
+  .then((res) => {
+    return res.body
+  })
+}
+
+export function patchListing(id, newListing, tagId) {
   return request
-    .del(baseUrl + '/' + id)
+    .patch(baseUrl + "/" + id)
+    .send({ newListing: newListing, tagId: tagId })
     .then((res) => {
       return res.body
     })
