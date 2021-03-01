@@ -60,6 +60,7 @@ router.patch("/:id", (req, res) => {
   console.log(id, req.body.newListing, req.body.tagId)
   updateListing(id, req.body.newListing)
   .then(listing => {
+    console.log(req.body.tagId)
     updateListingTag(listing.id, req.body.tagId)
     .then(() => {
       res.sendStatus(200)
