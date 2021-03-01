@@ -16,7 +16,6 @@ function ListingForm(props) {
   )
 
   const handleChange = (e) => {
-    e.preventDefault()
     setForm({
       ...form,
       [e.target.name]: e.target.value
@@ -54,15 +53,15 @@ const handleSelect = (e) => {
       <div>
         <form className="listingForm">
           <label>category tags: </label>
-          <select onChange={handleSelect}  name='tag' >
-            <option value='placeholder'>placeholder</option>
+          <select onChange={handleSelect}  name='tag' defaultValue="placeholder">
+            <option value='placeholder' disabled="true" hidden>select a tag</option>
             {tags.map(tag => {
               return <option value={tag.id} key={tag.id}>{tag.tag_name}</option>
             }) // on change on the select tag, value on the option tag.
 
             }
           </select>
-          <h3>Type of listing: </h3>
+          <p>Type of listing: </p>
           <label>I'm looking for something...
             <input onChange={handleChange} type='radio' name='type' value='looking' />
           </label>
