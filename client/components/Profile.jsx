@@ -12,7 +12,7 @@ function Profile(props) {
         <h3 className="is-4">Profile</h3>
 
         <div className="content">
-          <table className="table-profile">
+          <table>
             <tbody>
               <tr>
                 <td>Username</td>
@@ -56,7 +56,7 @@ function Profile(props) {
         <div className="card-content">
           <h3 className="is-4">My listings</h3>
           <div className="content">
-            <table className="table-profile">
+            <table>
               <tbody>
                 {listings.map(listing => {
                   if (listing.user_id === profile.id) {
