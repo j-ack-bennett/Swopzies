@@ -29,7 +29,6 @@ function App({ auth, dispatch }) {
     dispatch(fetchTags())
   }, [])
 
-  console.log(auth)
 
   return (
     <>
@@ -55,14 +54,18 @@ function App({ auth, dispatch }) {
             </>
           )}
         <Route path="/contact" component={Contact} />
+
         <div className="footer">
           <div className="container">
             <div className="navbar-brand">
               <div id="navbarMenu" className="navbar-menu">
+                <div className="navbar-start logo-wrap">
+                  <img className="logo" src="logo.png" />
+                </div>
                 <div className="navbar-end">
                   <Link to="/contact" className="button is-black is-outlined">
                     <div className="icon">
-                      <i className="far fa-id-badge"></i>
+                      <i className="fas fa-info-circle"></i>
                     </div>
                     <span>Contact</span>
                   </Link>
