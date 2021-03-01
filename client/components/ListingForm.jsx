@@ -55,8 +55,8 @@ const handleSelect = (e) => {
           <h1 className="center-text">Post a Listing</h1>
           <form className="listingForm">
               <label>Category Tags:</label>
-              <select className="capitalize" onChange={handleSelect} name='tag'>
-                <option disabled hidden selected>Select a Category...</option>
+              <select className="capitalize" onChange={handleSelect} name='tag' defaultValue="placeholder">
+                <option disabled={true} value="placeholder"hidden>Select a Category...</option>
                 {tags.map(tag => {
                   return <option value={tag.id} key={tag.id}>{tag.tag_name}</option>
                 }) // on change on the select tag, value on the option tag.
