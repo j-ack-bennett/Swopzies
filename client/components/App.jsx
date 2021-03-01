@@ -9,6 +9,7 @@ import Landing from "./Landing"
 import Home from "./Home"
 import Listings from "./Listings"
 import Profile from "./Profile"
+import UpdateProfileForm from "./UpdateProfileForm"
 import ListingForm from "./ListingForm"
 import Listing from "./Listing"
 import { fetchListings } from '../actions/listings'
@@ -37,6 +38,7 @@ function App({ auth, dispatch }) {
               <Route exact path="/" component={Home} />
               <Route path="/listings" component={Listings} />
               <Route path="/profile" component={Profile} />
+              <Route path="/update" component={UpdateProfileForm} />
               <Route path="/listingform" component={ListingForm} />
               <Route path="/listing/:id" component={Listing} />
             </>
