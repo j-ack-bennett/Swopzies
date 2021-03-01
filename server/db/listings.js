@@ -1,5 +1,4 @@
-const config = require("./knexfile").development
-const connection = require("knex")(config)
+const connection = require("./connection")
 
 module.exports = {
   getListings,
@@ -9,7 +8,7 @@ module.exports = {
   deleteById,
   updateListing,
   getListingsByTagId,
-  updateListingTag
+  updateListingTag,
 }
 
 function getListings(db = connection) {
@@ -23,23 +22,25 @@ function getListings(db = connection) {
 
 function addNewListing(newListing, db = connection) {
   return db("listings")
-    .insert(newListing, 'id')
+    .insert(newListing, "id")
     .then((ids) => ids[0])
 }
 
 function addNewListingTag(listingId, tagId, db = connection) {
-  return db("listings_tags").insert({
-    listing_id: listingId,
-    tag_id: tagId,
-  }, 'id')
+  return db("listings_tags").insert(
+    {
+      listing_id: listingId,
+      tag_id: tagId,
+    },
+    "id"
+  )
 }
 
 function updateListingTag(listingId, newTagId, db = connection) {
   return db("listings_tags")
-  .where("listing_id", listingId)
-  .update({tag_id: newTagId})
+    .where("listing_id", listingId)
+    .update({ tag_id: newTagId })
 }
-
 
 function getListingById(id, db = connection) {
   return db("listings")
