@@ -13,9 +13,9 @@ applyAuthRoutes(router, {
 })
 
 router.patch("/profile", getTokenDecoder(), (req, res) => {
-  const user = req.user
+  const userId = req.user.id
   console.log(user)
-  updateUser(req.user.id, req.body)
+  updateUser(userId, req.body)
     .then((user) => {
       res.json(user)
     })

@@ -1,5 +1,7 @@
-import React, { useState }  from "react";
+import React, { useState } from "react";
 import { connect, useStore } from "react-redux";
+
+import { updateUserProfile } from "../apis/users"
 
 
 //put user input into state
@@ -7,41 +9,53 @@ import { connect, useStore } from "react-redux";
 //set new state to updated Profile
 
 function UpdateProfileForm(props) {
-  const [updatedProfile, setUpdatedProfile] = useState(props.auth.user)
   const profile = props.auth.user
+  const [updatedProfile, setUpdatedProfile] = useState(profile)
 
   const handleChange = (event) => {
-    setUpdatedProfile(event.target.value)
+    setUpdatedProfile({
+      ...updatedProfile,
+      [event.target.name]: event.target.value
+    })
+    console.log(updatedProfile)
   }
-  
 
-  function handleClick() {
-    props.dispatch
+
+  function handleClick(e) {
+    e.preventDefault()
+    updateUserProfile(updatedProfile)
   }
+
 
 
   return (
-  
+
     <div>
       <div className="control">
-        Username:<input onChange={(event) => handleChange(event)}className="input" type="text" placeholder={profile.username}>
+        Username:<input onChange={handleChange} className="input" type="text" placeholder={profile.username}>
         </input>
-     First name:<input className="input" type="text" placeholder={profile.first_name}>
+          First name:<input className="input" name='first_name' type="text" placeholder={profile.first_name}
+          onChange={handleChange}>
         </input>
-     Last name:<input className="input" type="text" placeholder={profile.last_name}>
+          Last name:<input className="input" name='last_name' type="text" placeholder={profile.last_name}
+          onChange={handleChange}>
         </input>
-     Email:<input className="input" type="text" placeholder={profile.email}>
+          Email:<input className="input" name='email' type="text" placeholder={profile.email}
+          onChange={handleChange}>
         </input>
-     Phone:<input className="input" type="text" placeholder={profile.phone}>
+          Phone:<input className="input" name='phone' type="text" placeholder={profile.phone}
+          onChange={handleChange}>
         </input>
-     Bio:<input className="input" type="text" placeholder={profile.bio}>
+          Bio:<input className="input" name='bio' type="text" placeholder={profile.bio}
+          onChange={handleChange}>
         </input>
-     Location:<input className="input" type="text" placeholder={profile.location}>
+          Location:<input className="input" name='location' type="text"   placeholder={profile.location}
+          onChange={handleChange}>
         </input>
       </div>
       <div>
-        <button onClick={() => handleClick()}>
-        Update</button>     
+        <button onClick={(e) => handleClick(e)}>
+          Update</button>
 
 
 
