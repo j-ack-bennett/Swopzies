@@ -30,7 +30,7 @@ const handleSelect = (e) => {
  const handleSubmit = (e) => {
     e.preventDefault()
     
-    console.log(tag)
+    // console.log(tag)
     const newestListing = {
       ...form,
       user_id: props.auth.user.id,
@@ -41,7 +41,7 @@ const handleSelect = (e) => {
       listing: newestListing,
       tagId: tag
     }
-    console.log(data)
+    // console.log(data)
 
     props.dispatch(newListing(data))
       // .then(() => setForm({}))

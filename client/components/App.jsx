@@ -13,15 +13,19 @@ import ListingForm from "./ListingForm"
 import Listing from "./Listing"
 import Contact from "./Contact"
 import Register2 from "./Register2"
+import EditListing from './EditListing'
 import { fetchListings } from '../actions/listings'
 
+
 import { checkAuth } from "../actions/auth"
+import { fetchTags } from "../actions/tags"
 
 function App({ auth, dispatch }) {
   useEffect(() => {
     const confirmSuccess = () => { }
     dispatch(checkAuth(confirmSuccess))
     dispatch(fetchListings())
+    dispatch(fetchTags())
   }, [])
 
   console.log(auth)
@@ -43,6 +47,7 @@ function App({ auth, dispatch }) {
               <Route path="/listings" component={Listings} />
               <Route path="/profile" component={Profile} />
               <Route path="/listingform" component={ListingForm} />
+              <Route path="/editlisting/:id" component={EditListing} />
               <Route path="/listing/:id" component={Listing} />
               <Route path="/register2" component={Register2} />
             </>

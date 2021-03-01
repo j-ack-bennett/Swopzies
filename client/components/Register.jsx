@@ -58,39 +58,15 @@ function Register(props) {
                 {auth.errorMessage && <span className="has-text-danger is-large">{auth.errorMessage}</span>}
                 <div className="field">
                   <div className="control">
-                    <input className="input is-large" placeholder="User Name" type="text" name="username" autoComplete="username" onChange={handleChange} value={formData.username} autoFocus="" required />
+                    <input className="input is-large" placeholder="Username" type="text" name="username" autoComplete="username" onChange={handleChange} value={formData.username} autoFocus="" required />
                   </div>
                 </div>
-
-                {/* <div className="field">
-                  <div className="control">
-                    <input className="input is-large" placeholder="First Name" type="text" name="first_name" onChange={handleChange} value={formData.first_name} required />
-                  </div>
-                </div>
-
-                <div className="field">
-                  <div className="control">
-                    <input className="input is-large" placeholder="Last Name" type="text" name="last_name" onChange={handleChange} value={formData.last_name} required />
-                  </div>
-                </div> */}
 
                 <div className="field">
                   <div className="control">
                     <input className="input is-large" placeholder="Email" type="text" name="email" onChange={handleChange} value={formData.email} required />
                   </div>
                 </div>
-
-                {/* <div className="field">
-                  <div className="control">
-                    <input className="input is-large" placeholder="Bio" type="text" name="bio" onChange={handleChange} value={formData.bio} required />
-                  </div>
-                </div>
-
-                <div className="field">
-                  <div className="control">
-                    <input className="input is-large" placeholder="Phone number eg: 022 134 1304" type="text" name="phone" onChange={handleChange} value={formData.phone} required />
-                  </div>
-                </div> */}
 
                 <div className="field">
                   <div className="control">
