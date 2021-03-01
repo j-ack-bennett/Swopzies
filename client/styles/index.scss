@@ -1,7 +1,8 @@
 @charset "utf-8";
 
 // Import a Google Font
-@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+// @import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round');
 
 // Import custom variables and Bulma overides
 @import "./variables.scss";
@@ -16,6 +17,13 @@
 // @import "bulma/sass/components/navbar.sass";
 // @import "bulma/sass/layout/hero.sass";
 // @import "bulma/sass/layout/section.sass";
+
+body {
+    position: relative;
+    padding-bottom: 80px;
+    min-height: 100vh;
+    background-color: rgb(245, 245, 245);
+}
 
 .listing {
 
@@ -40,21 +48,14 @@
     flex-direction: column;
 }
 
-.title {
-    font-family: "Mortal Coil", sans-serif;
-    font-size: 100px;
-    font-weight: 400;
-    margin-left: 20px;
-}
-
 h1 {
-    font-size: 60px;
+    font-size: 80px;
+    font-weight: bold;
 }
 
 h2 {
     font-size: 32px;
     padding-bottom: 20px;
-    font-weight: bold;
 }
 
 h3 {
@@ -79,6 +80,10 @@ p {
     color: grey;
 }
 
+.hero .navbar {
+  background-color: #ff6614;
+}
+
 .col {
     float: left;
     width: 33.33%;
@@ -98,7 +103,7 @@ p {
 
 .hero.is-fullheight .hero-body, .hero.is-fullheight-with-navbar .hero-body, .hero.is-halfheight .hero-body {
     align-items: center;
-    display: block;
+    // display: block;
 }
 
 .landing-con {
@@ -130,4 +135,79 @@ p {
 
 .section {
     padding: 0;
+}
+
+.nav-title-container {
+  width: 100%;
+  display: inline-block;
+  margin: auto;
+  padding: 0;
+}
+
+.nav-title {
+  font-family: "Varela Round", sans-serif;
+  font-size: 75px;
+  padding-left: 50px;
+  display: inline-block;
+  text-align: center;
+  font-weight: normal;
+}
+
+.home-columns {
+  margin: 25px;
+}
+
+.button.is-primary {
+  background-color: #3273dc;
+}
+
+.add-text {
+  font-size: 44px;
+}
+
+.table-profile {
+    -webkit-mask-image: linear-gradient(to bottom, black 10%, transparent 90%);
+    mask-image: linear-gradient(to bottom, black 10%, transparent 90%);
+}
+
+.footer {    
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    padding: 1.4rem 0 1rem;
+    line-height: 25px;
+    text-align: center;
+    color: whitesmoke;
+}
+
+.vertical-center {
+    flex-direction: row;
+    min-height: calc(100vh - 136px);
+}
+
+.contact-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.logo-font {
+    font-size: 30px;
+    font-family: 'system-ui';
+    text-align: center;
+    font-weight: 800;
+}
+
+.logo-button {
+    padding: 23px 9px;
+}
+
+.home-panels {
+    min-height: calc(100vh - 145px);
+    align-items: center;
+}
+
+.card {
+    box-shadow: 0 1.5em 1em 0.500em rgba(10,10,10,.1), 0 0 0 4px rgba(10,10,10,0.02);
 }
