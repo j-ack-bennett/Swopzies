@@ -31,7 +31,7 @@ const Nav = (props) => {
               <div className="navbar-start">
                 <span className="navbar-item">
                   <Link to="/" className="button logo-button">
-                    <span className="logo-font">swopsies</span>
+                    <span className="logo-font">swopzies</span>
                   </Link>
                 </span>
               </div>
