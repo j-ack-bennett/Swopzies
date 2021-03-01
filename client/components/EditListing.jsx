@@ -48,7 +48,7 @@ function EditListing(props) {
       tagId: tag,
     }
 
-    props.dispatch(updateListing(oldListing.id, tempListing, tag.id))
+    props.dispatch(updateListing(oldListing.id, tempListing, tag))
 
     props.history.push("/")
   }
@@ -57,8 +57,6 @@ function EditListing(props) {
     <>
       {oldListing && (
         <>
-        {console.log(oldListing)}
-          {/* {console.log("type:", oldListing.type)} */}
           <form className="listingForm" onSubmit={handleSubmit}>
             <label>category tags: </label>
             <select autoFocus name="tag" onChange={handleSelect} value={oldListing.tag_id} >
