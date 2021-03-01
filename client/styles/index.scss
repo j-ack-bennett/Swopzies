@@ -22,6 +22,7 @@ body {
     position: relative;
     padding-bottom: 80px;
     min-height: 100vh;
+    background-color: rgb(245, 245, 245);
 }
 
 .listing {
@@ -173,7 +174,7 @@ p {
     position: absolute;
     bottom: 0;
     width: 100vw;
-    padding: 1.4rem 0 0.5rem;
+    padding: 1.4rem 0 1rem;
     line-height: 25px;
     text-align: center;
     color: whitesmoke;
@@ -192,7 +193,7 @@ p {
 }
 
 .logo-font {
-    font-size: 35px;
+    font-size: 30px;
     font-family: 'system-ui';
     text-align: center;
     font-weight: 800;

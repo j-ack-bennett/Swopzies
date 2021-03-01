@@ -88,9 +88,6 @@ function Register2(props) {
                 <button className="button is-block is-info is-large is-fullwidth">Register<i className="fa fa-sign-in" aria-hidden="true"></i></button>
               </form>
             </div>
-            <p className="has-text-grey">
-              <Link to="/login">Login</Link>
-            </p>
           </div>
         </div>
       </div>
