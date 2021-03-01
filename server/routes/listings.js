@@ -8,6 +8,7 @@ const {
   deleteById,
   updateListing,
   getListingsByTagId,
+  updateListingTag
 } = require("../db/listings");
 
 module.exports = router;
@@ -56,10 +57,14 @@ router.delete("/:id", (req, res) => {
 
 router.patch("/:id", (req, res) => {
   const id = req.params.id;
-  updateListing(id, req.body)
-  .then((listing) => {
-    res.json(listing);
-  });
+  console.log(id, req.body.newListing, req.body.tagId)
+  updateListing(id, req.body.newListing)
+  .then(listing => {
+    updateListingTag(listing.id, req.body.tagId)
+    .then(() => {
+      res.sendStatus(200)
+    })
+  })
 });
 
 router.get("/tag/:id", (req, res) => {

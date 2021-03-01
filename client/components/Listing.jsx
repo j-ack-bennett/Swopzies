@@ -6,16 +6,14 @@ import { Link } from 'react-router-dom'
 import Comms from "./Comms"
 
 function Listing(props) {
-  useEffect(() => {
-    props.dispatch(fetchListings())
-  }, [])
+  // useEffect(() => {
+  //   props.dispatch(fetchListings())
+  // }, [])
 
   const listingId = props.match.params.id
   const killListing = (id) => {
     props.dispatch(deleteListing(id))
     props.history.push('/')
-
-
   } 
 
   return (

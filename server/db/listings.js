@@ -9,6 +9,7 @@ module.exports = {
   deleteById,
   updateListing,
   getListingsByTagId,
+  updateListingTag
 }
 
 function getListings(db = connection) {
@@ -32,6 +33,13 @@ function addNewListingTag(listingId, tagId, db = connection) {
     tag_id: tagId,
   })
 }
+
+function updateListingTag(listingId, newTagId, db = connection) {
+  return db("listings_tags")
+  .where("listing_id", listingId)
+  .update({tag_id: newTagId})
+}
+
 
 function getListingById(id, db = connection) {
   return db("listings")

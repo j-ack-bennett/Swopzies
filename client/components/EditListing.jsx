@@ -1,77 +1,131 @@
 import React, { useEffect, useState } from "react"
 import { connect } from "react-redux"
-
+import { updateListing } from "../actions/listings"
 
 function EditListing(props) {
-
-  const [listing, setListing] = useState(null)
+  const [oldListing, setOldListing] = useState({
+    type: "",
+    title: "",
+    description: "",
+  })
+  const [tag, setTag] = useState(0)
 
   const id = props.match.params.id
+  const listings = props.listings
   const tags = props.tags
-  // const listing = props.listings.find(listing => listing.id == id)
 
-  const fuck = () => {
-    const fuckYouRob = props.listings.find(listing => listing.id == id)
-    setListing(fuckYouRob)
+  useEffect(() => {
+    setOldListing(listings.find((listing) => listing.id == id))
+  }, [listings])
+
+  const handleSelect = (e) => {
+    setTag(e.target.value)
+    setOldListing({
+      ...oldListing,
+      [e.target.name]: e.target.value,
+    })
   }
 
-  useEffect(() => {
-    fuck()
-  }, [])
+  const handleChange = (e) => {
+    setOldListing({
+      ...oldListing,
+      [e.target.name]: e.target.value,
+    })
+  }
 
-  useEffect(() => {
-  }, [listing])
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const tempListing = {
+      title: oldListing.title,
+      type: oldListing.type,
+      description: oldListing.description,
+      time: new Date(),
+    }
 
-  return (<> 
-  <div className="container">
-      <div>
-        <form className="listingForm">
-          <label>category tags: </label>
-          <select  name='tag' >
-            <option value='placeholder'>placeholder</option>
-            {tags.map(tag => {
-              return <option value={tag.id} key={tag.id}>{tag.tag_name}</option>
-            }) // on change on the select tag, value on the option tag.
+    const data = {
+      id: oldListing.id,
+      listing: tempListing,
+      tagId: tag,
+    }
 
-            }
-          </select>
-          <h3>Type of listing: </h3>
-          <label>I'm looking for something...
-            <input  type='radio' name='type' value='looking' />
-          </label>
-          <label>I've got something to offer...
-            <input type='radio' name='type' value='offer' />
-          </label>
-          <label className='listing__title'>
-            Title of listing:
-            <input type='text' name='title' />
-          </label>
-          <label className='listing__description'>
-            Add a description of your listing:
-            <input className='listing__description--input'
-            type='text' name='description' 
-            
-            placeholder="In here you should add the specifics of what you're needing/offering, also put some details of what you might like in return or have to offer in return" />
-          </label>
-          <button className='button' 
-            >
-            Add    
-          </button>
-        </form>
-      </div>
+    props.dispatch(updateListing(oldListing.id, tempListing, tag.id))
 
-    </div>
+    props.history.push("/")
+  }
 
-
-  </>)
+  return (
+    <>
+      {oldListing && (
+        <>
+        {console.log(oldListing)}
+          {/* {console.log("type:", oldListing.type)} */}
+          <form className="listingForm" onSubmit={handleSubmit}>
+            <label>category tags: </label>
+            <select name="tag" onChange={handleSelect} defaultValue={oldListing.tag_id}>
+              {
+                tags.map((tag) => {
+                  return (
+                    <option value={tag.id} key={tag.id} name="tag_name">
+                      {tag.tag_name}
+                    </option>
+                  )
+                }) // on change on the select tag, value on the option tag.
+              }
+            </select>
+            <h3>Type of listing: </h3>
+            <label>
+              I'm looking for something...
+              <input
+                type="radio"
+                name="type"
+                value="looking"
+                checked={oldListing.type == "looking"}
+                onChange={handleChange}
+              />
+            </label>
+            <label>
+              I've got something to offer...
+              <input
+                type="radio"
+                name="type"
+                value="offer"
+                checked={oldListing.type == "offer"}
+                onChange={handleChange}
+              />
+            </label>
+            <label className="listing__title">
+              Title of listing:
+              <input
+                type="text"
+                name="title"
+                value={oldListing.title}
+                onChange={handleChange}
+              />
+            </label>
+            <label className="listing__description">
+              Add a description of your listing:
+              <input
+                className="listing__description--input"
+                type="text"
+                name="description"
+                value={oldListing.description}
+                onChange={handleChange}
+              />
+            </label>
+            <button className="button">Edit</button>
+          </form>
+        </>
+      )}
+    </>
+  )
 }
 
 const mapStateToProps = (globalState) => {
   return {
     listings: globalState.listings,
-    tags: globalState.tags
+    tags: globalState.tags,
+    auth: globalState.auth,
   }
-
 }
 
 export default connect(mapStateToProps)(EditListing)

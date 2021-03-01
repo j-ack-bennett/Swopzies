@@ -49,11 +49,11 @@ export function deleteListing(id) {
   }
 }
 
-export function updateListing(id, newListing) {
+export function updateListing(id, newListing, tagId) {
   return dispatch => {
-    return patchListing(id, newListing)
+    return patchListing(id, newListing, tagId)
     .then(() => {
-      dispatch(fetchListing())
+      dispatch(fetchListings())
       return null
     })
   }
