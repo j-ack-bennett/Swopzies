@@ -24,8 +24,8 @@ function Listings(props) {
   }, [listings])
 
   const findListingLocations = () => {
-    return allListings.reduce((arr, lsts) => {
-      const location = lsts.location
+    return allListings.reduce((arr, lst) => {
+      const location = lst.location
       if (!arr.includes(location)) {
         arr.push(location)
       }
