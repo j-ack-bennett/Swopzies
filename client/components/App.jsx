@@ -29,7 +29,6 @@ function App({ auth, dispatch }) {
     dispatch(fetchTags())
   }, [])
 
-  console.log(auth)
 
   return (
     <>
