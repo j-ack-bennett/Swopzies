@@ -7,7 +7,7 @@ function createUser (user, db = connection) {
     .then(passwordHash => {
       newUser.hash = passwordHash
       delete newUser.password
-      return db('users').insert(newUser)
+      return db('users').insert(newUser, 'id')
     })
 }
 

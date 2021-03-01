@@ -23,7 +23,7 @@ function getListings(db = connection) {
 
 function addNewListing(newListing, db = connection) {
   return db("listings")
-    .insert(newListing)
+    .insert(newListing, 'id')
     .then((ids) => ids[0])
 }
 
@@ -31,7 +31,7 @@ function addNewListingTag(listingId, tagId, db = connection) {
   return db("listings_tags").insert({
     listing_id: listingId,
     tag_id: tagId,
-  })
+  }, 'id')
 }
 
 function updateListingTag(listingId, newTagId, db = connection) {

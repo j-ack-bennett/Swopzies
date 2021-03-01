@@ -2,7 +2,7 @@ const connection = require('./connection')
 
 function addNewComm(newComm, db = connection) {
   return db("comms")
-    .insert(newComm)
+    .insert(newComm, 'id')
     .then(ids => ids[0])
 }
 
