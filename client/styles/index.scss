@@ -71,9 +71,9 @@ p {
 }
 
 .logo-wrap {
-  position: relative;
-  bottom: 10px;
-  top: 10px;
+    width: 89px;
+    height: 89px;
+    left: 50px;
 }
 
 .hero.is-fullheight {
@@ -205,7 +205,7 @@ p {
     text-align: center;
 }
 
-.hero.is-fullheight .hero-body, .hero.is-fullheight-with-navbar .hero-body, .hero.is-halfheight .hero-body {
+.add-listing-page {
   align-items: center;
   display: grid;
 }

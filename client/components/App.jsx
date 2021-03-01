@@ -59,8 +59,8 @@ function App({ auth, dispatch }) {
           <div className="container">
             <div className="navbar-brand">
               <div id="navbarMenu" className="navbar-menu">
-                <div className="navbar-start logo-wrap">
-                  <img className="logo" src="logo.png" />
+                <div className="logo-wrap">
+                  <img className="" src="logo.png" />
                 </div>
                 <div className="navbar-end">
                   <Link to="/contact" className="button is-black is-outlined">
