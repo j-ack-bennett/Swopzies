@@ -8,13 +8,10 @@ const {
   deleteById,
   updateListing,
   getListingsByTagId,
-<<<<<<< HEAD
   addBookmark,
   deleteBookmark,
-  getBookmarks
-=======
+  getBookmarks,
   updateListingTag
->>>>>>> 8f1dee6e8a0e84ce52322fedd92169d0a221647b
 } = require("../db/listings");
 
 

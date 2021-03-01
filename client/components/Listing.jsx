@@ -14,6 +14,7 @@ function Listing(props) {
   // }, [])
 
   const listingId = props.match.params.id
+  
   const killListing = (id) => {
     props.dispatch(deleteListing(id))
     props.history.push('/')
