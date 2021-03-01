@@ -28,7 +28,15 @@ const Nav = (props) => {
             </div>
 
             <div id="navbarMenu" className="navbar-menu">
+              <div className="navbar-start">
+                <span className="navbar-item">
+                  <Link to="/" className="button logo-button">
+                    <span className="logo-font">swopsies</span>
+                  </Link>
+                </span>
+              </div>
               <div className="navbar-end">
+
 
                 {auth.isAuthenticated
                   ? (<>

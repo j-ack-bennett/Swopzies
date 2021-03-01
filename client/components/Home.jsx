@@ -10,7 +10,7 @@ function Home(props) {
 
 
   return (
-    <div className="columns has-same-height">
+    <div className="columns has-same-height home-panels">
       <div className="column home-columns">
         <div className="card">
           <div className="card-content">

@@ -18,6 +18,12 @@
 // @import "bulma/sass/layout/hero.sass";
 // @import "bulma/sass/layout/section.sass";
 
+body {
+    position: relative;
+    padding-bottom: 80px;
+    min-height: 100vh;
+}
+
 .listing {
 
     &__title {
@@ -155,7 +161,7 @@ p {
 }
 
 .add-text {
-  font-size: 160px;
+  font-size: 44px;
 }
 
 .table-profile {
@@ -163,21 +169,19 @@ p {
     mask-image: linear-gradient(to bottom, black 10%, transparent 90%);
 }
 
-.footer {
+.footer {    
     position: absolute;
     bottom: 0;
     width: 100vw;
-    padding: 0;
-    height: 80px;
+    padding: 1.4rem 0 0.5rem;
     line-height: 25px;
     text-align: center;
     color: whitesmoke;
-    padding-top: 1.4rem;
 }
 
 .vertical-center {
     flex-direction: row;
-    min-height: calc(100vh - 56px);
+    min-height: calc(100vh - 136px);
 }
 
 .contact-center {
@@ -185,4 +189,24 @@ p {
     flex-direction: column;
     justify-content: center;
     text-align: center;
+}
+
+.logo-font {
+    font-size: 35px;
+    font-family: 'system-ui';
+    text-align: center;
+    font-weight: 800;
+}
+
+.logo-button {
+    padding: 23px 9px;
+}
+
+.home-panels {
+    min-height: calc(100vh - 145px);
+    align-items: center;
+}
+
+.card {
+    box-shadow: 0 1.5em 1em 0.500em rgba(10,10,10,.1), 0 0 0 4px rgba(10,10,10,0.02);
 }
