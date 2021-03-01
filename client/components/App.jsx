@@ -60,7 +60,7 @@ function App({ auth, dispatch }) {
             <div className="navbar-brand">
               <div id="navbarMenu" className="navbar-menu">
                 <div className="logo-wrap">
-                  <img className="" src="logo.png" />
+                  <img className="footer-logo" src="logo.png" />
                 </div>
                 <div className="navbar-end">
                   <Link to="/contact" className="button is-black is-outlined">
