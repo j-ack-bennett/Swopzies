@@ -10,7 +10,7 @@ function Landing() {
             <h1>Welcome!</h1>
             <p>Need something fixed? Have the skills to fix something? Want to help someone in your community?</p>
             <br></br>
-            <p>Swopsies is a free to use website for people looking to trade goods and services without the price tag!</p>
+            <p>Swopzies is a free to use website for people looking to trade goods and services without the price tag!</p>
             <br></br>
             <h2>Register. Post. Trade.</h2>
             <p>It's that simple!</p>

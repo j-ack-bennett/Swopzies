@@ -66,14 +66,14 @@ p {
     font-size: 22px;
 }
 
-.logo {
-    max-width: 54px;
+.footer-logo {
+    width: auto;
+    height: 69px;
 }
 
 .logo-wrap {
-  position: relative;
-  bottom: 10px;
-  top: 10px;
+    margin-top: -12px;
+    margin-bottom: -13px;
 }
 
 .hero.is-fullheight {
@@ -112,8 +112,8 @@ p {
 }
 
 .landing-con {
-    border: 2px solid rgb(187, 187, 187);
-    border-radius: 25px;
+    // border: 2px solid rgb(187, 187, 187);
+    // border-radius: 25px;
     padding: 30px 0px;
     margin-bottom: 40px;
 }
@@ -205,7 +205,7 @@ p {
     text-align: center;
 }
 
-.hero.is-fullheight .hero-body, .hero.is-fullheight-with-navbar .hero-body, .hero.is-halfheight .hero-body {
+.add-listing-page {
   align-items: center;
   display: grid;
 }
