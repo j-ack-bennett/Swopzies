@@ -74,7 +74,7 @@ p {
 }
 
 .hero .navbar {
-  background-color: coral;
+  background-color: #ff6614;
 }
 
 .col {
@@ -96,7 +96,7 @@ p {
 
 .hero.is-fullheight .hero-body, .hero.is-fullheight-with-navbar .hero-body, .hero.is-halfheight .hero-body {
     align-items: center;
-    display: block;
+    // display: block;
 }
 
 .landing-con {
@@ -151,9 +151,38 @@ p {
 }
 
 .button.is-primary {
-  background-color: coral;
+  background-color: #3273dc;
 }
 
 .add-text {
   font-size: 160px;
+}
+
+.table-profile {
+    -webkit-mask-image: linear-gradient(to bottom, black 10%, transparent 90%);
+    mask-image: linear-gradient(to bottom, black 10%, transparent 90%);
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    padding: 0;
+    height: 80px;
+    line-height: 25px;
+    text-align: center;
+    color: whitesmoke;
+    padding-top: 1.4rem;
+}
+
+.vertical-center {
+    flex-direction: row;
+    min-height: calc(100vh - 56px);
+}
+
+.contact-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
 }

@@ -4,27 +4,20 @@ import { Link } from 'react-router-dom'
 
 import { loginError, registerUserRequest } from '../actions/auth'
 
-import { setRego } from '../actions/register'
-
-function Register(props) {
+function Register2(props) {
   const { auth } = props
 
   const [formData, setFormData] = useState({
-    username: '',
     first_name: '',
     last_name: '',
-    password: '',
-    confirm_password: '',
-    email: '',
     bio: '',
     location: '',
-    image: '',
     phone: ''
   })
 
-  // useEffect(() => {
-  //   props.dispatch(loginError(''))
-  // }, [])
+  useEffect(() => {
+    props.dispatch(loginError(''))
+  }, [])
 
   const handleChange = (e) => {
     setFormData((currentFormData) => {
@@ -37,16 +30,16 @@ function Register(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    props.dispatch(setRego(formData))
     e.target.reset()
     let { username, password, confirm_password, first_name, last_name, bio, email, location, phone } = formData
     if (confirm_password != password) return props.dispatch(loginError("Passwords don't match"))
-    const confirmSuccess = () => { props.history.push('/register2') }
+    const confirmSuccess = () => { props.history.push('/') }
     props.dispatch(registerUserRequest({ username, password, first_name, last_name, bio, email, location, phone }, confirmSuccess))
   }
 
   return (
-    <section className="hero is-light is-fullheight">
+
+    <section id="test1" className="hero is-light is-fullheight">
       <div className="hero-body">
         <div className="container has-text-centered">
           <div className="column is-4 is-offset-4">
@@ -58,12 +51,6 @@ function Register(props) {
                 {auth.errorMessage && <span className="has-text-danger is-large">{auth.errorMessage}</span>}
                 <div className="field">
                   <div className="control">
-                    <input className="input is-large" placeholder="User Name" type="text" name="username" autoComplete="username" onChange={handleChange} value={formData.username} autoFocus="" required />
-                  </div>
-                </div>
-
-                {/* <div className="field">
-                  <div className="control">
                     <input className="input is-large" placeholder="First Name" type="text" name="first_name" onChange={handleChange} value={formData.first_name} required />
                   </div>
                 </div>
@@ -72,15 +59,9 @@ function Register(props) {
                   <div className="control">
                     <input className="input is-large" placeholder="Last Name" type="text" name="last_name" onChange={handleChange} value={formData.last_name} required />
                   </div>
-                </div> */}
-
-                <div className="field">
-                  <div className="control">
-                    <input className="input is-large" placeholder="Email" type="text" name="email" onChange={handleChange} value={formData.email} required />
-                  </div>
                 </div>
 
-                {/* <div className="field">
+                <div className="field">
                   <div className="control">
                     <input className="input is-large" placeholder="Bio" type="text" name="bio" onChange={handleChange} value={formData.bio} required />
                   </div>
@@ -89,18 +70,6 @@ function Register(props) {
                 <div className="field">
                   <div className="control">
                     <input className="input is-large" placeholder="Phone number eg: 022 134 1304" type="text" name="phone" onChange={handleChange} value={formData.phone} required />
-                  </div>
-                </div> */}
-
-                <div className="field">
-                  <div className="control">
-                    <input className="input is-large" placeholder="Password" type="password" name="password" autoComplete="new-password" onChange={handleChange} value={formData.password} required />
-                  </div>
-                </div>
-
-                <div className="field">
-                  <div className="control">
-                    <input className="input is-large" placeholder="Confirm Password" type="password" name="confirm_password" autoComplete="new-password" onChange={handleChange} value={formData.confirm_password} required />
                   </div>
                 </div>
 
@@ -123,4 +92,4 @@ const mapStateToProps = ({ auth }) => {
   }
 }
 
-export default connect(mapStateToProps)(Register)
+export default connect(mapStateToProps)(Register2)
