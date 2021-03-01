@@ -17,7 +17,7 @@ router.patch("/profile", getTokenDecoder(), (req, res) => {
   console.log(user)
   updateUser(req.user.id, req.body)
     .then((user) => {
-      res.json(this.user)
+      res.json(user)
     })
 })
 
