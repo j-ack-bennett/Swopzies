@@ -24,14 +24,16 @@ function Listing(props) {
             if (listingItem.id == listingId) {
               return (
                 <div key={listingItem.id}>
-                  <h2 className="capitalize">{listingItem.title}</h2>
-                  <p>{listingItem.description}</p>
+                  <h2 className="title post-title capitalize">{listingItem.title}</h2>
+                  <p className="listing-p">{listingItem.description}</p>
                   <br />
-                  <p>Posted by: {listingItem.username}</p>
-                  <p>Location: {listingItem.location}</p>
-                  <p className="capitalize">Category: {listingItem.tag_name}</p>
+                  <div>
+                    <p className="listing-details-p">Posted by: {listingItem.username}</p>
+                    <p className="listing-details-p">Location: {listingItem.location}</p>
+                    <p className="listing-details-p capitalize">Category: {listingItem.tag_name}</p>
+                  </div>
                   <br />
-                  <p>Last updated: {moment(listingItem.time).format('LLL')}</p>
+                  <p className="last-updated">Last updated: {moment(listingItem.time).format('LLL')}</p>
                   <br />
                   {listingItem.user_id == props.auth.user.id &&
                   <div className="delete-edit-buttons">

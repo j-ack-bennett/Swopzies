@@ -27,7 +27,7 @@ const Comms = (props) => {
 
   return (
     <>
-    <p>Add a comment:</p>
+    <p className="listing-details-p">Add a comment:</p>
       <div className='newCommentThread' >
         <form className='message' onSubmit={handleSubmit}>
           <input type='text' onChange={handleChange} name="text"/>
