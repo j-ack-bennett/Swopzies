@@ -17,7 +17,7 @@ function Home(props) {
           </Link>
       </div>
 
-      <div className="columns has-same-height home-panels">
+      <div className="columns has-same-height home-panels home-margin">
         <div className="column">
           <div className="card">
             <div className="card-content">

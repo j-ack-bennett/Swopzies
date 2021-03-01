@@ -20,7 +20,7 @@ function ListingCard(props) {
           to={`/listing/${listing.id}`}>
           <p className="capitalize"><strong>{listing.title}</strong></p>
           </ Link>
-          <p className="capitalize">{listing.username}, {listing.location}</p>
+          <p>{listing.username}, {listing.location}</p>
           <p className="capitalize">Category: {listing.tag_name}</p>
           <div>
             <br />

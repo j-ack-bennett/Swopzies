@@ -50,7 +50,7 @@ const handleSelect = (e) => {
 
   return (
     <div className="container">
-      <div className="add-listing-page ">
+      <div className="add-listing-page">
         <div className="add-listing-page add-listing-center add-listing-centering">
           <h1 className="center-text">Post a Listing</h1>
           <form className="listingForm">
