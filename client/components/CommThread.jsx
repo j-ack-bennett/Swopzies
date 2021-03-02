@@ -9,7 +9,7 @@ const CommThread = (props) => {
   const user_id = props.auth.user.id
 
   let threads
-  let fuckingThreadID
+  let ThreadID
 
   const [comments, setComments] = useState({})
   const [comment, setComment] = useState("")
@@ -56,9 +56,9 @@ const CommThread = (props) => {
       {listing_user_id == user_id ? (
         <>
           {Object.keys(comments).map((key) => {
-            const fuck = key
+            const flower = key
             return (
-              <div key={fuck}>
+              <div key={flower}>
                 <div key={key} style={{ borderStyle: "solid" }}>
                   {comments[key].map((comment) => {
                     return (
@@ -68,7 +68,7 @@ const CommThread = (props) => {
                     )
                   })}{" "}
                   <p>Reply:</p>
-                  <form onSubmit={(e) => handleSubmit(e, fuck)}>
+                  <form onSubmit={(e) => handleSubmit(e, flower)}>
                     <label>
                       reply:
                       <input type="text" onChange={handleChange} name="text" />
@@ -83,9 +83,9 @@ const CommThread = (props) => {
       ) : (
         <>
           {Object.keys(comments).map((key) => {
-            const fuck = key
+            const flower = key
             return (
-              <div key={fuck}>
+              <div key={flower}>
                 {comments[key][0].user_id == props.auth.user.id ? (
                   <div key={key} style={{ borderStyle: "solid" }}>
                     {comments[key].map((comment) => {
@@ -95,7 +95,7 @@ const CommThread = (props) => {
                         </p>
                       )
                     })}{" "}
-                    <form onSubmit={(e) => handleSubmit(e, fuck)}>
+                    <form onSubmit={(e) => handleSubmit(e, flower)}>
                       <label>
                         reply:
                         <input
