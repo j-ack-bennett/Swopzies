@@ -27,7 +27,7 @@ function getListings(db = connection) {
 
 function addNewListing(newListing, db = connection) {
   return db("listings")
-    .insert(newListing)
+    .insert(newListing, 'id')
     .then((ids) => ids[0])
 }
 
