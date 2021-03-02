@@ -1,10 +1,12 @@
+// import { getUserTokenInfo, isAuthenticated, removeUser } from '../utils/auth'
+import { login, register } from '../apis/auth'
+import { fetchBookmarksForUser } from './listings'
 import {
   getUserTokenInfo,
   isAuthenticated,
   removeUser,
   saveUserToken,
 } from "../utils/auth"
-import { login, register } from "../apis/auth"
 import { updateUserProfile } from "../apis/users"
 
 export function requestLogin() {
@@ -35,12 +37,11 @@ export function loginError(message) {
 
 export function loginUser(creds, confirmSuccess) {
   return (dispatch) => {
-    console.log("testttttt")
     dispatch(requestLogin())
     return login(creds)
       .then((userInfo) => {
-        console.log("test 3")
         dispatch(receiveLogin(userInfo))
+        dispatch(fetchBookmarksForUser(userInfo.id))
         confirmSuccess()
       })
       .catch((err) => {
@@ -88,9 +89,18 @@ export function registerUserRequest(creds, confirmSuccess) {
 export function checkAuth(confirmSuccess) {
   return (dispatch) => {
     if (isAuthenticated()) {
+      const userInfo = getUserTokenInfo()
       dispatch(receiveLogin(getUserTokenInfo()))
+      dispatch(fetchBookmarksForUser(userInfo.id))
       confirmSuccess()
     }
+  }
+}
+
+export function setBookmarks (bookmarks) {
+  return {
+    type: 'SET_BOOKMARKS',
+    bookmarks: bookmarks
   }
 }
 

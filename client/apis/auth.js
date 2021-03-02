@@ -14,7 +14,6 @@ export function register (creds) {
 }
 
 export function login (creds) {
-  console.log('test 2')
   return authLogin(creds, { baseUrl })
     .catch(err => {
       console.log(err.message)

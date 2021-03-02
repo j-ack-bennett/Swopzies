@@ -53,7 +53,10 @@ const handleSelect = (e) => {
       <div className="add-listing-page">
         <div className="add-listing-page add-listing-center add-listing-centering">
           <h1 className="center-text">Post a Listing</h1>
+
+          <div className="auto-margin">
           <form className="listingForm">
+            <div className="auto-margin2">
               <label>Category Tags:</label>
               <select className="capitalize" onChange={handleSelect} name='tag' defaultValue="placeholder">
                 <option disabled={true} value="placeholder"hidden>Select a Category...</option>
@@ -62,15 +65,17 @@ const handleSelect = (e) => {
                 }) // on change on the select tag, value on the option tag.
                 }
               </select>
+            </div>
           </form>
 
-          <form className="listingForm">
-            <input onChange={handleChange} type='radio' name='type' value='looking' />
+          <form className="listingForm radio-buttons">
+            <input onChange={handleChange} className="margin-right-radio" type='radio' name='type' value='looking' />
             <label>I'm looking for something...</label>
-            
-            <input onChange={handleChange} type='radio' name='type' value='offer' />
+
+            <input onChange={handleChange} className="margin-right-radio" type='radio' name='type' value='offer' />
             <label>I've got something to offer...</label>
           </form>
+          </div>
 
           <form className="listingForm">
             <label className='listing__title'>Title of listing:</label>
@@ -85,10 +90,12 @@ const handleSelect = (e) => {
               placeholder="In here you should add the specifics of what you're needing/offering, also put some details of what you might like in return or have to offer in return" />
           </form>
 
-          <button className='button' 
-            onClick={ (e) => handleSubmit (e, tag.id)}>
-            Add    
-          </button>
+          <div className="buttons has-addons">
+            <button className="button is-primary is-fullwidth" 
+              onClick={ (e) => handleSubmit (e, tag.id)}>
+              Add    
+            </button>
+          </div>
         </div>
       </div>
     </div>

@@ -1,4 +1,5 @@
-import { getListings, postListing, delListing, patchListing } from '../apis/listings'
+import { getListings, postListing, delListing, patchListing, getBookmarked, deleteBookmark, addBookmark } from '../apis/listings'
+import { setBookmarks } from './auth'
 
 export const SET_LISTINGS = "SET_LISTINGS"
 export const ADD_LISTING = "ADD_LISTING"
@@ -59,3 +60,31 @@ export function updateListing(id, newListing, tagId) {
   }
 }
 
+export function fetchBookmarksForUser(id) {
+  return dispatch => {
+    return getBookmarked(id)
+    .then(bookmarks => {
+      console.log(bookmarks)
+      dispatch(setBookmarks(bookmarks))
+      return null
+    })
+  }
+}
+
+export function removeBookmark(id, user_id) {
+  return dispatch => {
+    return deleteBookmark(id)
+      .then(() => {
+        dispatch(fetchBookmarksForUser(user_id))
+      })
+  }
+}
+
+export function bookmark(ids) {
+  return dispatch => {
+    return addBookmark(ids)
+      .then(() => {
+        dispatch(fetchBookmarksForUser(ids.user_id))
+      })
+  }
+}

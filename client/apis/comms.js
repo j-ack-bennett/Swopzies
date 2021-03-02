@@ -8,7 +8,7 @@ export function getCommsforListing(listingId) {
       return res.body
     })
     .catch(err => {
-      console.log("you fucked up: ", err)
+      console.log("Error: ", err)
     })
 }
 
