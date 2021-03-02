@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { connect } from "react-redux"
+import ReactPaginate from 'react-paginate'
 import ListingCard from "./ListingCard"
 
 function Listings(props) {
