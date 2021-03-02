@@ -61,7 +61,6 @@ export function updateListing(id, newListing, tagId) {
 }
 
 export function fetchBookmarksForUser(id) {
-  console.log("fetching")
   return dispatch => {
     return getBookmarked(id)
     .then(bookmarks => {
