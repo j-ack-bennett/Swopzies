@@ -1,8 +1,6 @@
-<<<<<<< HEAD
-import { getUserTokenInfo, isAuthenticated, removeUser } from '../utils/auth'
+// import { getUserTokenInfo, isAuthenticated, removeUser } from '../utils/auth'
 import { login, register } from '../apis/auth'
 import { fetchBookmarksForUser } from './listings'
-=======
 import {
   getUserTokenInfo,
   isAuthenticated,
@@ -11,7 +9,6 @@ import {
 } from "../utils/auth"
 import { login, register } from "../apis/auth"
 import { updateUserProfile } from "../apis/users"
->>>>>>> b6a14bc90ce4e6ffeac26da0c5d7c2e2570a8ba8
 
 export function requestLogin() {
   return {
@@ -23,7 +20,7 @@ export function requestLogin() {
 
 export function receiveLogin(user) {
   return {
-    type: "LOGIN_SUCCESS",
+    type: "LOGIN_SUCCESS",jose the duck
     isFetching: false,
     isAuthenticated: true,
     user,
@@ -93,14 +90,8 @@ export function registerUserRequest(creds, confirmSuccess) {
 }
 
 export function checkAuth(confirmSuccess) {
-<<<<<<< HEAD
-  return dispatch => {
-    if(isAuthenticated()) {
-      const userInfo = getUserTokenInfo()
-=======
   return (dispatch) => {
     if (isAuthenticated()) {
->>>>>>> b6a14bc90ce4e6ffeac26da0c5d7c2e2570a8ba8
       dispatch(receiveLogin(getUserTokenInfo()))
       dispatch(fetchBookmarksForUser(userInfo.id))
       confirmSuccess()
@@ -108,12 +99,13 @@ export function checkAuth(confirmSuccess) {
   }
 }
 
-<<<<<<< HEAD
 export function setBookmarks (bookmarks) {
   return {
     type: 'SET_BOOKMARKS',
     bookmarks: bookmarks
-=======
+  }
+}
+
 export function updateProfile(updatedProfile, confirmSuccess) {
   return (dispatch) => {
     updateUserProfile(updatedProfile)
@@ -122,6 +114,5 @@ export function updateProfile(updatedProfile, confirmSuccess) {
         dispatch(checkAuth(confirmSuccess))
       })
       .catch((err) => dispatch(loginError(err)))
->>>>>>> b6a14bc90ce4e6ffeac26da0c5d7c2e2570a8ba8
   }
 }
