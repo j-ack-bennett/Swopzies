@@ -74,8 +74,7 @@ function EditListing(props) {
               }
             </select>
             <h3>Type of listing: </h3>
-            <label>
-              I'm looking for something...
+            <label>             
               <input
                 type="radio"
                 name="type"
@@ -83,9 +82,9 @@ function EditListing(props) {
                 checked={oldListing.type == "looking"}
                 onChange={handleChange}
               />
+              I'm looking for something...
             </label>
             <label>
-              I've got something to offer...
               <input
                 type="radio"
                 name="type"
@@ -93,6 +92,7 @@ function EditListing(props) {
                 checked={oldListing.type == "offer"}
                 onChange={handleChange}
               />
+              I've got something to offer...
             </label>
             <label className="listing__title">
               Title of listing:

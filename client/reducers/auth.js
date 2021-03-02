@@ -1,12 +1,17 @@
 const initialState = {
   isFetching: false,
   isAuthenticated: false,
-  user: {},
+  user: { booksmarks: [] },
   errorMessage: ''
 }
 
 export default function auth (state = initialState, action) {
   switch (action.type) {
+    case 'ERROR':
+      return {
+        ...state,
+        errorMessage: action.message
+      }
     case 'LOGIN_REQUEST':
       return {
         ...state,
@@ -33,7 +38,7 @@ export default function auth (state = initialState, action) {
         ...state,
         isFetching: false,
         isAuthenticated: false,
-        user: null
+        user: { booksmarks: [] }
       }
     case 'REGISTER_REQUEST':
       return {
@@ -49,6 +54,10 @@ export default function auth (state = initialState, action) {
         isAuthenticated: false,
         errorMessage: action.message
       }
+    case 'SET_BOOKMARKS':
+      const newState = {...state}
+      newState.user.bookmarks = action.bookmarks
+      return newState
     default:
       return state
   }

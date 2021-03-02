@@ -8,10 +8,13 @@ const {
   deleteById,
   updateListing,
   getListingsByTagId,
+  addBookmark,
+  deleteBookmark,
+  getBookmarks,
   updateListingTag
 } = require("../db/listings");
 
-module.exports = router;
+
 
 //Get all listings
 router.get("/", (req, res) => {
@@ -25,13 +28,23 @@ router.get("/", (req, res) => {
     });
 });
 
+router.delete('/bookmark', (req, res) => {
+  const id = req.body.id
+  deleteBookmark(id)
+    .then(() => {
+      res.sendStatus(200)
+      return null
+    })
+
+})
+
 router.post("/", (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   // let newListing = {user_id: null, type: req.body.type, title: req.body.title, description: req.body.description, image: "", time: null}
   const newListing = req.body.listing;
   const tagId = req.body.tagId;
   return addNewListing(newListing).then((listingId) => {
-    console.log(listingId);
+    // console.log(listingId);
     addNewListingTag(listingId, tagId).then(() => {
       res.sendStatus(200);
       return null;
@@ -57,10 +70,10 @@ router.delete("/:id", (req, res) => {
 
 router.patch("/:id", (req, res) => {
   const id = req.params.id;
-  console.log(id, req.body.newListing, req.body.tagId)
+  // console.log(id, req.body.newListing, req.body.tagId)
   updateListing(id, req.body.newListing)
   .then(listing => {
-    console.log(req.body.tagId)
+    // console.log(req.body.tagId)
     updateListingTag(listing.id, req.body.tagId)
     .then(() => {
       res.sendStatus(200)
@@ -70,7 +83,7 @@ router.patch("/:id", (req, res) => {
 
 router.get("/tag/:id", (req, res) => {
   const id = req.params.id;  //req.body doesn't exist on a get!!!
-  console.log(id);
+  // console.log(id);
   getListingsByTagId(id)
     .then((listings) => {
       res.json(listings);
@@ -80,3 +93,27 @@ router.get("/tag/:id", (req, res) => {
       res.status(500).json({ message: "Something went wrong" });
     });
 });
+
+router.post("/bookmark", (req, res) => {
+  const newBookmark = req.body
+  addBookmark(newBookmark)
+    .then(() => {
+      res.sendStatus(200)
+      return null
+    })
+})
+
+router.get('/bookmark/:id', (req, res) => {
+  const user_id = req.params.id
+  getBookmarks(user_id)
+    .then((bookmarks) => {
+      res.json(bookmarks)
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ message: "Something went wrong" });
+    })
+})
+
+
+module.exports = router;
