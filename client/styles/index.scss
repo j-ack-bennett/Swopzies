@@ -186,7 +186,7 @@ p {
     padding: 1.4rem 0 1rem;
     line-height: 25px;
     text-align: center;
-    background-color: #e2e2e2;
+    background-color: #ffc9ab;
 }
 
 .vertical-center {
@@ -221,7 +221,7 @@ p {
 }
 
 .card {
-    box-shadow: 0 1.5em 1em 0.500em rgba(10,10,10,.1), 0 0 0 4px rgba(10,10,10,0.02);
+    box-shadow: 0 -0.5em 1em 0.500em rgba(10,10,10,.1), 0 0 0 4px rgba(10,10,10,0.02);
 }
 
 .content {
@@ -251,7 +251,7 @@ p {
   text-decoration: none;
   padding: 20px;
   display: inline-block;
-  border-radius: 26px;
+  border-radius: 4px;
   transition: all .2s;
   position: absolute;
   font-size: 50px;
@@ -259,13 +259,13 @@ p {
 
 .btn:hover {
   color: white;
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
 }
 
 .btn:active {
-  transform: translateY(-3px);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
 }
 
 .btn-blue {
@@ -368,6 +368,10 @@ label {
   margin-top: 25px;
 }
 
+.margin-bottom {
+  margin-bottom: 25px;
+}
+
 .margin-left {
   margin-left: 20px;
 }
@@ -395,4 +399,15 @@ label {
 
 .table-width {
   width: 50%;
+}
+
+.my-listings-margin {
+  margin: 25px 0px;
+}
+
+.location-dropdown {
+  width: 100%;
+  padding: 10px 0px 10px 6px;
+  border-radius: 4px;
+  font-size: 16px;
 }

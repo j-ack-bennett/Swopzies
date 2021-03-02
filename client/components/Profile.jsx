@@ -37,7 +37,7 @@ function Profile(props) {
   // console.log('rob', markedListings)
 
   return (    
-  <div className="container margin-top">
+  <div className="container margin-top margin-bottom">
   <div className="add-listing-page">
   <div className="add-listing-page add-listing-center add-listing-centering">
     <div className="card">
@@ -53,31 +53,31 @@ function Profile(props) {
                   <th colSpan="2"></th>
                 </tr>
                 <tr>
-                  <td className="table-width" >Username</td>
+                  <td className="table-width has-text-weight-bold" >Username:</td>
                   <td className="table-width" >{props.auth.user.username}</td>
                 </tr>
                 <tr>
-                  <td className="table-width" >First Name</td>
+                  <td className="table-width has-text-weight-bold" >First Name:</td>
                   <td className="table-width" >{props.auth.user.first_name}</td>
                 </tr>
                 <tr>
-                  <td className="table-width" >Last Name</td>
+                  <td className="table-width has-text-weight-bold" >Last Name:</td>
                   <td className="table-width" >{props.auth.user.last_name}</td>
                 </tr>
                 <tr>
-                  <td className="table-width" >Email</td>
+                  <td className="table-width has-text-weight-bold" >Email:</td>
                   <td className="table-width" >{props.auth.user.email}</td>
                 </tr>
                 <tr>  
-                  <td className="table-width" >Bio</td>
+                  <td className="table-width has-text-weight-bold" >Bio:</td>
                   <td className="table-width" >{props.auth.user.bio}</td>
                 </tr>
                 <tr>
-                  <td className="table-width" >Phone</td>
+                  <td className="table-width has-text-weight-bold" >Phone:</td>
                   <td className="table-width" >{props.auth.user.phone}</td>
                 </tr>
                 <tr>
-                  <td className="table-width" >Location</td>
+                  <td className="table-width has-text-weight-bold" >Location:</td>
                   <td className="table-width" >{props.auth.user.location}</td>
                 </tr>
               </tbody>
@@ -91,12 +91,11 @@ function Profile(props) {
             </div>
           </div>
         </div>
+
         <br />
-      {/* </div> 
-      </div> */}
       
       <div className="card">
-        <div className="card-content">
+        <div className="card-content my-listings-margin">
           <h3 className="is-4">My listings</h3>
           <hr />
             <table>
@@ -118,10 +117,10 @@ function Profile(props) {
           </div>
         </div>
 
-
+        <div className="card">
           <div className="card-content">
             <h3 className="is-4">My Bookmarks</h3>
-            <div className="content">
+            <hr />
               <table>
                 <tbody>
                   {props.auth.user.bookmarks && props.auth.user.bookmarks.map(bookmark => {
@@ -131,12 +130,10 @@ function Profile(props) {
               </table>
             </div>
           </div>
-          
           </div>
         </div>
         </div>
       </div>
-    {/* </div> */}
   </div>
   )
 }

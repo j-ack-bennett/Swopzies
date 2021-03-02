@@ -72,7 +72,7 @@ function Home(props) {
                   className="button is-primary"
                   onClick={() => localStorage.setItem("type", "looking")}
                 >
-                  Read More
+                  See More
                 </Link>
               </div>
             </div>
@@ -120,7 +120,7 @@ function Home(props) {
                   className="button is-primary"
                   onClick={() => localStorage.setItem("type", "offer")}
                 >
-                  Read More
+                  See More
                 </Link>
               </div>
             </div>
