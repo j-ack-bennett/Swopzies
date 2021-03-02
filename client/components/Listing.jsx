@@ -36,9 +36,9 @@ function Listing(props) {
                   <p className="last-updated">Last updated: {moment(listingItem.time).format('LLL')}</p>
                   <br />
                   {listingItem.user_id == props.auth.user.id &&
-                  <div className="delete-edit-buttons">
-                    <button onClick={() => killListing(listingItem.id)} className="deleteButton">Delete Post</button>
-                    <Link to={`/editlisting/${listingItem.id}`}><button> Edit Post</button></Link>
+                  <div className="buttons has-addons">
+                    <button onClick={() => killListing(listingItem.id)} className="button is-primary">Delete Post</button>
+                    <Link to={`/editlisting/${listingItem.id}`} className="button is-primary">Edit Post</Link>
                   </div>
                   }
                   <Comms
