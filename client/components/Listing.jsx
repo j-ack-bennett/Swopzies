@@ -35,7 +35,7 @@ function Listing(props) {
     }
     setBookmarked(bookmarked => !bookmarked)
   }
-  
+
 
   return (
     <div className="container">
@@ -43,12 +43,20 @@ function Listing(props) {
         <div className="add-listing-page add-listing-center add-listing-centering">
           {props.listings.map((listingItem) => {
             if (listingItem.id == listingId) {
+              let img = null;
+              if (listingItem.upload === 1) {
+                img = <img src={'/listings-images/' + listingItem.id + ".jpg"} />
+              }
+
               return (
                 <div key={listingItem.id}>
-                  
+
                   <h2 className="title post-title capitalize">{listingItem.title}</h2>
                   <p className="listing-p">{listingItem.description}</p>
                   <br />
+
+                  {img}
+
                   <div>
                     <p className="listing-details-p"><span className="has-text-weight-bold">Posted by:</span>&nbsp;&nbsp;&nbsp;&nbsp;{listingItem.username}</p>
                     <p className="listing-details-p"><span className="has-text-weight-bold">Location:</span>&nbsp;&nbsp;&nbsp;&nbsp;{listingItem.location}</p>
@@ -57,7 +65,7 @@ function Listing(props) {
                   <br />
                   <p className="last-updated"><span className="has-text-weight-bold">Last updated:</span>&nbsp;&nbsp;&nbsp;&nbsp; {moment(listingItem.time).format('LLL')}</p>
                   <br />
-                  
+
                   <div className="buttons has-addons">
                     {listingItem.user_id === props.auth.user.id ?
                       <div>
@@ -70,10 +78,10 @@ function Listing(props) {
                         <button onClick={handleClick}>{!bookmarked ? 'Bookmark Listing' : 'Remove Bookmark' }</button>
                       </>
                     }
-                    
+
                   </div>
-                  
-                    
+
+
                   <Comms
                     listingId={listingItem.id}
                     listingUserId={listingItem.user_id}

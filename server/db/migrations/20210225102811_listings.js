@@ -6,7 +6,7 @@ exports.up = function(knex) {
         table.string('type')
         table.string('title')
         table.string('description')
-        table.string('image')
+        table.boolean("upload")
         table.timestamp('time')
     })
 };

@@ -1,6 +1,9 @@
 const express = require("express");
 const db = require("../db/listings");
 const router = express.Router();
+const multer = require('multer');
+const upload = multer({ dest: 'tmp/' });
+const fs = require("fs");
 const {
   addNewListing,
   addNewListingTag,
@@ -38,13 +41,35 @@ router.delete('/bookmark', (req, res) => {
 
 })
 
-router.post("/", (req, res) => {
+router.post("/", upload.single('img'), (req, res) => {
   // console.log(req.body);
   // let newListing = {user_id: null, type: req.body.type, title: req.body.title, description: req.body.description, image: "", time: null}
-  const newListing = req.body.listing;
+  const newListing = {
+    "type": req.body.type,
+    "title": req.body.title,
+    "description": req.body.description,
+    "user_id": req.body.user_id,
+    "time": req.body.time,
+  };
+
+  if (req.file !== undefined && req.file.originalname.endsWith(".jpg")) {
+    newListing.upload = 1;
+  }
+
+  // let imagePath = req.file.path;
+  // const imageName =
+
+
   const tagId = req.body.tagId;
   return addNewListing(newListing).then((listingId) => {
-    // console.log(listingId);
+    if (req.file !== undefined) {
+      if (req.file.originalname.endsWith(".jpg")) {
+        fs.rename(req.file.path, "server/public/listings-images/" + listingId + ".jpg", () => {})
+      } else {
+        fs.unlink(req.file.path, () => {})
+      }
+    }
+
     addNewListingTag(listingId, tagId).then(() => {
       res.sendStatus(200);
       return null;
