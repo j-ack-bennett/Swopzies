@@ -29,11 +29,10 @@ router.get("/", (req, res) => {
 });
 
 router.delete('/bookmark', (req, res) => {
-  console.log('fuck it all')
   const id = req.body.id
   deleteBookmark(id)
     .then(() => {
-      res.json('fuck for life')
+      res.sendStatus(200)
       return null
     })
 
