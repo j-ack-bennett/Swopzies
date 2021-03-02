@@ -19,10 +19,10 @@ module.exports = {
 
 function getListings(db = connection) {
   return db("listings")
-    .join("users", "users.id", "listings.user_id")
-    .join("listings_tags", "listing_id", "listings.id")
-    .join("tags", "tags.id", "tag_id")
-    .select("*", "listings.id AS id")
+    .leftOuterJoin("users", "users.id", "listings.user_id")
+    .leftOuterJoin("listings_tags", "listing_id", "listings.id")
+    .leftOuterJoin("tags", "tags.id", "tag_id")
+    .select("*", "listings.id AS id").debug()
 }
 
 function addNewListing(newListing, db = connection) {
