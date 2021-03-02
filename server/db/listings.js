@@ -1,5 +1,7 @@
-const config = require("./knexfile").development
-const connection = require("knex")(config)
+// const config = require("./knexfile").development
+// const connection = require("knex")(config)
+
+const connection = require('./connection')
 
 module.exports = {
   getListings,
@@ -86,7 +88,7 @@ function deleteBookmark(id, db=connection) {
 function getBookmarks(id, db=connection) {
   return db('users_listings')
   .where('user_id', id)
-  
+
 }
 
 
