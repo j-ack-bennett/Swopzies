@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react"
 import { connect } from "react-redux"
 
 import { newListing } from "../actions/listings"
-import { fetchTags } from "../actions/tags"
 
 function ListingForm(props) {
   const [form, setForm] = useState({})
   const [tag, setTag] = useState(0)
+  const [type, setType ] = useState(localStorage.getItem("type"))
 
   const tags = props.tags
 
@@ -16,6 +16,12 @@ function ListingForm(props) {
       [e.target.name]: e.target.value,
     })
   }
+
+  useEffect(() => {
+    if(form.type){
+      setType(form.type)
+    }
+  }, [form])
 
   const handleSelect = (e) => {
     setTag(e.target.value)
@@ -50,6 +56,7 @@ function ListingForm(props) {
 
   return (
     <div className="container">
+      {console.log(type)}
       <div className="add-listing-page">
         <div className="add-listing-page add-listing-center add-listing-centering">
           <h1 className="center-text">Add a Listing</h1>
@@ -80,25 +87,27 @@ function ListingForm(props) {
             </form>
 
             <form className="listingForm radio-buttons">
-              <input
-                onChange={handleChange}
-                className="margin-right-radio"
-                type="radio"
-                name="type"
-                value="looking"
-              />
               <label className="has-text-weight-bold">
+                <input
+                  onChange={handleChange}
+                  className="margin-right-radio"
+                  type="radio"
+                  name="type"
+                  value="looking"
+                  checked={type == "looking"}
+                />
                 I'm looking for something...
               </label>
 
-              <input
-                onChange={handleChange}
-                className="margin-right-radio"
-                type="radio"
-                name="type"
-                value="offer"
-              />
               <label className="has-text-weight-bold">
+                <input
+                  onChange={handleChange}
+                  className="margin-right-radio"
+                  type="radio"
+                  name="type"
+                  value="offer"
+                  checked={type == "offer"}
+                />
                 I've got something to offer...
               </label>
             </form>

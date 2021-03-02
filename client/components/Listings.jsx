@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { connect } from "react-redux"
+import { Link } from 'react-router-dom'
 import ListingCard from "./ListingCard"
 
 function Listings(props) {
@@ -15,6 +16,7 @@ function Listings(props) {
     filterListings()
   }, [filter, locationFilter])
 
+  
   useEffect(() => {
     setListings(allListings)
   }, [allListings])
@@ -67,10 +69,6 @@ function Listings(props) {
     }
   }
 
-  //if tag filter is all, and location filter is all, just use setListings
-  //if tag filter is all and location filter is something, just use allListing filtered by location
-  //if tag filter is something and location filter is all, just use allListings filtered by tag
-  //if tag filter is something and location filter is something, filter by both
 
   const handleChange = (e) => {
     setFilter(e.target.value)
@@ -82,6 +80,12 @@ function Listings(props) {
 
   return (
     <>
+    <div className="text-box">
+        <Link to="/listingform" className="btn btn-blue btn-animate">
+          Add a Listing
+        </Link>
+      </div>
+
       {type == "looking" ? (
         <h1 className="title"> People are seeking!</h1>
       ) : (

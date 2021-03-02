@@ -32,6 +32,8 @@ function Home(props) {
     populateTypeListings()
   }, [ourListings])
 
+  localStorage.setItem("type", "")
+
   return (
     <>
       <div className="text-box">
@@ -128,42 +130,3 @@ const mapStateToProps = (globalState) => {
 }
 
 export default connect(mapStateToProps)(Home)
-
-{
-  /* <div className="container">
-      <div>
-        <Link to="/listingform">
-        <button >+ Add listing</button>
-        </Link>
-      </div>
-      <div>
-        <h1>I'm Looking For...</h1>
-          {listings.map(listing => {
-            if(listing.type == "looking"){
-              return <ListingCard key={listing.id} listing={listing} />
-            }
-          })}
-          <Link
-          to="/listings"
-          onClick={() => localStorage.setItem("type", "looking")}
-          >
-          See more...
-        </Link>
-      </div>
-      <hr />
-      <div>
-        <h1>I Can Offer...</h1>
-          {listings.map(listing => {
-            if(listing.type == "offer"){
-              return <ListingCard key={listing.id} listing={listing} />
-            }
-          })}
-          <Link
-          to="/listings"
-          onClick={() => localStorage.setItem("type", "offer")}
-          >
-          See more...
-        </Link>
-      </div>
-    </div> */
-}
