@@ -5,7 +5,7 @@ exports.up = function(knex) {
         table.integer('user_id')
         table.string('type')
         table.string('title')
-        table.string('description')
+        table.string('description', 1000)
         table.string('image')
         table.timestamp('time')
     })
