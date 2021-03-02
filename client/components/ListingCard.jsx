@@ -5,13 +5,8 @@ import { Link } from "react-router-dom"
 
 
 function ListingCard(props) {
-  useEffect(() => {
-    props.dispatch(fetchTags())
-  }, [])
-
   const listing = props.listing
  
-
   return (
     <div>
       {listing.type == "looking" ? (

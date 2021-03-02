@@ -11,4 +11,11 @@ export function updateUserProfile(updatedProfile) {
     .set(getAuthorizationHeader())
     .send(updatedProfile)
     .then((res) => res.body)
+    .catch(err => {
+      console.log(err)
+      if(err.message == 'Bad Request') {
+        throw 'Username already exists'
+      }
+      throw errorMessages[err.response.body.errorType]
+    })
 }

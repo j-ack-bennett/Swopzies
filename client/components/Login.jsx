@@ -36,12 +36,13 @@ function Login(props) {
       <div className="hero-body">
         <div className="container has-text-centered">
           <div className="column is-4 is-offset-4">
-            <h3 className="has-text-black">Login</h3>
+            <h3 className="has-text-black home-font-size">Login</h3>
             <hr className="login-hr" />
             <p className="subtitle has-text-black">Please login to proceed.</p>
             <div className="box">
 
               <form onSubmit={handleSubmit}>
+                {console.log(auth.errorMessage)}
                 {
                   auth.errorMessage && (
                     <span className="has-text-danger is-large">{auth.errorMessage}</span>

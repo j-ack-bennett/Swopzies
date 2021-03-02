@@ -88,7 +88,7 @@ function Listings(props) {
         <h1 className="title"> People are offering!</h1>
       )}
       <div>
-        <select className="tagSelect" name="tag" onChange={handleChange} value={filter}>
+        <select name="tag" onChange={handleChange} value={filter}>
           <option value="all" disable="true" hidden>
             Choose category
           </option>

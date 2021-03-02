@@ -8,11 +8,13 @@ module.exports = {
   deleteById,
   updateListing,
   getListingsByTagId,
-  updateListingTag,
+  addBookmark,
+  deleteBookmark,
+  getBookmarks,
+  updateListingTag
 }
 
 function getListings(db = connection) {
-  // console.log(listings)
   return db("listings")
     .join("users", "users.id", "listings.user_id")
     .join("listings_tags", "listing_id", "listings.id")
@@ -62,13 +64,37 @@ function updateListing(id, updatedListing, db = connection) {
 }
 
 function getListingsByTagId(tagId, db = connection) {
-  console.log("help")
+  // console.log("help")
   return db("listings_tags")
     .join("listings", "listing_id", "listings.id")
     .join("tags", "tags.id", "listings_tags.tag_id")
     .where("tags.id", tagId)
     .select("*", "listings.id AS id")
 }
+
+function addBookmark( ids, db=connection) {
+  return db('users_listings')
+    .insert(ids, 'id')
+    .then(ids => ids[0])
+}
+
+function deleteBookmark(id, db=connection) {
+ return db('users_listings')
+ .where('id', id)
+ .delete()
+}
+
+function getBookmarks(id, db=connection) {
+  return db('users_listings')
+  .where('user_id', id)
+  
+}
+
+
+
+
+
+
 
 // function getRecipesWithIngredientsSimpleDoubleJoin(db = connection) {
 //   return db('recipes')

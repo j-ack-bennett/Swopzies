@@ -1,32 +1,23 @@
-import React, { useState, useEffect } from 'react'
-import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from "react"
+import { connect } from "react-redux"
+import { Link } from "react-router-dom"
 
-import { loginError, registerUserRequest } from '../actions/auth'
+import { updateProfile } from "../actions/auth"
 
 function Register2(props) {
   const { auth } = props
 
-  const locations  = [ 'Norhtland', 'Bay of Plenty', 'Auckland', 'Gisborne', 'Hawke\'s Bay', 'Waikato', 'Taranaki', 'Manawatu', 'Tatooine', 'Wellington', 'Nelson', 'Tasman', 'Marlborough', 'Canterbury', 'West Coast', 'Otago', 'Southland' ]
+  const locations  = ['Auckland', 'Bay of Plenty', 'Canterbury', 'Gisborne', 'Hawke\'s Bay', 'Manawatu-Whanganui', 'Marlborough', 'Nelson', 'Northland', 'Otago', 'Southland', 'Taranaki', 'Tasman', 'Waikato', 'Wellington', 'West Coast']
 
   const userId = auth.user.id
 
   const [formData, setFormData] = useState({
-    username: '',
-    first_name: '',
-    last_name: '',
-    password: '',
-    confirm_password: '',
-    email: '',
-    bio: '',
-    location: '',
-    image: '',
-    phone: ''
+    first_name: "",
+    last_name: "",
+    bio: "",
+    location: "",
+    phone: "",
   })
-
-  // useEffect(() => {
-  //   props.dispatch(loginError(''))
-  // }, [])
 
   const handleChange = (e) => {
     setFormData((currentFormData) => {
@@ -40,10 +31,16 @@ function Register2(props) {
   const handleSubmit = (e) => {
     e.preventDefault()
     e.target.reset()
-    let { username, password, confirm_password, first_name, last_name, bio, email, location, phone } = formData
-    if (confirm_password != password) return props.dispatch(loginError("Passwords don't match"))
-    const confirmSuccess = () => { props.history.push('/') }
-    props.dispatch(registerUserRequest({ username, password, first_name, last_name, bio, email, location, phone }, () => confirmSuccess()))
+    let { first_name, last_name, bio, location, phone } = formData
+    const confirmSuccess = () => {
+      props.history.push("/")
+    }
+    props.dispatch(
+      updateProfile(
+        { username: auth.user.username, first_name, last_name, bio, location, phone},
+        confirmSuccess
+      )
+    )
   }
 
   return (
@@ -51,35 +48,66 @@ function Register2(props) {
       <div className="hero-body">
         <div className="container has-text-centered">
           <div className="column is-4 is-offset-4">
-            <h3 className="has-text-black">Register</h3>
+            <h3 className="has-text-black home-font-size">Profile Details</h3>
             <hr className="login-hr" />
-            <p className="subtitle has-text-black">Please register to proceed.</p>
+            <p className="subtitle has-text-black">
+              Please register to proceed.
+            </p>
             <div className="box">
               <form onSubmit={handleSubmit}>
-                {auth.errorMessage && <span className="has-text-danger is-large">{auth.errorMessage}</span>}
+                {auth.errorMessage && (
+                  <span className="has-text-danger is-large">
+                    {auth.errorMessage}
+                  </span>
+                )}
                 <div className="field">
                   <div className="control">
-                    <input className="input is-large" placeholder="First Name" type="text" name="first_name" onChange={handleChange} value={formData.first_name} required />
+                    <input
+                      className="input is-large"
+                      placeholder="First Name"
+                      type="text"
+                      name="first_name"
+                      onChange={handleChange}
+                      value={formData.first_name}
+                      required
+                    />
                   </div>
                 </div>
 
                 <div className="field">
                   <div className="control">
-                    <input className="input is-large" placeholder="Last Name" type="text" name="last_name" onChange={handleChange} value={formData.last_name} required />
+                    <input
+                      className="input is-large"
+                      placeholder="Last Name"
+                      type="text"
+                      name="last_name"
+                      onChange={handleChange}
+                      value={formData.last_name}
+                      required
+                    />
                   </div>
                 </div>
 
                 <div className="field">
                   <div className="control">
-                    <input className="input is-large" placeholder="Phone Number" type="text" name="phone" onChange={handleChange} value={formData.phone} required />
+                    <input
+                      className="input is-large"
+                      placeholder="Phone Number"
+                      type="text"
+                      name="phone"
+                      onChange={handleChange}
+                      value={formData.phone}
+                      required
+                    />
                   </div>
                 </div>
 
                 <div className="field">
                   <div className="control">
                     {/* <input className="input is-large" placeholder="Location" type="text" name="location" onChange={handleChange} value={formData.location} required /> */}
-                    <select name="location" onChange={handleChange} >
-                      <option value="ChooseLocationYouDick">Choose your location</option>
+
+                    <select name="location" className="location-dropdown" onChange={handleChange} required>
+                      <option value="" disable="true" hidden>Location</option>
                       {locations.map(location => {
                         return <option key={location} 
                                 value={location}>
@@ -92,11 +120,21 @@ function Register2(props) {
 
                 <div className="field">
                   <div className="control">
-                    <textarea className="textarea is-large" placeholder="Bio" type="text" name="bio" onChange={handleChange} value={formData.bio} required />
+                    <textarea
+                      className="textarea is-large"
+                      placeholder="Bio"
+                      type="text"
+                      name="bio"
+                      onChange={handleChange}
+                      value={formData.bio}
+                      required
+                    />
                   </div>
                 </div>
 
-                <button className="button is-block is-info is-large is-fullwidth">Register<i className="fa fa-sign-in" aria-hidden="true"></i></button>
+                <button className="button is-block is-info is-large is-fullwidth">
+                  Register <i className="fa fa-sign-in" aria-hidden="true"></i>
+                </button>
               </form>
             </div>
           </div>
