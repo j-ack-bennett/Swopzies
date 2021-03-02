@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect, useStore } from "react-redux";
 import { Link } from "react-router-dom"
+import moment from 'moment'
 
 import ListingLink from './ListingLink'
 
@@ -36,52 +37,58 @@ function Profile(props) {
   // console.log('rob', markedListings)
 
   return (    
-  <div className="container">
+  <div className="container margin-top">
   <div className="add-listing-page">
   <div className="add-listing-page add-listing-center add-listing-centering">
     <div className="card">
       <div className="card-content">
-        <h3 className="is-4">Profile</h3>
+        <h3 className="is-4 center-text">Profile</h3>
 
         <div className="content">
           {props.auth.user && (
             <table>
               <tbody>
                 <tr>
-                  <td>Username</td>
-                  <td>{props.auth.user.username}</td>
+                  <th colSpan="1"></th>
+                  <th colSpan="2"></th>
                 </tr>
                 <tr>
-                  <td>First Name</td>
-                  <td>{props.auth.user.first_name}</td>
+                  <td className="table-width" >Username</td>
+                  <td className="table-width" >{props.auth.user.username}</td>
                 </tr>
                 <tr>
-                  <td>Last Name</td>
-                  <td>{props.auth.user.last_name}</td>
+                  <td className="table-width" >First Name</td>
+                  <td className="table-width" >{props.auth.user.first_name}</td>
                 </tr>
                 <tr>
-                  <td>Email</td>
-                  <td>{props.auth.user.email}</td>
+                  <td className="table-width" >Last Name</td>
+                  <td className="table-width" >{props.auth.user.last_name}</td>
                 </tr>
                 <tr>
-                  <td>Bio</td>
-                  <td>{props.auth.user.bio}</td>
+                  <td className="table-width" >Email</td>
+                  <td className="table-width" >{props.auth.user.email}</td>
                 </tr>
                 <tr>
-                  <td>Phone</td>
-                  <td>{props.auth.user.phone}</td>
+                  <td className="table-width" >Bio</td>
+                  <td className="table-width" >{props.auth.user.bio}</td>
                 </tr>
                 <tr>
-                  <td>Location</td>
-                  <td>{props.auth.user.location}</td>
+                  <td className="table-width" >Phone</td>
+                  <td className="table-width" >{props.auth.user.phone}</td>
+                </tr>
+                <tr>
+                  <td className="table-width" >Location</td>
+                  <td className="table-width" >{props.auth.user.location}</td>
                 </tr>
               </tbody>
             </table>
           )}
           <div>
-            <Link to="/update">
-              <button >Update Profile</button>
-            </Link>
+            <div className="buttons has-addons is-centered">
+              <Link to="/update" className="button is-primary">
+                Update Profile
+              </Link>
+            </div>
           </div>
         </div>
         <br />
@@ -95,18 +102,11 @@ function Profile(props) {
                 {listings.map(listing => {
                   if (listing.user_id === props.auth.user.id) {
                     return (
-                      // <tr key={listing.id}>
-                      //   <td>
-                      //     <Link to={`/listing/${listing.id}`}>{listing.title}</Link>
-                      //   </td>
-                      // </tr>
+                     
                       <ListingLink id={listing.id} />
                     )
                   }
                 })}
-                {/* {userBookmarks.map(bookmark => {
-                  return listings.find(listing => listing.id === bookmark.listing_id)
-                })} */}
 
               </tbody>
             </table>
@@ -119,15 +119,6 @@ function Profile(props) {
             <div className="content">
               <table>
                 <tbody>
-                  {/* {bookmarkedListings.map(listing => {
-                    return (
-                      <tr key={listing.id}>
-                        <td>
-                          <Link to={`/listing/${listing.id}`}>{listing.title}</Link>
-                        </td>
-                      </tr>
-                    )
-                  })} */}
                   {props.auth.user.bookmarks && props.auth.user.bookmarks.map(bookmark => {
                     return <ListingLink key={bookmark.listing_id} id={bookmark.listing_id} />
                   })}
@@ -136,12 +127,35 @@ function Profile(props) {
             </div>
 
           </div>
+          <div className="card">
+            <div className="card-content">
+              <h3 className="is-4">My listings</h3>
+              <hr />
+              <div className="capitalize">
+                <table>
+                  <tbody>
+                    {listings.map(listing => {
+                      if (listing.user_id === profile.id) {
+                        return (
+                          <tr key={listing.id}>
+                            <td>
+                              <Link to={`/listing/${listing.id}`}>{listing.title}</Link>
+                              <p className="profile-last-updated">Last updated: {moment(listing.time).format('LLL')}</p>
+                            </td>
+                          </tr>
+                        )
+                      }
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
         </div>
       </div>
     </div>
-    </div>
-    </div>
-    
+  </div>
   )
 }
 
