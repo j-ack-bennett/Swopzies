@@ -44,7 +44,7 @@ function UpdateProfileForm(props) {
       ...updatedProfile,
       [event.target.name]: event.target.value,
     })
-    console.log(updatedProfile)
+    // console.log(updatedProfile)
   }
 
   function handleClick(e) {

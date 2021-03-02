@@ -61,7 +61,7 @@ function updateListing(id, updatedListing, db = connection) {
 }
 
 function getListingsByTagId(tagId, db = connection) {
-  console.log("help")
+  // console.log("help")
   return db("listings_tags")
     .join("listings", "listing_id", "listings.id")
     .join("tags", "tags.id", "listings_tags.tag_id")
