@@ -78,8 +78,9 @@ function Register2(props) {
                 <div className="field">
                   <div className="control">
                     {/* <input className="input is-large" placeholder="Location" type="text" name="location" onChange={handleChange} value={formData.location} required /> */}
-                    <select name="location" onChange={handleChange} >
-                      <option value="ChooseLocationYouDick">Choose your location</option>
+
+                    <select name="location" onChange={handleChange} required>
+                      <option value="">Choose your location</option>
                       {locations.map(location => {
                         return <option key={location} 
                                 value={location}>
@@ -96,7 +97,7 @@ function Register2(props) {
                   </div>
                 </div>
 
-                <button className="button is-block is-info is-large is-fullwidth">Register<i className="fa fa-sign-in" aria-hidden="true"></i></button>
+                <button className="button is-block is-info is-large is-fullwidth">Register <i className="fa fa-sign-in" aria-hidden="true"></i></button>
               </form>
             </div>
           </div>
