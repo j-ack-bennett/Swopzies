@@ -57,8 +57,8 @@ const handleSelect = (e) => {
           <div className="auto-margin">
           <form className="listingForm">
             <div className="auto-margin2">
-              <label className="has-text-weight-bold">Category Tags:</label>
-              <select className="capitalize add-listing-dropdown" onChange={handleSelect} name='tag' defaultValue="placeholder">
+              <label className="has-text-weight-bold is-size-4">Category Tags:</label>
+              <select className="capitalize add-listing-dropdown is-size-4 margin-bottom" onChange={handleSelect} name='tag' defaultValue="placeholder">
                 <option disabled={true} value="placeholder"hidden>Select a Category...</option>
                 {tags.map(tag => {
                   return <option value={tag.id} key={tag.id}>{tag.tag_name}</option>
@@ -69,22 +69,26 @@ const handleSelect = (e) => {
           </form>
 
           <form className="listingForm radio-buttons">
-            <input onChange={handleChange} className="margin-right-radio" type='radio' name='type' value='looking' />
-            <label className="has-text-weight-bold">I'm looking for something...</label>
+            <div>
+              <input onChange={handleChange} className="margin-right-radio" type='radio' name='type' value='looking' />
+              <label className="has-text-weight-bold is-size-4">I'm looking for something...</label>
+            </div>
 
-            <input onChange={handleChange} className="margin-right-radio" type='radio' name='type' value='offer' />
-            <label className="has-text-weight-bold">I've got something to offer...</label>
+            <div className="margin-left-offer">
+              <input onChange={handleChange} className="margin-right-radio" type='radio' name='type' value='offer' />
+              <label className="has-text-weight-bold is-size-4">I've got something to offer...</label>
+            </div>
           </form>
           </div>
 
             <form>
-              <label className="listing__title has-text-weight-bold add-listing-margin">Title:</label>
+              <label className="listing__title has-text-weight-bold add-listing-margin is-size-4">Title:</label>
               <input className="input" type="text" name="title" onChange={handleChange} 
               placeholder="Listing title" />
               </form>
 
             <form>   
-              <label className="listing__description has-text-weight-bold add-listing-margin">Description:</label>
+              <label className="listing__description has-text-weight-bold add-listing-margin is-size-4">Description:</label>
                 <textarea className="textarea"
                 type="text" name="description" 
                 onChange={handleChange} 
@@ -92,7 +96,7 @@ const handleSelect = (e) => {
             </form>
 
           <div className="buttons has-addons">
-            <button className="button is-primary is-fullwidth" 
+            <button className="button is-primary is-fullwidth is-size-5" 
               onClick={ (e) => handleSubmit (e, tag.id)}>
               Add    
             </button>
