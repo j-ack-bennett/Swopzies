@@ -81,11 +81,15 @@ function Listings(props) {
   }
 
   return (
-    <>
+    <div className="container margin-top margin-bottom">
+    <div className="add-listing-page">
+    <div className="add-listing-page add-listing-center add-listing-centering">
+    <div className="auto-margin">
+    <div className="auto-margin2">
       {type == "looking" ? (
-        <h1 className="title"> People are seeking!</h1>
+        <h1 className="center-text"> People are seeking!</h1>
       ) : (
-        <h1 className="title"> People are offering!</h1>
+        <h1 className="center-text"> People are offering!</h1>
       )}
       <div>
         <select name="tag" onChange={handleChange} value={filter}>
@@ -111,14 +115,21 @@ function Listings(props) {
         </select>
         <button onClick={() => setLocationFilter('all')}>reset</button>
       </div>
-      <div className="container">
-        {listings.map((listing) => {
-          if (listing.type == type) {
-            return <ListingCard key={listing.id} listing={listing} />
-          }
-        })}
       </div>
-    </>
+      </div>
+
+          <div className="card">
+            <div className="card-content my-listings-margin">
+            {listings.map((listing) => {
+              if (listing.type == type) {
+                return <ListingCard key={listing.id} listing={listing} />
+              }
+            })}
+            </div>
+          </div>
+    </div>
+    </div>
+    </div>
   )
 }
 

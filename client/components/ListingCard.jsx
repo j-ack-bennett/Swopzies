@@ -13,7 +13,8 @@ function ListingCard(props) {
  
 
   return (
-    <div>
+    <div className="card">
+      <div className="card-content my-listings-margin">
       {listing.type == "looking" ? (
         <div>
           <Link key={listing.id}
@@ -39,6 +40,7 @@ function ListingCard(props) {
           </div>
         </div>
       )}
+      </div>
     </div>
   )
 }
