@@ -37,11 +37,9 @@ export function loginError(message) {
 
 export function loginUser(creds, confirmSuccess) {
   return (dispatch) => {
-    console.log("testttttt")
     dispatch(requestLogin())
     return login(creds)
       .then((userInfo) => {
-        console.log("test 3")
         dispatch(receiveLogin(userInfo))
         dispatch(fetchBookmarksForUser(userInfo.id))
         confirmSuccess()
