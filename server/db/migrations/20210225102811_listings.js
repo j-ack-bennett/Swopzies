@@ -3,10 +3,10 @@ exports.up = function(knex) {
     return knex.schema.createTable('listings', table => {
         table.increments('id').primary()
         table.integer('user_id')
-        table.string('type')
+        table.text('type')
         table.text('title')
         table.text('description')
-        table.string('image')
+        table.text('image')
         table.timestamp('time')
     })
 };
