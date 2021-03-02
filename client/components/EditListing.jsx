@@ -42,8 +42,6 @@ function EditListing(props) {
     })
   }
 
-  // console.log(tag)
-  console.log(id)
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -54,11 +52,6 @@ function EditListing(props) {
       time: new Date(),
     }
 
-    // const data = {
-    //   id: oldListing.id,
-    //   listing: tempListing,
-    //   tagId: tag,
-    // }
     props.dispatch(updateListing(oldListing.id, tempListing, tag))
     props.history.push(`/listing/${id}`)
   }
@@ -69,7 +62,7 @@ function EditListing(props) {
         <>
           <form className="listingForm" onSubmit={handleSubmit}>
             <label>category tags: </label>
-            <select autoFocus name="tag" onChange={handleSelect} value={oldListing.tag_id} >
+            <select autoFocus name="tag_id" onChange={handleSelect} value={oldListing.tag_id} >
               {
                 tags.map((tag) => {
                   return (
