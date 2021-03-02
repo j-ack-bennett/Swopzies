@@ -52,13 +52,13 @@ const handleSelect = (e) => {
     <div className="container">
       <div className="add-listing-page">
         <div className="add-listing-page add-listing-center add-listing-centering">
-          <h1 className="center-text">Post a Listing</h1>
+          <h1 className="center-text">Add a Listing</h1>
 
           <div className="auto-margin">
           <form className="listingForm">
             <div className="auto-margin2">
-              <label>Category Tags:</label>
-              <select className="capitalize" onChange={handleSelect} name='tag' defaultValue="placeholder">
+              <label className="has-text-weight-bold">Category Tags:</label>
+              <select className="capitalize add-listing-dropdown" onChange={handleSelect} name='tag' defaultValue="placeholder">
                 <option disabled={true} value="placeholder"hidden>Select a Category...</option>
                 {tags.map(tag => {
                   return <option value={tag.id} key={tag.id}>{tag.tag_name}</option>
@@ -70,24 +70,25 @@ const handleSelect = (e) => {
 
           <form className="listingForm radio-buttons">
             <input onChange={handleChange} className="margin-right-radio" type='radio' name='type' value='looking' />
-            <label>I'm looking for something...</label>
+            <label className="has-text-weight-bold">I'm looking for something...</label>
 
             <input onChange={handleChange} className="margin-right-radio" type='radio' name='type' value='offer' />
-            <label>I've got something to offer...</label>
+            <label className="has-text-weight-bold">I've got something to offer...</label>
           </form>
           </div>
 
           <form className="listingForm">
-            <label className='listing__title'>Title of listing:</label>
-            <input className="input" type='text' name='title' onChange={handleChange} />
-          </form>
+            <label className="listing__title has-text-weight-bold ">Title:</label>
+            <input className="input" type="text" name="title" onChange={handleChange} 
+            placeholder="Listing title" />
+            </form>
 
           <form className="listingForm">   
-            <label className='listing__description'>Add a description of your listing:</label>
+            <label className="listing__description has-text-weight-bold ">Description:</label>
               <textarea className="textarea"
-              type='text' name='description' 
+              type="text" name="description" 
               onChange={handleChange} 
-              placeholder="In here you should add the specifics of what you're needing/offering, also put some details of what you might like in return or have to offer in return" />
+              placeholder="Add any details of what you're seeking/offering."  />
           </form>
 
           <div className="buttons has-addons">

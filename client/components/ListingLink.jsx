@@ -10,11 +10,13 @@ const ListingLink = (props) => {
   }, [props.listings])
 
   return (
-    <tr><td>
+    <tr>
+      <td>
       {listingLink && (
-        <Link to={`/listing/${listingLink.id}`}>{listingLink.title}</Link>
+        <Link to={`/listing/${listingLink.id}`} className="capitalize">• {listingLink.title}</Link>
       )}  
-    </td></tr>
+      </td>
+    </tr>
   )
 }
 

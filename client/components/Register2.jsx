@@ -48,7 +48,7 @@ function Register2(props) {
       <div className="hero-body">
         <div className="container has-text-centered">
           <div className="column is-4 is-offset-4">
-            <h3 className="has-text-black">Register</h3>
+            <h3 className="has-text-black home-font-size">Profile Details</h3>
             <hr className="login-hr" />
             <p className="subtitle has-text-black">
               Please register to proceed.
@@ -106,8 +106,8 @@ function Register2(props) {
                   <div className="control">
                     {/* <input className="input is-large" placeholder="Location" type="text" name="location" onChange={handleChange} value={formData.location} required /> */}
 
-                    <select name="location" onChange={handleChange} required>
-                      <option value="">Choose your location</option>
+                    <select name="location" className="location-dropdown" onChange={handleChange} required>
+                      <option value="" disable="true" hidden>Location</option>
                       {locations.map(location => {
                         return <option key={location} 
                                 value={location}>
