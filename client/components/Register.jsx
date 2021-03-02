@@ -77,7 +77,7 @@ function Register(props) {
       <div className="hero-body">
         <div className="container has-text-centered">
           <div className="column is-4 is-offset-4">
-            <h3 className="has-text-black">Register</h3>
+            <h3 className="has-text-black home-font-size">Register</h3>
             <hr className="login-hr" />
             <p className="subtitle has-text-black">
               Please register to proceed.

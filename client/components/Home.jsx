@@ -44,10 +44,10 @@ function Home(props) {
         <div className="column">
           <div className="card">
             <div className="card-content">
-              <h3 className="is-4 has-text-centered">I'm Looking For...</h3>
+              <h3 className="is-4 has-text-centered home-font-size">I'm Looking For...</h3>
 
               <div className="content">
-                <table className="table-profile">
+                <table className="see-more-margin">
                   <tbody>
                     <tr>
                       <th colSpan="1"></th>
@@ -79,23 +79,13 @@ function Home(props) {
           </div>
         </div>
 
-        {/* <div className="column">
-          <div className="card home-columns">
-            <div className="card-content">
-              <figure className="is-4 has-text-centered add-text">
-
-              </figure>
-            </div>
-          </div>
-        </div> */}
-
         <div className="column">
           <div className="card home-columns">
             <div className="card-content">
-              <h3 className="is-4 has-text-centered">I Can Offer...</h3>
+              <h3 className="is-4 has-text-centered home-font-size">I Can Offer...</h3>
 
               <div className="content">
-                <table className="table-profile">
+                <table className="see-more-margin">
                   <tbody>
                     <tr>
                       <th colSpan="1"></th>

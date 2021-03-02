@@ -52,13 +52,13 @@ const handleSelect = (e) => {
     <div className="container">
       <div className="add-listing-page">
         <div className="add-listing-page add-listing-center add-listing-centering">
-          <h1 className="center-text">Post a Listing</h1>
+          <h1 className="center-text">Add a Listing</h1>
 
           <div className="auto-margin">
           <form className="listingForm">
             <div className="auto-margin2">
               <label className="has-text-weight-bold">Category Tags:</label>
-              <select className="capitalize" onChange={handleSelect} name='tag' defaultValue="placeholder">
+              <select className="capitalize add-listing-dropdown" onChange={handleSelect} name='tag' defaultValue="placeholder">
                 <option disabled={true} value="placeholder"hidden>Select a Category...</option>
                 {tags.map(tag => {
                   return <option value={tag.id} key={tag.id}>{tag.tag_name}</option>

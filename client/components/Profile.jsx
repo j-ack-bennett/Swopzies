@@ -105,8 +105,9 @@ function Profile(props) {
                     return (
                       <tr key={listing.id}>
                         <td>
-                          <ListingLink id={listing.id} /> 
+                          <ListingLink id={listing.id} />
                           <p className="profile-last-updated">Last updated: {moment(listing.time).format('LLL')}</p>
+                          <br />
                         </td>
                       </tr>
                     )
@@ -124,7 +125,7 @@ function Profile(props) {
               <table>
                 <tbody>
                   {props.auth.user.bookmarks && props.auth.user.bookmarks.map(bookmark => {
-                    return <ListingLink key={bookmark.listing_id} id={bookmark.listing_id} />
+                    return <><ListingLink key={bookmark.listing_id} id={bookmark.listing_id} /><br /></>
                   })}
                 </tbody>
               </table>

@@ -50,22 +50,22 @@ function Listing(props) {
                   <p className="listing-p">{listingItem.description}</p>
                   <br />
                   <div>
-                    <p className="listing-details-p">Posted by: {listingItem.username}</p>
-                    <p className="listing-details-p">Location: {listingItem.location}</p>
-                    <p className="listing-details-p capitalize">Category: {listingItem.tag_name}</p>
+                    <p className="listing-details-p"><span className="has-text-weight-bold">Posted by:</span>&nbsp;&nbsp;&nbsp;&nbsp;{listingItem.username}</p>
+                    <p className="listing-details-p"><span className="has-text-weight-bold">Location:</span>&nbsp;&nbsp;&nbsp;&nbsp;{listingItem.location}</p>
+                    <p className="listing-details-p capitalize"><span className="has-text-weight-bold">Category:</span>&nbsp;&nbsp;&nbsp;&nbsp;{listingItem.tag_name}</p>
                   </div>
                   <br />
-                  <p className="last-updated">Last updated: {moment(listingItem.time).format('LLL')}</p>
+                  <p className="last-updated"><span className="has-text-weight-bold">Last updated:</span>&nbsp;&nbsp;&nbsp;&nbsp; {moment(listingItem.time).format('LLL')}</p>
                   <br />
                   
                   <div className="buttons has-addons">
                     {listingItem.user_id === props.auth.user.id ?
-                      <>
-                        <button onClick={() => killListing(listingItem.id)} className="button is-primary">
+                      <div>
+                        <button onClick={() => killListing(listingItem.id)} className="button is-danger" style={{"borderRadius": "4px"}}>
                           Delete Post
                         </button>
-                        <Link to={`/editlisting/${listingItem.id}`} className="button is-primary" >Edit Post</Link>
-                      </> :
+                        <Link to={`/editlisting/${listingItem.id}`}><button className="button is-primary margin-left">Edit Post</button></Link>
+                      </div> :
                       <>
                         <button onClick={handleClick}>{!bookmarked ? 'Bookmark Listing' : 'Remove Bookmark' }</button>
                       </>
