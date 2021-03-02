@@ -41,14 +41,16 @@ const CommThread = (props) => {
   }
 
   const handleSubmit = (e, threadId) => {
+    e.preventDefault()
     const newComm = {
       listing_id: listingId,
       user_id: user_id,
       text: comment,
       thread_id: threadId,
-      time: new Date(),
+      time: new Date()
     }
     postToThread(newComm)
+    window.location.reload()
   }
 
   return (
