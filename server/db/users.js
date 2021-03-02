@@ -21,6 +21,8 @@ function userExists (username, db = connection) {
 function getUserByUsername (username, db = connection) {
   return db('users')
     .where('username', username)
+    // .join('users_listings', 'users_listings.user_id', 'users.id')
+    // .select('*', 'users.id AS id')
     .first()
 }
 
