@@ -4,6 +4,9 @@
   "description": "$how Me The Money",
   "repository": "https://github.com/dev-academy-challenges/show-me-the-money.git",
   "main": "server/index.js",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
     "dev": "run-p dev:client dev:server",
     "dev:client": "npm run webpack -- --watch",
