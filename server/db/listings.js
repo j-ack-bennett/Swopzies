@@ -74,7 +74,7 @@ function getListingsByTagId(tagId, db = connection) {
 
 function addBookmark( ids, db=connection) {
   return db('users_listings')
-    .insert(ids)
+    .insert(ids, 'id')
     .then(ids => ids[0])
 }
 
