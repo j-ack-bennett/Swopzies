@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react"
 import { connect } from "react-redux"
-import { updateListing } from "../actions/listings"
+import { fetchListings, updateListing } from "../actions/listings"
 
 function EditListing(props) {
   const [oldListing, setOldListing] = useState({
     type: "",
     title: "",
     description: "",
+    tag_id: 0
   })
+
   const [tag, setTag] = useState(0)
 
   const id = props.match.params.id
@@ -17,6 +19,13 @@ function EditListing(props) {
   useEffect(() => {
     setOldListing(listings.find((listing) => listing.id == id))
   }, [listings])
+
+  useEffect(() => {
+    if(oldListing){
+      setTag(oldListing.tag_id)
+    }
+  }, [oldListing])
+
 
   const handleSelect = (e) => {
     setTag(e.target.value)
@@ -33,6 +42,9 @@ function EditListing(props) {
     })
   }
 
+  // console.log(tag)
+  console.log(id)
+
   const handleSubmit = (e) => {
     e.preventDefault()
     const tempListing = {
@@ -42,15 +54,13 @@ function EditListing(props) {
       time: new Date(),
     }
 
-    const data = {
-      id: oldListing.id,
-      listing: tempListing,
-      tagId: tag,
-    }
-
+    // const data = {
+    //   id: oldListing.id,
+    //   listing: tempListing,
+    //   tagId: tag,
+    // }
     props.dispatch(updateListing(oldListing.id, tempListing, tag))
-
-    props.history.push("/")
+    props.history.push(`/listing/${id}`)
   }
 
   return (

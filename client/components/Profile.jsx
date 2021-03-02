@@ -6,13 +6,16 @@ function Profile(props) {
   const profile = props.auth.user;
   const listings = props.listings;
 
-  return (
+  return (    
+  <div className="container">
+  <div className="add-listing-page">
+  <div className="add-listing-page add-listing-center add-listing-centering">
     <div className="card">
       <div className="card-content">
         <h3 className="is-4">Profile</h3>
 
         <div className="content">
-          <table className="table-profile">
+          <table>
             <tbody>
               <tr>
                 <td>Username</td>
@@ -44,7 +47,11 @@ function Profile(props) {
               </tr>
             </tbody>
           </table>
-          <button>Update (funcitonality to be worked on)</button>
+          <div>
+          <Link to="/update">
+          <button >Update Profile</button>
+          </Link>
+      </div>
         </div>
         <br />
       </div>
@@ -52,7 +59,7 @@ function Profile(props) {
         <div className="card-content">
           <h3 className="is-4">My listings</h3>
           <div className="content">
-            <table className="table-profile">
+            <table>
               <tbody>
                 {listings.map(listing => {
                   if (listing.user_id === profile.id) {
@@ -71,13 +78,16 @@ function Profile(props) {
         </div>
       </div>
     </div>
-  );
+    </div>
+    </div>
+    </div>
+  )
 }
 
 const mapStateToProps = (globalState) => {
   return {
     auth: globalState.auth,
     listings: globalState.listings,
-  };
-};
+  }
+}
 export default connect(mapStateToProps)(Profile);

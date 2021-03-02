@@ -17,7 +17,7 @@ function getListings(db = connection) {
     .join("users", "users.id", "listings.user_id")
     .join("listings_tags", "listing_id", "listings.id")
     .join("tags", "tags.id", "tag_id")
-    .select("*", "listings.id AS id", "tags.id AS tag_id")
+    .select("*", "listings.id AS id")
 }
 
 function addNewListing(newListing, db = connection) {

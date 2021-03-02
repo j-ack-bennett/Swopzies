@@ -1,7 +1,8 @@
 @charset "utf-8";
 
 // Import a Google Font
-@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+// @import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round');
 
 // Import custom variables and Bulma overides
 @import "./variables.scss";
@@ -16,6 +17,13 @@
 // @import "bulma/sass/components/navbar.sass";
 // @import "bulma/sass/layout/hero.sass";
 // @import "bulma/sass/layout/section.sass";
+
+body {
+    position: relative;
+    padding-bottom: 80px;
+    min-height: 100vh;
+    background-color: rgb(245, 245, 245);
+}
 
 .listing {
 
@@ -37,24 +45,17 @@
 
 .listingForm {
     display: flex;
-    flex-direction: column;
-}
-
-.title {
-    font-family: "Mortal Coil", sans-serif;
-    font-size: 100px;
-    font-weight: 400;
-    margin-left: 20px;
+    // flex-direction: column;
 }
 
 h1 {
-    font-size: 60px;
+    font-size: 80px;
+    font-weight: bold;
 }
 
 h2 {
     font-size: 32px;
     padding-bottom: 20px;
-    font-weight: bold;
 }
 
 h3 {
@@ -65,9 +66,14 @@ p {
     font-size: 22px;
 }
 
-.logo {
-    max-width: 150px;
-    max-height: 150px;
+.footer-logo {
+    width: auto;
+    height: 69px;
+}
+
+.logo-wrap {
+    margin-top: -12px;
+    margin-bottom: -13px;
 }
 
 .hero.is-fullheight {
@@ -77,6 +83,10 @@ p {
 .hero.is-info {
     background-color: white;
     color: grey;
+}
+
+.hero .navbar {
+  background-color: #ff6614;
 }
 
 .col {
@@ -98,12 +108,12 @@ p {
 
 .hero.is-fullheight .hero-body, .hero.is-fullheight-with-navbar .hero-body, .hero.is-halfheight .hero-body {
     align-items: center;
-    display: block;
+    // display: block;
 }
 
 .landing-con {
-    border: 2px solid rgb(187, 187, 187);
-    border-radius: 25px;
+    // border: 2px solid rgb(187, 187, 187);
+    // border-radius: 25px;
     padding: 30px 0px;
     margin-bottom: 40px;
 }
@@ -130,4 +140,221 @@ p {
 
 .section {
     padding: 0;
+}
+
+.nav-title-container {
+  width: 100%;
+  display: inline-block;
+  margin: auto;
+  padding: 0;
+}
+
+.nav-title {
+  font-family: "Varela Round", sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: white;
+  background: transparent;
+  border-radius: 8px;
+  height: 10px;
+  width: 260px;
+  box-shadow: 0 3px 0 0 white;
+  padding-bottom: 3px;
+}
+
+.nav-title-align {
+  margin-top: -12px;
+}
+
+.button.is-primary {
+  background-color: #3273dc;
+}
+
+.add-text {
+  font-size: 44px;
+}
+
+.table-profile {
+    -webkit-mask-image: linear-gradient(to bottom, black 10%, transparent 90%);
+    mask-image: linear-gradient(to bottom, black 10%, transparent 90%);
+}
+
+.footer {    
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    padding: 1.4rem 0 1rem;
+    line-height: 25px;
+    text-align: center;
+    background-color: #e2e2e2;
+}
+
+.vertical-center {
+    flex-direction: row;
+    min-height: calc(100vh - 136px);
+}
+
+.add-listing-center {
+  min-height: calc(84vh - 110px);
+}
+
+.contact-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.add-listing-page {
+  align-items: center;
+  display: grid;
+}
+
+.logo-button {
+    padding: 23px 9px;
+}
+
+.home-panels {
+    // min-height: calc(100vh - 145px);
+    align-items: center;
+    margin-top: 25px;
+}
+
+.card {
+    box-shadow: 0 1.5em 1em 0.500em rgba(10,10,10,.1), 0 0 0 4px rgba(10,10,10,0.02);
+}
+
+.content {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-box {
+  // margin-left: 41vw;
+  // margin-top: 4vh;
+  // margin-bottom: 9vh;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  height: 185px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: -34px;
+}
+
+.btn:link,
+.btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 20px;
+  display: inline-block;
+  border-radius: 26px;
+  transition: all .2s;
+  position: absolute;
+  font-size: 50px;
+}
+
+.btn:hover {
+  color: white;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-blue {
+  background-color: #3273dc;
+  color: white;
+}
+
+.btn::after {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all .4s;
+}
+
+.btn-white::after {
+  background-color: #fff;
+}
+
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+
+.btn-animated {
+  animation: moveInBottom 5s ease-out;
+  animation-fill-mode: backwards;
+}
+
+@keyframes moveInBottom {
+  0% {
+      opacity: 0;
+      transform: translateY(30px);
+  }
+
+  100% {
+      opacity: 1;
+      transform: translateY(0px);
+  }
+}
+
+.content table td, .content table th {
+  padding: .5em 0;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.category {
+  margin: 10px;
+}
+
+.center-text {
+  text-align: center;
+}
+
+label {
+  margin-right: 10px;
+}
+
+.textarea {
+  display: block;
+  min-width: 92%;
+  padding: calc(.75em - 1px);
+  resize: vertical;
+}
+
+.delete-edit-buttons {
+    margin-bottom: 20px;
+}
+
+.home-margin {
+    margin: 22px 20px 0px 20px;
+}
+
+.listing-p {
+    font-size: 22px;
+}
+
+.listing-details-p {
+    margin: 10px 0px;
+    font-size: 18px;
+}
+
+.last-updated {
+    font-size: 18px;
 }

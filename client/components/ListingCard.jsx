@@ -13,15 +13,15 @@ function ListingCard(props) {
  
 
   return (
-    <div className="container">
+    <div>
       {listing.type == "looking" ? (
         <div>
           <Link key={listing.id}
           to={`/listing/${listing.id}`}>
-          <p><strong>{listing.title}</strong></p>
+          <p className="capitalize"><strong>{listing.title}</strong></p>
           </ Link>
           <p>{listing.username}, {listing.location}</p>
-          <p>tagged: {listing.tag_name}</p>
+          <p className="capitalize">Category: {listing.tag_name}</p>
           <div>
             <br />
           </div>
@@ -30,10 +30,10 @@ function ListingCard(props) {
         <div>
           <Link
           to={`/listing/${listing.id}`}>
-          <p><strong>{listing.title}</strong></p> 
+          <p className="capitalize"><strong>{listing.title}</strong></p> 
           </ Link>      
-          <p>{listing.username}, {listing.location}</p>
-          <p>tagged: {listing.tag_name}</p>
+          <p className="capitalize">{listing.username}, {listing.location}</p>
+          <p className="capitalize">Category: {listing.tag_name}</p>
           <div>
           <br></br>
           </div>
