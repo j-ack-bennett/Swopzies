@@ -10,10 +10,6 @@ function ListingForm(props) {
 
   const tags = props.tags
 
-  useEffect(() => {
-    props.dispatch(fetchTags())
-  }, [])
-
   const handleChange = (e) => {
     setForm({
       ...form,

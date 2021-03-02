@@ -6,17 +6,11 @@ import moment from 'moment'
 import ListingLink from './ListingLink'
 
 function Profile(props) {
-  // const profile = props.auth.user;
+
   const listings = props.listings;
-  // const userBookmarks = props.auth.user.bookmarks || []
+
   const [bookmarkedListings, setBookmarkedListings ] = useState([])
-  // const markedListings = listings.filter(listing => {
-  //   return userBookmarks.map(bookmark => {
-  //     if (listing.id === bookmark.listing_id) {
-  //       return listing
-  //     }
-  //   })
-  // })
+ 
   const fetchMarkedListings = () => {
     if(props.auth.user.bookmarks) {
       setBookmarkedListings(props.auth.user.bookmarks.map(bookmark => {
@@ -25,16 +19,9 @@ function Profile(props) {
     }
   }
 
-
-  // const markedListings = userBookmarks.map(bookmark => {
-  //    return listings.find(listing => listing.id === bookmark.listing_id)
-  // })
-
   useEffect(() => {
     fetchMarkedListings()
   },[props.auth.user])
-
-  // console.log('rob', markedListings)
 
   return (    
   <div className="container margin-top margin-bottom">
