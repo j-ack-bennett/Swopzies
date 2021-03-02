@@ -11,7 +11,7 @@ export function register (creds) {
   return authRegister(creds, { baseUrl })
     .catch(err => {
       if(err.message == 'Bad Request') {
-        throw 'that username already exists, please choose antoher one'
+        throw 'that username already exists, please choose another one'
       }
       throw errorMessages[err.response.body.errorType]
     })

@@ -7,6 +7,11 @@ const initialState = {
 
 export default function auth (state = initialState, action) {
   switch (action.type) {
+    case 'ERROR':
+      return {
+        ...state,
+        errorMessage: action.message
+      }
     case 'LOGIN_REQUEST':
       return {
         ...state,
@@ -33,7 +38,7 @@ export default function auth (state = initialState, action) {
         ...state,
         isFetching: false,
         isAuthenticated: false,
-        user: null
+        user: { booksmarks: [] }
       }
     case 'REGISTER_REQUEST':
       return {
