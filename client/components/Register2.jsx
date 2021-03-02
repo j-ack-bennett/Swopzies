@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
-import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from "react"
+import { connect } from "react-redux"
+import { Link } from "react-router-dom"
 
-import { loginError, registerUserRequest } from '../actions/auth'
+import { updateProfile } from "../actions/auth"
 
 function Register2(props) {
   const { auth } = props
@@ -12,21 +12,12 @@ function Register2(props) {
   const userId = auth.user.id
 
   const [formData, setFormData] = useState({
-    username: '',
-    first_name: '',
-    last_name: '',
-    password: '',
-    confirm_password: '',
-    email: '',
-    bio: '',
-    location: '',
-    image: '',
-    phone: ''
+    first_name: "",
+    last_name: "",
+    bio: "",
+    location: "",
+    phone: "",
   })
-
-  // useEffect(() => {
-  //   props.dispatch(loginError(''))
-  // }, [])
 
   const handleChange = (e) => {
     setFormData((currentFormData) => {
@@ -40,10 +31,16 @@ function Register2(props) {
   const handleSubmit = (e) => {
     e.preventDefault()
     e.target.reset()
-    let { username, password, confirm_password, first_name, last_name, bio, email, location, phone } = formData
-    if (confirm_password != password) return props.dispatch(loginError("Passwords don't match"))
-    const confirmSuccess = () => { props.history.push('/') }
-    props.dispatch(registerUserRequest({ username, password, first_name, last_name, bio, email, location, phone }, () => confirmSuccess()))
+    let { first_name, last_name, bio, location, phone } = formData
+    const confirmSuccess = () => {
+      props.history.push("/")
+    }
+    props.dispatch(
+      updateProfile(
+        { username: auth.user.username, first_name, last_name, bio, location, phone},
+        confirmSuccess
+      )
+    )
   }
 
   return (
@@ -53,25 +50,55 @@ function Register2(props) {
           <div className="column is-4 is-offset-4">
             <h3 className="has-text-black">Register</h3>
             <hr className="login-hr" />
-            <p className="subtitle has-text-black">Please register to proceed.</p>
+            <p className="subtitle has-text-black">
+              Please register to proceed.
+            </p>
             <div className="box">
               <form onSubmit={handleSubmit}>
-                {auth.errorMessage && <span className="has-text-danger is-large">{auth.errorMessage}</span>}
+                {auth.errorMessage && (
+                  <span className="has-text-danger is-large">
+                    {auth.errorMessage}
+                  </span>
+                )}
                 <div className="field">
                   <div className="control">
-                    <input className="input is-large" placeholder="First Name" type="text" name="first_name" onChange={handleChange} value={formData.first_name} required />
+                    <input
+                      className="input is-large"
+                      placeholder="First Name"
+                      type="text"
+                      name="first_name"
+                      onChange={handleChange}
+                      value={formData.first_name}
+                      required
+                    />
                   </div>
                 </div>
 
                 <div className="field">
                   <div className="control">
-                    <input className="input is-large" placeholder="Last Name" type="text" name="last_name" onChange={handleChange} value={formData.last_name} required />
+                    <input
+                      className="input is-large"
+                      placeholder="Last Name"
+                      type="text"
+                      name="last_name"
+                      onChange={handleChange}
+                      value={formData.last_name}
+                      required
+                    />
                   </div>
                 </div>
 
                 <div className="field">
                   <div className="control">
-                    <input className="input is-large" placeholder="Phone Number" type="text" name="phone" onChange={handleChange} value={formData.phone} required />
+                    <input
+                      className="input is-large"
+                      placeholder="Phone Number"
+                      type="text"
+                      name="phone"
+                      onChange={handleChange}
+                      value={formData.phone}
+                      required
+                    />
                   </div>
                 </div>
 
@@ -93,11 +120,21 @@ function Register2(props) {
 
                 <div className="field">
                   <div className="control">
-                    <textarea className="textarea is-large" placeholder="Bio" type="text" name="bio" onChange={handleChange} value={formData.bio} required />
+                    <textarea
+                      className="textarea is-large"
+                      placeholder="Bio"
+                      type="text"
+                      name="bio"
+                      onChange={handleChange}
+                      value={formData.bio}
+                      required
+                    />
                   </div>
                 </div>
 
-                <button className="button is-block is-info is-large is-fullwidth">Register <i className="fa fa-sign-in" aria-hidden="true"></i></button>
+                <button className="button is-block is-info is-large is-fullwidth">
+                  Register<i className="fa fa-sign-in" aria-hidden="true"></i>
+                </button>
               </form>
             </div>
           </div>

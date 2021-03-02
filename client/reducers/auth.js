@@ -1,7 +1,7 @@
 const initialState = {
   isFetching: false,
   isAuthenticated: false,
-  user: {},
+  user: { booksmarks: [] },
   errorMessage: ''
 }
 
@@ -49,6 +49,10 @@ export default function auth (state = initialState, action) {
         isAuthenticated: false,
         errorMessage: action.message
       }
+    case 'SET_BOOKMARKS':
+      const newState = {...state}
+      newState.user.bookmarks = action.bookmarks
+      return newState
     default:
       return state
   }
