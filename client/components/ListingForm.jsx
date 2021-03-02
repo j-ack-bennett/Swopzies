@@ -77,19 +77,19 @@ const handleSelect = (e) => {
           </form>
           </div>
 
-          <form className="listingForm">
-            <label className="listing__title has-text-weight-bold ">Title:</label>
-            <input className="input" type="text" name="title" onChange={handleChange} 
-            placeholder="Listing title" />
-            </form>
+            <form>
+              <label className="listing__title has-text-weight-bold add-listing-margin">Title:</label>
+              <input className="input" type="text" name="title" onChange={handleChange} 
+              placeholder="Listing title" />
+              </form>
 
-          <form className="listingForm">   
-            <label className="listing__description has-text-weight-bold ">Description:</label>
-              <textarea className="textarea"
-              type="text" name="description" 
-              onChange={handleChange} 
-              placeholder="Add any details of what you're seeking/offering."  />
-          </form>
+            <form>   
+              <label className="listing__description has-text-weight-bold add-listing-margin">Description:</label>
+                <textarea className="textarea"
+                type="text" name="description" 
+                onChange={handleChange} 
+                placeholder="Add any details of what you're seeking/offering."  />
+            </form>
 
           <div className="buttons has-addons">
             <button className="button is-primary is-fullwidth" 

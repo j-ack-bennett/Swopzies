@@ -122,7 +122,7 @@ function UpdateProfileForm(props) {
                   Location:
                 </div>
                 <select
-                  className="margin-bottom location-dropdown"
+                  className="margin-bottom location-dropdown dropdown-bg-color"
                   name="location"
                   onChange={handleChange}
                   defaultValue={profile.location}
