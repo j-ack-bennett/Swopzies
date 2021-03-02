@@ -68,7 +68,7 @@ function Profile(props) {
                   <td className="table-width" >Email</td>
                   <td className="table-width" >{props.auth.user.email}</td>
                 </tr>
-                <tr>
+                <tr>  
                   <td className="table-width" >Bio</td>
                   <td className="table-width" >{props.auth.user.bio}</td>
                 </tr>
@@ -92,22 +92,27 @@ function Profile(props) {
           </div>
         </div>
         <br />
-      </div>
+      {/* </div> 
+      </div> */}
+      
       <div className="card">
         <div className="card-content">
           <h3 className="is-4">My listings</h3>
-          <div className="content">
+          <hr />
             <table>
               <tbody>
                 {listings.map(listing => {
                   if (listing.user_id === props.auth.user.id) {
                     return (
-                     
-                      <ListingLink id={listing.id} />
+                      <tr key={listing.id}>
+                        <td>
+                          <ListingLink id={listing.id} /> 
+                          <p className="profile-last-updated">Last updated: {moment(listing.time).format('LLL')}</p>
+                        </td>
+                      </tr>
                     )
                   }
                 })}
-
               </tbody>
             </table>
           </div>
@@ -125,36 +130,13 @@ function Profile(props) {
                 </tbody>
               </table>
             </div>
-
           </div>
-          <div className="card">
-            <div className="card-content">
-              <h3 className="is-4">My listings</h3>
-              <hr />
-              <div className="capitalize">
-                <table>
-                  <tbody>
-                    {listings.map(listing => {
-                      if (listing.user_id === profile.id) {
-                        return (
-                          <tr key={listing.id}>
-                            <td>
-                              <Link to={`/listing/${listing.id}`}>{listing.title}</Link>
-                              <p className="profile-last-updated">Last updated: {moment(listing.time).format('LLL')}</p>
-                            </td>
-                          </tr>
-                        )
-                      }
-                    })}
-                  </tbody>
-                </table>
-              </div>
-            </div>
+          
           </div>
         </div>
         </div>
       </div>
-    </div>
+    {/* </div> */}
   </div>
   )
 }

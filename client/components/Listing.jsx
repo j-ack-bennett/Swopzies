@@ -11,7 +11,6 @@ import Comms from "./Comms"
 function Listing(props) {
   const listingId = props.match.params.id
   const user_id = props.auth.user.id
-  console.log(props.auth.user.bookmarks)
   const bookmarks = props.auth.user.bookmarks || []
 
   const thisBookmark = bookmarks.find(bookmark => {
@@ -46,6 +45,7 @@ function Listing(props) {
             if (listingItem.id == listingId) {
               return (
                 <div key={listingItem.id}>
+                  
                   <h2 className="title post-title capitalize">{listingItem.title}</h2>
                   <p className="listing-p">{listingItem.description}</p>
                   <br />
@@ -57,9 +57,9 @@ function Listing(props) {
                   <br />
                   <p className="last-updated">Last updated: {moment(listingItem.time).format('LLL')}</p>
                   <br />
-                  {listingItem.user_id == props.auth.user.id &&
+                  
                   <div className="buttons has-addons">
-                    {listingItem.user_id == props.auth.user.id ?
+                    {listingItem.user_id === props.auth.user.id ?
                       <>
                         <button onClick={() => killListing(listingItem.id)} className="button is-primary">
                           Delete Post
@@ -69,10 +69,11 @@ function Listing(props) {
                       <>
                         <button onClick={handleClick}>{!bookmarked ? 'Bookmark Listing' : 'Remove Bookmark' }</button>
                       </>
-                      
                     }
+                    
                   </div>
-                  }
+                  
+                    
                   <Comms
                     listingId={listingItem.id}
                     listingUserId={listingItem.user_id}
