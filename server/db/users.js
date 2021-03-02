@@ -12,7 +12,7 @@ function createUser (user, db = connection) {
 }
 
 function userExists (username, db = connection) {
-  console.log('users db test')
+  // console.log('users db test')
   return db('users')
     .where('username', username)
     .then(users => users.length > 0)

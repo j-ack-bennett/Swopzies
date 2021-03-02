@@ -9,7 +9,7 @@ function Contact() {
         <div className="columns is-8 is-variable ">
           <div className="column is-two-thirds contact-center">
             <h1 className="title is-1">Contact Us</h1>
-            <p className="is-size-4">Feel free to reach out to us if you have any queries. We will typically get back to you within 1-3 business days.</p>
+            <p className="is-size-4">If you'd like to give us feedback or lodge a complaint, please complete our contact form. We aim to respond to all queries within 5 working days.</p>
           </div>
 
           <div className="column is-one-third has-text-left">

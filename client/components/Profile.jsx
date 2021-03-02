@@ -35,7 +35,10 @@ function Profile(props) {
 
   // console.log('rob', markedListings)
 
-  return (
+  return (    
+  <div className="container">
+  <div className="add-listing-page">
+  <div className="add-listing-page add-listing-center add-listing-centering">
     <div className="card">
       <div className="card-content">
         <h3 className="is-4">Profile</h3>
@@ -135,6 +138,10 @@ function Profile(props) {
           </div>
         </div>
       </div>
+    </div>
+    </div>
+    </div>
+    
   )
 }
 
@@ -142,6 +149,6 @@ const mapStateToProps = (globalState) => {
   return {
         auth: globalState.auth,
     listings: globalState.listings,
-  };
-};
+  }
+}
 export default connect(mapStateToProps)(Profile);

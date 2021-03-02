@@ -28,18 +28,18 @@ exports.seed = function (knex) {
             last_name: 'Ritchie',
             email: 'lionel@ritchie.co.nz',
             bio: 'Hello! It\'s me your looking for',
-            location: 'Aukland',
+            location: 'Auckland',
             image: '',
             phone: 5556678
           },
           {
             id: 3,
-            username: 'gertrude',
+            username: 'gertrude1933',
             password: 'imold',
             first_name: 'Gertrude',
             last_name: 'McGertrudeface',
             email: 'gertrude@yahoo.co.nz',
-            bio: 'I\'m 80 and I\'m going to die soon',
+            bio: 'I\'m 88 and I\'m going to die soon',
             location: 'Wellington',
             image: '',
             phone: 5556678
