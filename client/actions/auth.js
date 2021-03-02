@@ -7,7 +7,6 @@ import {
   removeUser,
   saveUserToken,
 } from "../utils/auth"
-import { login, register } from "../apis/auth"
 import { updateUserProfile } from "../apis/users"
 
 export function requestLogin() {
@@ -20,7 +19,7 @@ export function requestLogin() {
 
 export function receiveLogin(user) {
   return {
-    type: "LOGIN_SUCCESS",jose the duck
+    type: "LOGIN_SUCCESS",
     isFetching: false,
     isAuthenticated: true,
     user,
@@ -92,6 +91,7 @@ export function registerUserRequest(creds, confirmSuccess) {
 export function checkAuth(confirmSuccess) {
   return (dispatch) => {
     if (isAuthenticated()) {
+      const userInfo = getUserTokenInfo()
       dispatch(receiveLogin(getUserTokenInfo()))
       dispatch(fetchBookmarksForUser(userInfo.id))
       confirmSuccess()
