@@ -1,8 +1,24 @@
 const express = require("express");
 const db = require("../db/listings");
+var aws = require('aws-sdk');
 const router = express.Router();
+var s3 = new aws.S3({ /* ... */ });
+var multerS3 = require('multer-s3');
+
 const multer = require('multer');
-const upload = multer({ dest: 'tmp/' });
+let upload = multer({
+  storage: multerS3({
+    s3: s3,
+    bucket: 'swopzies-project-dev',
+    metadata: function (req, file, cb) {
+      cb(null, {fieldName: file.fieldname});
+    },
+    key: function (req, file, cb) {
+      cb(null, Date.now().toString())
+    }
+  })
+});
+
 const fs = require("fs");
 const {
   addNewListing,
@@ -41,7 +57,7 @@ router.delete('/bookmark', (req, res) => {
 
 })
 
-router.post("/", upload.single('img'), (req, res) => {
+router.post("/", upload.single('img', 1), (req, res) => {
   // console.log(req.body);
   // let newListing = {user_id: null, type: req.body.type, title: req.body.title, description: req.body.description, image: "", time: null}
   const newListing = {
