@@ -81,14 +81,20 @@ function Listings(props) {
   }
 
   return (
-    <>
+    <div className="container margin-top margin-bottom">
+    <div className="add-listing-page">
+    <div className="add-listing-page add-listing-center add-listing-centering">
+    <div className="auto-margin">
+    <div className="auto-margin2">
       {type == "looking" ? (
-        <h1 className="title"> People are seeking!</h1>
+        <h1 className="center-text margin-bottom"> People are Seeking!</h1>
       ) : (
-        <h1 className="title"> People are offering!</h1>
+        <h1 className="center-text margin-bottom"> People are Offering!</h1>
       )}
-      <div>
-        <select name="tag" onChange={handleChange} value={filter}>
+      <div className="inline-flex">
+      <div className="listingForm margin-right-listings">
+      <div className="auto-margin2">
+        <select className="capitalize add-listing-dropdown is-size-4" name="tag" onChange={handleChange} value={filter}>
           <option value="all" disable="true" hidden>
             Choose category
           </option>
@@ -100,25 +106,47 @@ function Listings(props) {
             )
           })}
         </select>
-        <button onClick={() => setFilter('all')}>reset</button>
+        <div className="inline margin-reset">
+          <button className="button is-primary" onClick={() => setFilter('all')}>Reset</button>
+        </div>
       </div>
-      <div>
-        <select className='locationSelect' name="location" onChange={handleLocationFilterChange} value={locationFilter}>
-          <option value={"all"} disable="true" hidden>Choose location</option>
+      </div>
+      </div>
+
+
+      <div className="inline-flex">
+      <div className="listingForm">
+      <div className="auto-margin2">
+        <select className="capitalize add-listing-dropdown is-size-4" name="location" onChange={handleLocationFilterChange} value={locationFilter}>
+          <option className="margin-left" value={"all"} disable="true" hidden>
+            Choose location
+          </option>
           {locations.map((l) => {
             return <option key={l} value={l}>{l}</option>
           })}
         </select>
-        <button onClick={() => setLocationFilter('all')}>reset</button>
+        <div className="inline margin-reset">
+          <button className="button is-primary margin-bottom" onClick={() => setLocationFilter('all')}>Reset</button>
+        </div>
       </div>
-      <div className="container">
-        {listings.map((listing) => {
-          if (listing.type == type) {
-            return <ListingCard key={listing.id} listing={listing} />
-          }
-        })}
       </div>
-    </>
+      </div>
+      </div>
+      </div>
+
+
+          <div className="card">
+            <div className="card-content">
+            {listings.map((listing) => {
+              if (listing.type == type) {
+                return <ListingCard key={listing.id} listing={listing} />
+              }
+            })}
+            </div>
+          </div>
+    </div>
+    </div>
+    </div>
   )
 }
 
