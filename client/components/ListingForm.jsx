@@ -24,6 +24,13 @@ function ListingForm(props) {
   const handleSubmit = (e) => {
     e.preventDefault()
 
+    // console.log(tag)
+    const newestListing = {
+      ...form,
+      user_id: props.auth.user.id,
+      time: new Date()
+    }
+
     if (tag == 0) {
       alert("Please select a category.")
     } else if (!form.type) {
@@ -49,16 +56,16 @@ function ListingForm(props) {
   }
 
   return (
-    <div className="container">
+    <div className="container add-listing-margin-top">
       <div className="add-listing-page">
         <div className="add-listing-page add-listing-center add-listing-centering">
           <h1 className="center-text">Add a Listing</h1>
           <div className="auto-margin">
             <form className="listingForm">
               <div className="auto-margin2">
-                <label className="has-text-weight-bold">Category Tags:</label>
+                <label className="has-text-weight-bold is-size-4">Category Tags:</label>
                 <select
-                  className="capitalize add-listing-dropdown"
+                  className="capitalize add-listing-dropdown is-size-4 margin-bottom"
                   onChange={handleSelect}
                   name="tag"
                   defaultValue="placeholder"
@@ -87,7 +94,7 @@ function ListingForm(props) {
                 name="type"
                 value="looking"
               />
-              <label className="has-text-weight-bold">
+              <label className="has-text-weight-bold is-size-4">
                 I'm looking for something...
               </label>
 
@@ -98,14 +105,14 @@ function ListingForm(props) {
                 name="type"
                 value="offer"
               />
-              <label className="has-text-weight-bold">
+              <label className="has-text-weight-bold is-size-4">
                 I've got something to offer...
               </label>
             </form>
           </div>
 
-          <form className="listingForm">
-            <label className="listing__title has-text-weight-bold ">
+          <form>
+            <label className="listing__title has-text-weight-bold add-listing-margin is-size-4">
               Title:
             </label>
             <input
@@ -117,8 +124,8 @@ function ListingForm(props) {
             />
           </form>
 
-          <form className="listingForm">
-            <label className="listing__description has-text-weight-bold ">
+          <form>
+            <label className="listing__description has-text-weight-bold add-listing-margin is-size-4">
               Description:
             </label>
             <textarea
@@ -131,7 +138,7 @@ function ListingForm(props) {
           </form>
           <div className="buttons has-addons">
             <button
-              className="button is-primary is-fullwidth"
+              className="button is-primary is-fullwidth is-size-5"
               onClick={(e) => handleSubmit(e)}
             >
               Add

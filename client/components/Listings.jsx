@@ -13,27 +13,27 @@ function Listings(props) {
   const [listings, setListings] = useState([{}])
 
   //pagenation
-  const [ currentPage, setCurrentPage ] = useState(0)
+  const [currentPage, setCurrentPage] = useState(0)
 
-  
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
+
   useEffect(() => {
     filterListings()
   }, [filter, locationFilter])
-  
+
   useEffect(() => {
     setListings(allListings)
   }, [allListings])
-  
+
   useEffect(() => {
     setLocations(findListingLocations())
   }, [listings])
-  
+
 
 
   // pagenation
@@ -65,20 +65,20 @@ function Listings(props) {
   }
 
   const filterListings = () => {
-    if (filter === "all" ) {
-      if(locationFilter == 'all'){
+    if (filter === "all") {
+      if (locationFilter == 'all') {
         setListings(props.listings)
       } else {
         setListings(
           allListings.filter(listing => {
-            if(listing.location == locationFilter){
+            if (listing.location == locationFilter) {
               return listing
             }
           })
         )
       }
     } else {
-      if(locationFilter == 'all'){
+      if (locationFilter == 'all') {
         setListings(
           allListings.filter((listing) => {
             if (listing.tag_name === filter) {
@@ -89,7 +89,7 @@ function Listings(props) {
       } else {
         setListings(
           allListings.filter(listing => {
-            if (listing.tag_name == filter && listing.location == locationFilter){
+            if (listing.tag_name == filter && listing.location == locationFilter) {
               return listing
             }
           })
@@ -114,64 +114,90 @@ function Listings(props) {
   }
 
   return (
-    <>
-      {type == "looking" ? (
-        <h1 className="title"> People are seeking!</h1>
-      ) : (
-        <h1 className="title"> People are offering!</h1>
-      )}
-      <div>
-        <select name="tag" onChange={handleChange} value={filter}>
-          <option value="all" disable="true" hidden>
-            Choose category
-          </option>
-          {tags.map((tag) => {
-            return (
-              <option value={tag.tag_name} key={tag.id}>
-                {tag.tag_name}
-              </option>
-            )
-          })}
-        </select>
-        <button onClick={() => setFilter('all')}>reset</button>
+    <div className="container margin-top margin-bottom">
+      <div className="add-listing-page">
+        <div className="add-listing-page add-listing-center add-listing-centering">
+          <div className="auto-margin">
+            <div className="auto-margin2">
+              {type == "looking" ? (
+                <h1 className="center-text margin-bottom"> People are Seeking!</h1>
+              ) : (
+                  <h1 className="center-text margin-bottom"> People are Offering!</h1>
+                )}
+              <div className="inline-flex">
+                <div className="listingForm margin-right-listings">
+                  <div className="auto-margin2">
+                    <select className="capitalize add-listing-dropdown is-size-4" name="tag" onChange={handleChange} value={filter}>
+                      <option value="all" disable="true" hidden>
+                        Choose category
+                      </option>
+                      {tags.map((tag) => {
+                        return (
+                          <option value={tag.tag_name} key={tag.id}>
+                            {tag.tag_name}
+                          </option>
+                        )
+                      })}
+                    </select>
+                    <div className="inline margin-reset">
+                      <button className="button is-primary" onClick={() => setFilter('all')}>Reset</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div className="inline-flex">
+                <div className="listingForm">
+                  <div className="auto-margin2">
+                    <select className="capitalize add-listing-dropdown is-size-4" name="location" onChange={handleLocationFilterChange} value={locationFilter}>
+                      <option className="margin-left" value={"all"} disable="true" hidden>
+                        Choose location
+                      </option>
+                      {locations.map((l) => {
+                        return <option key={l} value={l}>{l}</option>
+                      })}
+                    </select>
+                    <div className="inline margin-reset">
+                      <button className="button is-primary margin-bottom" onClick={() => setLocationFilter('all')}>Reset</button>
+                    </div>
+                  </div>
+                  </div>
+                  </div> 
+                  <div className="container">
+                    {console.log(currentPageLisings)}
+                    {currentPageLisings.map((listing) => {
+                      if (listing.type == type) {
+                        return <ListingCard key={listing.id} listing={listing} />
+                      }
+                    })}
+                  </div>
+                  <div>
+                    <ReactPaginate
+                      previousLabel={"← Previous"}
+                      nextLabel={"Next →"}
+                      pageCount={pageCount}
+                      onPageChange={handlePageClick}
+                      pageRangeDisplayed={5}
+                      containerClassName={"pagination"}
+                      previousLinkClassName={"pagination__link"}
+                      nextLinkClassName={"pagination__link"}
+                      disabledClassName={"pagination__link--disabled"}
+                      activeClassName={"pagination__link--active"}
+                    />
+                  </div>
+               
+            </div>  
+          </div>
+        </div>
       </div>
-      <div>
-        <select className='locationSelect' name="location" onChange={handleLocationFilterChange} value={locationFilter}>
-          <option value={"all"} disable="true" hidden>Choose location</option>
-          {locations.map((l) => {
-            return <option key={l} value={l}>{l}</option>
-          })}
-        </select>
-        <button onClick={() => setLocationFilter('all')}>reset</button>
-      </div>
-      <div className="container">
-        {console.log(currentPageLisings)}
-        {currentPageLisings.map((listing) => {
-          if (listing.type == type) {
-            return <ListingCard key={listing.id} listing={listing} />
-          }
-        })}
-      </div>
-      {pageCount}
-      <ReactPaginate
-        previousLabel={"← Previous"}
-        nextLabel={"Next →"}
-        pageCount={pageCount}
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={5}
-        containerClassName={"pagination"}
-        previousLinkClassName={"pagination__link"}
-        nextLinkClassName={"pagination__link"}
-        disabledClassName={"pagination__link--disabled"}
-        activeClassName={"pagination__link--active"}
-      />
-    </>
+    </div>
   )
 }
 
 const mapStateToProps = (globalState) => {
   return {
-    listings: globalState.listings,
+                  listings: globalState.listings,
     tags: globalState.tags,
   }
 }

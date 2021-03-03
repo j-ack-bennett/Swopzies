@@ -34,7 +34,7 @@ const Comms = (props) => {
         <div className='newCommentThread' >
           <form className='message' onSubmit={handleSubmit}>
             <textarea className="textarea is-small" type='text' onChange={handleChange} name="text" required/>
-            <div className="buttons has-addons">
+            <div className="buttons has-addons margin-top">
             <button className="button is-primary is-fullwidth">
               Submit
             </button>
