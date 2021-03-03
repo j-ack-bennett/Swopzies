@@ -7,7 +7,7 @@ exports.seed = function (knex) {
                     user_id: 1,
                     type: 'looking',
                     title: 'Photographer wanted',
-                    description: 'Performing at the upcoming village festival and I want an amazing photographer to capture the essence of my performance. Please be prepared to show me your portfolio. Note that I preferred to be photographed only on my right side, which is my best side. In return I\'ll capture your best side by immortalising you in an oil painting for all the ages.',
+                    description: 'Performing at the upcoming village festival and I want an amazing photographer to capture the essence of my performance. Please prepare your portfolio so I know you have experience of taking good photos. Note that I prefer to be photographed only on my right side, which is my best side. In return I\'ll capture your best side by immortalising you in an oil painting for all the ages.',
                     image: '',
                     time: '2021-03-01T21:45:14.382Z'
                 },
