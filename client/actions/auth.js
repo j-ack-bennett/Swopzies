@@ -115,7 +115,6 @@ export function updateProfile(updatedProfile, confirmSuccess) {
   return (dispatch) => {
     updateUserProfile(updatedProfile)
       .then((details) => {
-        console.log("updated profile deets", details)
         saveUserToken(details.token)
         dispatch(checkAuth(confirmSuccess))
       })
