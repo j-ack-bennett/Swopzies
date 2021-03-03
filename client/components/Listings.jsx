@@ -8,32 +8,20 @@ function Listings(props) {
   const tags = props.tags
   const allListings = props.listings
   const [filter, setFilter] = useState("all")
-  const [locations, setLocations] = useState([])
   const [locationFilter, setLocationFilter] = useState("all")
   const [listings, setListings] = useState([{}])
+
+  const locations  = ['Auckland', 'Bay of Plenty', 'Canterbury', 'Gisborne', 'Hawke\'s Bay', 'Manawatu-Whanganui', 'Marlborough', 'Nelson', 'Northland', 'Otago', 'Southland', 'Taranaki', 'Tasman', 'Waikato', 'Wellington', 'West Coast']
 
   useEffect(() => {
     filterListings()
   }, [filter, locationFilter])
 
-  
+
   useEffect(() => {
     setListings(allListings)
   }, [allListings])
 
-  useEffect(() => {
-    setLocations(findListingLocations())
-  }, [listings])
-
-  const findListingLocations = () => {
-    return allListings.reduce((arr, lst) => {
-      const location = lst.location
-      if (!arr.includes(location)) {
-        arr.push(location)
-      }
-      return arr
-    }, [])
-  }
 
   const filterListings = () => {
     if (filter === "all" ) {
