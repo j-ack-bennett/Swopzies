@@ -43,11 +43,6 @@ function Listing(props) {
         <div className="add-listing-page add-listing-center add-listing-centering">
           {props.listings.map((listingItem) => {
             if (listingItem.id == listingId) {
-              let img = null;
-              if (listingItem.upload === 1) {
-                img = <img src={'/listings-images/' + listingItem.id + ".jpg"} />
-              }
-
               return (
                 <div key={listingItem.id}>
 
@@ -55,7 +50,7 @@ function Listing(props) {
                   <p className="listing-p">{listingItem.description}</p>
                   <br />
 
-                  {img}
+                  {listingItem.image_url && <img src={listingItem.image_url} />}
 
                   <div>
                     <p className="listing-details-p"><span className="has-text-weight-bold">Posted by:</span>&nbsp;&nbsp;&nbsp;&nbsp;{listingItem.username}</p>

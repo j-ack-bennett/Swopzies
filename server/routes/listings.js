@@ -1,9 +1,11 @@
 const express = require("express");
+const aws = require('aws-sdk');
+const multer = require('multer');
+const multerS3 = require('multer-s3')
+
 const db = require("../db/listings");
 const router = express.Router();
-const multer = require('multer');
-const upload = multer({ dest: 'tmp/' });
-const fs = require("fs");
+
 const {
   addNewListing,
   addNewListingTag,
@@ -17,6 +19,30 @@ const {
   updateListingTag
 } = require("../db/listings");
 
+aws.config.update({
+  region: "us-west-2",
+  accessKeyId: process.env.ACCESS_KEY_ID,
+  secretAccessKey: process.env.SECRET_ACCESS_KEY,
+});
+
+
+const s3 = new aws.S3({ /* ... */ })
+
+const upload = multer({
+  storage: multerS3({
+    s3: s3,
+    bucket: process.env.BUCKET_NAME,
+    acl: 'public-read',
+    metadata: function (req, file, cb) {
+      console.log('1', file)
+      cb(null, {fieldName: file.fieldname});
+    },
+    key: function (req, file, cb) {
+      console.log('2', file)
+      cb(null, Date.now().toString())
+    }
+  })
+})
 
 
 //Get all listings
@@ -52,8 +78,9 @@ router.post("/", upload.single('img'), (req, res) => {
     "time": req.body.time,
   };
 
-  if (req.file !== undefined && req.file.originalname.endsWith(".jpg")) {
-    newListing.upload = 1;
+  if (req.file && req.file.location) {
+    console.log('adding image')
+    newListing.image_url = req.file.location
   }
 
   // let imagePath = req.file.path;
@@ -62,13 +89,13 @@ router.post("/", upload.single('img'), (req, res) => {
 
   const tagId = req.body.tagId;
   return addNewListing(newListing).then((listingId) => {
-    if (req.file !== undefined) {
-      if (req.file.originalname.endsWith(".jpg")) {
-        fs.rename(req.file.path, "server/public/listings-images/" + listingId + ".jpg", () => {})
-      } else {
-        fs.unlink(req.file.path, () => {})
-      }
-    }
+    // if (req.file !== undefined) {
+    //   if (req.file.originalname.endsWith(".jpg")) {
+    //     fs.rename(req.file.path, "server/public/listings-images/" + listingId + ".jpg", () => {})
+    //   } else {
+    //     fs.unlink(req.file.path, () => {})
+    //   }
+    // }
 
     addNewListingTag(listingId, tagId).then(() => {
       res.sendStatus(200);

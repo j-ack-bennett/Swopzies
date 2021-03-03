@@ -74,11 +74,13 @@
     "webpack-cli": "^4.5.0"
   },
   "dependencies": {
+    "aws-sdk": "^2.855.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "knex": "^0.21.17",
     "moment": "^2.29.1",
     "multer": "^1.4.2",
+    "multer-s3": "^2.9.0",
     "pg": "^8.5.1",
     "superagent": "^6.1.0"
   }
