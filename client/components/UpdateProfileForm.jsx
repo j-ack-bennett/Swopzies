@@ -1,12 +1,8 @@
 import React, { useState } from "react"
 import { connect, useStore } from "react-redux"
-import { updateProfile } from "../actions/auth"
+import { generalError, updateProfile } from "../actions/auth"
 
-const locations = ['Auckland', 'Bay of Plenty', 'Canterbury', 'Gisborne', 'Hawke\'s Bay', 'Manawatu', 'Marlborough', 'Nelson', 'Northland', 'Otago', 'Southland', 'Taranaki', 'Tasman', 'Waikato', 'Wellington', 'West Coast']
-
-//put user input into state
-//dispatch updateProfile function
-//set new state to updated Profile
+const locations = ['Auckland', 'Bay of Plenty', 'Canterbury', 'Gisborne', 'Hawke\'s Bay', 'Manawatu-Whanganui', 'Marlborough', 'Nelson', 'Northland', 'Otago', 'Southland', 'Taranaki', 'Tasman', 'Waikato', 'Wellington', 'West Coast']
 
 function UpdateProfileForm(props) {
   const profile = props.auth.user
@@ -26,13 +22,13 @@ function UpdateProfileForm(props) {
       ...updatedProfile,
       [event.target.name]: event.target.value,
     })
-    // console.log(updatedProfile)
   }
 
   function handleClick(e) {
     e.preventDefault()
     const confirmSuccess = () => {
       props.history.push("/profile")
+      props.dispatch(generalError(''))
     }
     props.dispatch(updateProfile(updatedProfile, confirmSuccess))
   }
@@ -44,6 +40,12 @@ function UpdateProfileForm(props) {
           <div className="card">
             <div className="card-content">
               <h3 className="is-4 center-text">Edit Profile Information</h3>
+
+              {props.auth.errorMessage && (
+                  <span className="has-text-danger is-large">
+                    {props.auth.errorMessage}
+                  </span>
+                )}
 
               <div>
               <div className="has-text-weight-bold field">

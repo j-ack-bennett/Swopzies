@@ -35,6 +35,13 @@ export function loginError(message) {
   }
 }
 
+export function generalError(message) {
+  return {
+    type: "ERROR",
+    message,
+  }
+}
+
 export function loginUser(creds, confirmSuccess) {
   return (dispatch) => {
     dispatch(requestLogin())
@@ -87,7 +94,7 @@ export function registerUserRequest(creds, confirmSuccess) {
 }
 
 export function checkAuth(confirmSuccess) {
-  return (dispatch) => {
+  return (dispatch) => {login
     if (isAuthenticated()) {
       const userInfo = getUserTokenInfo()
       dispatch(receiveLogin(getUserTokenInfo()))
@@ -112,6 +119,8 @@ export function updateProfile(updatedProfile, confirmSuccess) {
         saveUserToken(details.token)
         dispatch(checkAuth(confirmSuccess))
       })
-      .catch((err) => dispatch(loginError(err)))
+      .catch((err) => {
+        console.log(err)
+        return dispatch(generalError(err))})
   }
 }

@@ -6,13 +6,8 @@ import moment from "moment"
 
 
 function ListingCard(props) {
-  useEffect(() => {
-    props.dispatch(fetchTags())
-  }, [])
-
   const listing = props.listing
  
-
   return (
     <div className="wojokwjrko">
     <div className="card">
