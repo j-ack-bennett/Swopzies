@@ -94,7 +94,7 @@ function ListingForm(props) {
                 name="type"
                 value="looking"
               />
-              <label className="has-text-weight-bold">
+              <label className="has-text-weight-bold is-size-4">
                 I'm looking for something...
               </label>
 
@@ -105,7 +105,7 @@ function ListingForm(props) {
                 name="type"
                 value="offer"
               />
-              <label className="has-text-weight-bold">
+              <label className="has-text-weight-bold is-size-4">
                 I've got something to offer...
               </label>
             </form>
