@@ -111,8 +111,8 @@ function ListingForm(props) {
             </form>
           </div>
 
-          <form className="listingForm">
-            <label className="listing__title has-text-weight-bold ">
+          <form>
+            <label className="listing__title has-text-weight-bold add-listing-margin is-size-4">
               Title:
             </label>
             <input
@@ -124,8 +124,8 @@ function ListingForm(props) {
             />
           </form>
 
-          <form className="listingForm">
-            <label className="listing__description has-text-weight-bold ">
+          <form>
+            <label className="listing__description has-text-weight-bold add-listing-margin is-size-4">
               Description:
             </label>
             <textarea
