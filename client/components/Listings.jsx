@@ -142,7 +142,6 @@ function Listings(props) {
                   </div>
                   </div> 
                   <div className="container">
-                    {console.log(currentPageLisings)}
                     {currentPageLisings.map((listing) => {
                       if (listing.type == type) {
                         return <ListingCard key={listing.id} listing={listing} />
