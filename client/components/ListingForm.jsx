@@ -101,7 +101,6 @@ const handleFileSelect = (e) => {
                   }
                 </select>
 
-                <button onClick>Add another tag.</button>
               </div>
             </form>
 
