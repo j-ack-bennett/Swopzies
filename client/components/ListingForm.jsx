@@ -101,7 +101,6 @@ const handleFileSelect = (e) => {
                   }
                 </select>
 
-                <button onClick>Add another tag.</button>
               </div>
             </form>
 
@@ -158,7 +157,7 @@ const handleFileSelect = (e) => {
               placeholder="Add any details of what you're seeking/offering."
             />
           </form>
-          
+
           <div>Add image:
               <input onChange={handleFileSelect} type='file' />
           </div>
