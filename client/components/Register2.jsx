@@ -11,6 +11,8 @@ function Register2(props) {
 
   const userId = auth.user.id
 
+  auth.errorMessage = ""
+
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
