@@ -21,6 +21,8 @@ This is a list of tech we will be using throughout our project:
 * [Bulma (CSS framework)](https://bulma.io/documentation/)
 * [JWT Auth (Local)](https://jwt.io/)
 * [SCSS/Sass (CSS pre-processor)](https://sass-lang.com/install)
+* [React-paginate] https://www.npmjs.com/package/react-paginate
+
 
 ## User Stories
 
@@ -30,17 +32,18 @@ As a non-registered user:
   * I want to register for the App under my name.
   
 As a registered user:
-  * I want to login with my registered details.
-  * I want to browse "I'm looking for. . ." on the site to see what goods/services are needed in my community. 
-  * I want to browse "I can offer. . ." on the site to see what other goods/services are offered in my community. 
-  * On either page, I want to filter via tag/category to find specific a specific good/service.
+  * I want to log in with my registered details.
+  * I want to browse "I'm looking for. . ." to see what goods/services are needed in my community. 
+  * I want to browse "I can offer. . ." to see what other goods/services are offered in my community. 
+  * On either page, I want to filter via tag/category to find a specific good/service.
   * I want to create and add a new post for the "I'm looking for. . ." section of the site and provide a MAXIMUM of one tag. 
   * I want to create and add a new post for the "I can offer. . ." section of the site and provide a MAXIMUM of one tag. 
-  * I want to view my user profile through a button on the nav bar and see a list of all of my current post(s).
+  * I want to view my user profile via a button on the nav bar and see a list of all of my current post(s).
   * I want to update/edit my current post(s) through my profile.
   * I want to delete my current post(s) through my profile.
-  * I want to comment on "I'm looking for. . ." listings, to let the author know I am interested in trading for the good/service they require. 
-  * I want to comment on "I can offer . ." listings, to let the author know i'm interested the goods/services they're offering. 
+  * I want to comment on "I'm looking for. . ." listings to let the author know I am interested in trading for the good/service they require. 
+  * I want to comment on "I can offer . ." listings, to let the author know I am interested the good/service they're offering. 
+ 
 
 ### Stretch
 
@@ -58,24 +61,31 @@ As a registered user:
   * I want to be able to edit my user profile details (name, location, phone number etc.).
   * I want to save/bookmark any post(s) on the site to view later on my profile.
   * I want to be notified on my profile when another user comments on my post(s).
-  * I want the ability to trade between three people.
+  
 
   ---
 
 ## Views (Client Side)
 
-  | name | purpose |
+  | Name | purpose |
   | --- | --- |
-  | Home | View to display each section of the App (I'm looking for. . .), (I can offer . . .) and (Add a post) |
+  | Home | View to display each section of the App (I'm looking for. . .), (I can offer . . .) and (Add a Listing) |
   | Landing | View for user when they first enter the App |
-  | Listing | View to display a specific listing and all the details provided by the author |
+  | Listing | View to display a specific listing and all the details provided by the author including date                                                                      posted/updated. If it is your post a 'delete post' & an 'edit post' button are visible. An 'Add a comment' 
+             section,a text input to allow people to leave a  comment on a listing which can be viewed
+             only by the sender and the author of the listing. |
   | ListingCard | View of each specific post on the *Listings* page |
-  | ListingForm | View of the edit form, so a user can update their own post |
+  | Editlisting | View of the edit form, so a user can update their own post |
+  | ListingForm | View a form containing all inputs required for a new listing, that can be posted |
   | Listings | View to display the whole page of listings within (I'm looking for. . .) and (I can offer . . .)  |
   | Login | View for user to enter their login credentials |
   | Nav | View to display the navigation bar at the top of each component |
-  | Profile | View for the user to see their profile information |
+  | Profile | View for the user to see their profile information and to see their listings and bookmarked listings |
   | Register | View for user to sign up for the App |
+  | Edit profile | view for th euser to edit their profile details |
+  | Contact | A page to contact the admins in regards to any query using the website. Showing a form for the user to submit their details and a message stating the query. |
+  
+ 
 
 ## Reducers (Client Side)
 
@@ -97,14 +107,22 @@ As a registered user:
 
 | Method |      Endpoint      |    Protected    | Usage |                 Response |
 | --- | --- | --- | --- | --- |
-| Post   | /api/auth/login          | Yes | Log In a User            | The Users JWT Token (TO BE CHANGED)|
-| Post   | /api/auth/register       | Yes | Register a User          | The Users JWT Token (TO BE CHANGED)|
-| Get    | /api/v1/listings         | No  | Get Listings             | All Listings |
-| Post   | /api/v1/listings         | No  | Add New Listing          | All Listings |
-| Get    | /api/v1/listings/:id     | No  | Get Listing By ID        | Listings that match ID |
-| Delete | /api/v1/listings/:id     | No  | Delete Listing By ID     | status 200 |
-| Patch  | /api/v1/listings/:id     | No  | Update A Listing By ID   |  Updated Listing |
-| Get    | /api/v1/listings/tag/:id | No  | Get Listings By Tag ID   | Listings that match Tag id |
+| Post   | /api/auth/login          | Yes | Log In a User              | The Users JWT Token (TO BE CHANGED)|
+| Post   | /api/auth/register       | Yes | Register a User            | The Users JWT Token (TO BE CHANGED)|
+| Patch  | api/v1/profile           | Yes | Update a user profile      | Update a user profile |
+| Get    | /api/v1/listings         | No  | Get Listings               | All Listings |
+| Post   | /api/v1/listings         | No  | Add New Listing            | All Listings |
+| Get    | /api/v1/listings/:id     | No  | Get Listing By ID          | Listings that match ID |
+| Delete | /api/v1/listings/:id     | No  | Delete Listing By ID       | status 200 |
+| Patch  | /api/v1/listings/:id     | No  | Update A Listing By ID     | Updated Listing |
+| Post   | /api/v1/listings/bookmark| Yes | Add a bookmark             |  status 200 |
+| Delete | /api/v1/listings/bookmark| Yes | Delete a bookmark          | status 200  |
+| Get    | /api/v1/listings/bookmark/id| Yes | Get your bookmarked listings as a user | Users bookmarked listings |
+| Get    | /api/v1/listings/tag/:id | No  | Get Listings By Tag ID     | Listings that match Tag id |
+| Get    | /api/v1/comms/id         | Yes | Get comments for a listing | Listing with existing comments | 
+| Post   | /api/v1/comms/           | Yes | Post a new comment         | status 200 |
+| Post   | /api/v1/comms/           | Yes | Show comment thread        | showing comment thread |
+
 
   There should be five tables for MVP
 

@@ -1,15 +1,15 @@
 import React, { useEffect } from "react"
 import { connect } from "react-redux"
-import { fetchTags } from "../actions/tags"
 import { Link } from "react-router-dom"
+import moment from "moment"
 
 
 function ListingCard(props) {
   const listing = props.listing
  
   return (
-    <div>
-      {listing.type == "looking" ? (
+    <div className="card">
+      <div className="card-content card-content-flex my-listings-margin">
         <div>
           <Link key={listing.id}
           to={`/listing/${listing.id}`}>
@@ -17,23 +17,11 @@ function ListingCard(props) {
           </ Link>
           <p>{listing.username}, {listing.location}</p>
           <p className="capitalize">Category: {listing.tag_name}</p>
-          <div>
-            <br />
-          </div>
         </div>
-      ) : (
         <div>
-          <Link
-          to={`/listing/${listing.id}`}>
-          <p className="capitalize"><strong>{listing.title}</strong></p> 
-          </ Link>      
-          <p>{listing.username}, {listing.location}</p>
-          <p className="capitalize">Category: {listing.tag_name}</p>
-          <div>
-          <br></br>
-          </div>
+          <p className="last-updated">Last updated: {moment(listing.time).format('LLL')}</p>
         </div>
-      )}
+      </div>
     </div>
   )
 }

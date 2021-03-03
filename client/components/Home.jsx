@@ -32,6 +32,8 @@ function Home(props) {
     populateTypeListings()
   }, [ourListings])
 
+  localStorage.setItem("type", "")
+
   return (
     <>
       <div className="text-box">
@@ -45,7 +47,6 @@ function Home(props) {
           <div className="card">
             <div className="card-content">
               <h3 className="is-4 has-text-centered home-font-size">I'm Looking For...</h3>
-
               <div className="content">
                 <table className="see-more-margin">
                   <tbody>
@@ -55,6 +56,7 @@ function Home(props) {
                     </tr>
                     <tr>
                       <td>
+                        <br></br>
                         {lookingListings.slice(0, 3).map((listing) => {
                           return (
                             <ListingCard key={listing.id} listing={listing} />
@@ -93,6 +95,7 @@ function Home(props) {
                     </tr>
                     <tr>
                       <td>
+                      <br></br>
                         {offeringListings.slice(0, 3).map((listing) => {
                           return (
                             <ListingCard key={listing.id} listing={listing} />
@@ -128,42 +131,3 @@ const mapStateToProps = (globalState) => {
 }
 
 export default connect(mapStateToProps)(Home)
-
-{
-  /* <div className="container">
-      <div>
-        <Link to="/listingform">
-        <button >+ Add listing</button>
-        </Link>
-      </div>
-      <div>
-        <h1>I'm Looking For...</h1>
-          {listings.map(listing => {
-            if(listing.type == "looking"){
-              return <ListingCard key={listing.id} listing={listing} />
-            }
-          })}
-          <Link
-          to="/listings"
-          onClick={() => localStorage.setItem("type", "looking")}
-          >
-          See more...
-        </Link>
-      </div>
-      <hr />
-      <div>
-        <h1>I Can Offer...</h1>
-          {listings.map(listing => {
-            if(listing.type == "offer"){
-              return <ListingCard key={listing.id} listing={listing} />
-            }
-          })}
-          <Link
-          to="/listings"
-          onClick={() => localStorage.setItem("type", "offer")}
-          >
-          See more...
-        </Link>
-      </div>
-    </div> */
-}
