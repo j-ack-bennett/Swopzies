@@ -129,6 +129,7 @@ function ListingForm(props) {
               name="title"
               onChange={handleChange}
               placeholder="Listing title"
+              maxLength="70"
             />
           </form>
 
