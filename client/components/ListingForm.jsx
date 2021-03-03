@@ -90,8 +90,6 @@ function ListingForm(props) {
                     }) // on change on the select tag, value on the option tag.
                   }
                 </select>
-
-                <button onClick>Add another tag.</button>
               </div>
             </form>
 

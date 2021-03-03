@@ -20,7 +20,6 @@ export function addListing(listing) {
 }
 
 export function fetchListings() {
-  // console.log("fetching")
   return dispatch => {
     return getListings()
     .then(listings => {
@@ -33,9 +32,9 @@ export function fetchListings() {
 
 export function newListing(newListing) {
   return dispatch => {
-    return postListing(newListing) //this is being sent off to the DB
+    return postListing(newListing) 
       .then(() => {
-        dispatch(fetchListings()) // no
+        dispatch(fetchListings()) 
       })
   }
 }
@@ -64,7 +63,6 @@ export function fetchBookmarksForUser(id) {
   return dispatch => {
     return getBookmarked(id)
     .then(bookmarks => {
-      console.log(bookmarks)
       dispatch(setBookmarks(bookmarks))
       return null
     })

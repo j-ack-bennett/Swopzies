@@ -14,6 +14,8 @@ function Listings(props) {
 
   const locations  = ['Auckland', 'Bay of Plenty', 'Canterbury', 'Gisborne', 'Hawke\'s Bay', 'Manawatu-Whanganui', 'Marlborough', 'Nelson', 'Northland', 'Otago', 'Southland', 'Taranaki', 'Tasman', 'Waikato', 'Wellington', 'West Coast']
   //pagenation
+
+
   const [currentPage, setCurrentPage] = useState(0)
 
   useEffect(() => {
@@ -27,7 +29,7 @@ function Listings(props) {
 
 
   // pagenation
-  const pageLisitngs = allListings.filter(listing => listing.type == type)
+  const pageLisitngs = listings.filter(listing => listing.type == type)
 
   const PER_PAGE = 5
   const offset = currentPage * PER_PAGE
@@ -44,6 +46,7 @@ function Listings(props) {
   const filterListings = () => {
     if (filter === "all") {
       if (locationFilter == 'all') {
+        
         setListings(props.listings)
       } else {
         setListings(
@@ -85,7 +88,6 @@ function Listings(props) {
 
   return (
     <>
-
     <div className="container margin-top margin-bottom">
       <div className="add-listing-page">
         <div className="add-listing-page add-listing-center add-listing-centering">
@@ -145,7 +147,7 @@ function Listings(props) {
 
                   <div className="card">
                   <div className="card-content">
-                    {console.log(currentPageLisings)}
+                    {console.log("currentpagelistings:", currentPageLisings, "listings:", listings)}
                     {currentPageLisings.map((listing) => {
                       if (listing.type == type) {
                         return <ListingCard key={listing.id} listing={listing} />

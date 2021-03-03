@@ -24,7 +24,6 @@ router.patch("/profile",  getTokenDecoder(),(req, res, next) => {
     userExists(username)
       .then(bool => {
         if(bool && username !== req.user.username) {
-          console.log('hi')
           return res.sendStatus(400)
         } else {
           updateUser(userId, req.body)

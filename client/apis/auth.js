@@ -18,7 +18,6 @@ export function register (creds) {
 }
 
 export function login (creds) {
-  console.log('api creds', creds)
   return authLogin(creds, { baseUrl })
     .catch(err => {
       console.log(err)
