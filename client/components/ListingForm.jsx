@@ -100,6 +100,7 @@ function ListingForm(props) {
                   type="radio"
                   name="type"
                   value="looking"
+                  checked={type == 'looking'}
                 />
                   I'm looking for something...
               </label>
@@ -111,6 +112,7 @@ function ListingForm(props) {
                   type="radio"
                   name="type"
                   value="offer"
+                  checked={type == 'offer'}
                 />
                 I've got something to offer...
               </label>
