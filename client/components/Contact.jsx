@@ -11,6 +11,7 @@ function Contact() {
   }
 
   const handleSubmit = (e) => {
+    e.preventDefault()
     setForm({
       name: '',
       email: '',
