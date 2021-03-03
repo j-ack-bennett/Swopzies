@@ -72,8 +72,7 @@ const CommThread = (props) => {
 
                   <form onSubmit={(e) => handleSubmit(e, flower)}>
                     <label>
-                      
-                      <input type="text" onChange={handleChange} name="text" />
+                      <input type="text" onChange={handleChange} name="text" required/>
                     </label>
                     <input type="submit" value="Reply" />
                   </form>{" "}
@@ -103,6 +102,7 @@ const CommThread = (props) => {
                           type="text"
                           onChange={handleChange}
                           name="text"
+                          required
                         />
                       </label>
                       <input type="submit" value="Reply" />

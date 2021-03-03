@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { connect } from "react-redux"
+import { Link } from 'react-router-dom'
 import ReactPaginate from 'react-paginate'
 import ListingCard from "./ListingCard"
 
@@ -8,32 +9,21 @@ function Listings(props) {
   const tags = props.tags
   const allListings = props.listings
   const [filter, setFilter] = useState("all")
-  const [locations, setLocations] = useState([])
   const [locationFilter, setLocationFilter] = useState("all")
   const [listings, setListings] = useState([{}])
 
+  const locations  = ['Auckland', 'Bay of Plenty', 'Canterbury', 'Gisborne', 'Hawke\'s Bay', 'Manawatu-Whanganui', 'Marlborough', 'Nelson', 'Northland', 'Otago', 'Southland', 'Taranaki', 'Tasman', 'Waikato', 'Wellington', 'West Coast']
   //pagenation
   const [currentPage, setCurrentPage] = useState(0)
-
-
-
-
-
-
-
 
   useEffect(() => {
     filterListings()
   }, [filter, locationFilter])
 
+
   useEffect(() => {
     setListings(allListings)
   }, [allListings])
-
-  useEffect(() => {
-    setLocations(findListingLocations())
-  }, [listings])
-
 
 
   // pagenation
@@ -50,19 +40,6 @@ function Listings(props) {
     setCurrentPage(selectedPage);
   }
   //pagenation ends
-
-
-
-
-  const findListingLocations = () => {
-    return allListings.reduce((arr, lst) => {
-      const location = lst.location
-      if (!arr.includes(location)) {
-        arr.push(location)
-      }
-      return arr
-    }, [])
-  }
 
   const filterListings = () => {
     if (filter === "all") {
@@ -98,13 +75,6 @@ function Listings(props) {
     }
   }
 
-
-
-  //if tag filter is all, and location filter is all, just use setListings
-  //if tag filter is all and location filter is something, just use allListing filtered by location
-  //if tag filter is something and location filter is all, just use allListings filtered by tag
-  //if tag filter is something and location filter is something, filter by both
-
   const handleChange = (e) => {
     setFilter(e.target.value)
   }
@@ -114,6 +84,13 @@ function Listings(props) {
   }
 
   return (
+    <>
+    <div className="text-box">
+        <Link to="/listingform" className="btn btn-blue btn-animate">
+          Add a Listing
+        </Link>
+      </div>
+
     <div className="container margin-top margin-bottom">
       <div className="add-listing-page">
         <div className="add-listing-page add-listing-center add-listing-centering">
@@ -192,6 +169,7 @@ function Listings(props) {
         </div>
       </div>
     </div>
+    </>
   )
 }
 
