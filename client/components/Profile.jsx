@@ -29,7 +29,7 @@ function Profile(props) {
   <div className="add-listing-page add-listing-center add-listing-centering">
     <div className="card">
       <div className="card-content">
-        <h3 className="is-4 center-text">Profile</h3>
+        <h3 className="home-font-size center-text">Profile</h3>
 
         <div className="content">
           {props.auth.user && (
@@ -83,7 +83,7 @@ function Profile(props) {
       
       <div className="card">
         <div className="card-content my-listings-margin">
-          <h3 className="is-4">My listings</h3>
+          <h3 className="home-font-size">My Listings</h3>
           <hr />
             <table>
               <tbody>
@@ -107,7 +107,7 @@ function Profile(props) {
 
         <div className="card">
           <div className="card-content">
-            <h3 className="is-4">My Bookmarks</h3>
+            <h3 className="home-font-size">My Bookmarks</h3>
             <hr />
               <table>
                 <tbody>

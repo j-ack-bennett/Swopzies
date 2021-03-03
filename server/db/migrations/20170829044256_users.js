@@ -9,7 +9,7 @@ exports.up = function(knex) {
     table.string('bio')
     table.string('location')
     table.string('image')
-    table.integer('phone')
+    table.string('phone')
     table.timestamps(true,true)
   })
 };

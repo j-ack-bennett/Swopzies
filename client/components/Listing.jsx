@@ -38,7 +38,7 @@ function Listing(props) {
   
 
   return (
-    <div className="container">
+    <div className="container margin-top">
       <div className="add-listing-page">
         <div className="add-listing-page add-listing-center add-listing-centering">
           {props.listings.map((listingItem) => {
@@ -67,7 +67,12 @@ function Listing(props) {
                         <Link to={`/editlisting/${listingItem.id}`}><button className="button is-primary margin-left">Edit Post</button></Link>
                       </div> :
                       <>
-                        <button onClick={handleClick}>{!bookmarked ? 'Bookmark Listing' : 'Remove Bookmark' }</button>
+                        <div className="buttons has-addons">
+                          {!bookmarked ?
+                          <button className="button is-primary" onClick={handleClick}>Bookmark Listing</button> :
+                          <button className="button is-danger" onClick={handleClick}>Remove Bookmark</button>
+                          }
+                        </div>
                       </>
                     }
                     
