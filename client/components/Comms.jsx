@@ -31,9 +31,9 @@ const Comms = (props) => {
     <div className="field">
       <div className="control">
       <p className="listing-details-p has-text-weight-bold">Add a comment:</p>
-        <div className='newCommentThread' >
+        <div className='newCommentThread'>
           <form className='message' onSubmit={handleSubmit}>
-            <textarea className="textarea is-small" type='text' onChange={handleChange} name="text" required/>
+            <textarea className="textarea is-large" type='text' onChange={handleChange} name="text" required/>
             <div className="buttons has-addons margin-top">
             <button className="button is-primary is-fullwidth">
               Submit

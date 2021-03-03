@@ -42,7 +42,7 @@ const Nav = (props) => {
                     <>
                       <span className="navbar-item">
                         <div >
-                          <span className="has-text-white">Hi {auth.user.first_name}!</span>
+                          <span className="has-text-white">Kia ora {auth.user.first_name}!</span>
                         </div>
                       </span>
                       <span className="navbar-item">

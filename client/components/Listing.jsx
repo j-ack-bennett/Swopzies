@@ -38,7 +38,7 @@ function Listing(props) {
   
 
   return (
-    <div className="container">
+    <div className="container margin-top">
       <div className="add-listing-page">
         <div className="add-listing-page add-listing-center add-listing-centering">
           {props.listings.map((listingItem) => {
@@ -49,7 +49,7 @@ function Listing(props) {
                   <h2 className="title post-title capitalize">{listingItem.title}</h2>
                   <p className="listing-p">{listingItem.description}</p>
                   <br />
-                  <div className="kngrkgherg">
+                  <div>
                     <p className="listing-details-p"><span className="has-text-weight-bold">Posted by:</span>&nbsp;&nbsp;&nbsp;&nbsp;{listingItem.username}</p>
                     <p className="listing-details-p"><span className="has-text-weight-bold">Location:</span>&nbsp;&nbsp;&nbsp;&nbsp;{listingItem.location}</p>
                     <p className="listing-details-p capitalize"><span className="has-text-weight-bold">Category:</span>&nbsp;&nbsp;&nbsp;&nbsp;{listingItem.tag_name}</p>
@@ -69,8 +69,8 @@ function Listing(props) {
                       <>
                         <div className="buttons has-addons">
                           {!bookmarked ?
-                          <button className="button is-primary margin-left" onClick={handleClick}>Bookmark Listing</button> :
-                          <button className="button is-danger margin-left" onClick={handleClick}>Remove Bookmark</button>
+                          <button className="button is-primary" onClick={handleClick}>Bookmark Listing</button> :
+                          <button className="button is-danger" onClick={handleClick}>Remove Bookmark</button>
                           }
                         </div>
                       </>
