@@ -7,7 +7,7 @@ import { updateProfile } from "../actions/auth"
 function Register2(props) {
   const { auth } = props
 
-  const locations  = ['Auckland', 'Bay of Plenty', 'Canterbury', 'Gisborne', 'Hawke\'s Bay', 'Manawatu', 'Marlborough', 'Nelson', 'Northland', 'Otago', 'Southland', 'Taranaki', 'Tasman', 'Waikato', 'Wellington', 'West Coast']
+  const locations  = ['Auckland', 'Bay of Plenty', 'Canterbury', 'Gisborne', 'Hawke\'s Bay', 'Manawatu-Whanganui', 'Marlborough', 'Nelson', 'Northland', 'Otago', 'Southland', 'Taranaki', 'Tasman', 'Waikato', 'Wellington', 'West Coast']
 
   const userId = auth.user.id
 
@@ -106,7 +106,7 @@ function Register2(props) {
                   <div className="control">
                     {/* <input className="input is-large" placeholder="Location" type="text" name="location" onChange={handleChange} value={formData.location} required /> */}
 
-                    <select name="location" className="location-dropdown" onChange={handleChange} required>
+                    <select name="location" className="location-dropdown dropdown-bg-color" onChange={handleChange} required>
                       <option value="" disable="true" hidden>Location</option>
                       {locations.map(location => {
                         return <option key={location} 

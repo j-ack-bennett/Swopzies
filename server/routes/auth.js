@@ -18,14 +18,21 @@ applyAuthRoutes(router, {
   createUser,
 })
 
-router.patch(
-  "/profile",
-  getTokenDecoder(),
-  (req, res, next) => {
+router.patch("/profile",  getTokenDecoder(),(req, res, next) => {
     const userId = req.user.id
-    updateUser(userId, req.body).then(() => {
-      next()
-    })
+    const username = req.body.username
+    userExists(username)
+      .then(bool => {
+        if(bool && username !== req.user.username) {
+          console.log('hi')
+          return res.sendStatus(400)
+        } else {
+          updateUser(userId, req.body)
+            .then(() => {
+              next()
+          })
+        }
+      })
   },
   issueToken
 )

@@ -41,39 +41,51 @@ const CommThread = (props) => {
   }
 
   const handleSubmit = (e, threadId) => {
+    e.preventDefault()
     const newComm = {
       listing_id: listingId,
       user_id: user_id,
       text: comment,
       thread_id: threadId,
-      time: new Date(),
+      time: new Date()
     }
     postToThread(newComm)
+    window.location.reload()
   }
 
   return (
-    <>
+    <div className="margin-bottom margin-top comment-thread">
       {listing_user_id == user_id ? (
         <>
           {Object.keys(comments).map((key) => {
             const flower = key
             return (
               <div key={flower}>
-                <div key={key} style={{ borderStyle: "solid" }}>
+                <div key={key}>
                   {comments[key].map((comment) => {
+                    const extraClass = comment.user_id == props.auth.user.id ? ' message-thread--right' : ''
                     return (
-                      <p key={comment.id}>
-                        {comment.username}: {comment.text}
-                      </p>
+                      <div className={`message-thread${extraClass}`} key={comment.id}>
+                        <p>
+                          {comment.username}: {comment.text}
+                        </p>
+                      </div>
                     )
                   })}{" "}
 
                   <form onSubmit={(e) => handleSubmit(e, flower)}>
                     <label>
-                      
-                      <input type="text" onChange={handleChange} name="text" />
+                      <textarea
+                        className="textarea is-large margin-top"
+                        type="text" 
+                        onChange={handleChange} 
+                        name="text" 
+                        required
+                      />
                     </label>
-                    <input type="submit" value="Reply" />
+                    <div className="buttons has-addons">
+                      <input className="button is-primary is-fullwidth" type="submit" value="Reply" />
+                    </div>
                   </form>{" "}
                 </div>
               </div>
@@ -87,23 +99,30 @@ const CommThread = (props) => {
             return (
               <div key={flower}>
                 {comments[key][0].user_id == props.auth.user.id ? (
-                  <div key={key} style={{ borderStyle: "solid" }}>
+                  <div key={key}>
                     {comments[key].map((comment) => {
+                      const extraClass = comment.user_id == props.auth.user.id ? ' message-thread--right' : ''
                       return (
-                        <p key={comment.id}>
-                          {comment.username}: {comment.text}
-                        </p>
+                        <div className={`message-thread${extraClass}`} key={comment.id}>
+                          <p>
+                            {comment.username}: {comment.text}
+                          </p>
+                      </div>
                       )
                     })}{" "}
                     <form onSubmit={(e) => handleSubmit(e, flower)}>
                       <label>
-                        <input
-                          type="text"
-                          onChange={handleChange}
-                          name="text"
-                        />
+                      <textarea
+                        className="textarea is-large margin-top"
+                        type="text" 
+                        onChange={handleChange} 
+                        name="text" 
+                        required
+                      />
                       </label>
-                      <input type="submit" value="Reply" />
+                      <div className="buttons has-addons">
+                        <input className="button is-primary is-fullwidth" type="submit" value="Reply" />
+                      </div>
                     </form>{" "}
                   </div>
                 ) : (
@@ -114,7 +133,7 @@ const CommThread = (props) => {
           })}
         </>
       )}
-    </>
+    </div>
   )
 }
 

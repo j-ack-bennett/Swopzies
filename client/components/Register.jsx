@@ -22,10 +22,6 @@ function Register(props) {
     phone: "",
   })
 
-  // useEffect(() => {
-  //   props.dispatch(loginError(''))
-  // }, [])
-
   const handleChange = (e) => {
     setFormData((currentFormData) => {
       return {
