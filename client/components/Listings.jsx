@@ -141,6 +141,7 @@ function Listings(props) {
                   </div>
                   </div>
                   </div> 
+                  <div className="container">
 
                   <div className="card">
                   <div className="card-content">
@@ -150,6 +151,7 @@ function Listings(props) {
                         return <ListingCard key={listing.id} listing={listing} />
                       }
                     })}
+                  </div>
                   </div>
                   </div>
 

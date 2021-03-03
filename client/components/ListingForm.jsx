@@ -30,7 +30,6 @@ function ListingForm(props) {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    // console.log(tag)
     const newestListing = {
       ...form,
       user_id: props.auth.user.id,
@@ -43,6 +42,8 @@ function ListingForm(props) {
       alert("Please select either offering or looking.")
     } else if (!form.title) {
       alert("Please add a title to your post.")
+    } else if(!form.description){
+      alert("Please add a description to your post.")
     } else {
       const newestListing = {
         ...form,
@@ -89,6 +90,8 @@ function ListingForm(props) {
                     }) // on change on the select tag, value on the option tag.
                   }
                 </select>
+
+                <button onClick>Add another tag.</button>
               </div>
             </form>
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { connect } from "react-redux"
-import { fetchListings, deleteListing, removeBookmark, bookmark } from "../actions/listings"
+import { deleteListing, removeBookmark, bookmark } from "../actions/listings"
 import { Link } from 'react-router-dom'
 import moment from 'moment'
 
