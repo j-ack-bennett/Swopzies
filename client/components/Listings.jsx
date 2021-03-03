@@ -29,7 +29,7 @@ function Listings(props) {
   // pagenation
   const pageLisitngs = allListings.filter(listing => listing.type == type)
 
-  const PER_PAGE = 2
+  const PER_PAGE = 5
   const offset = currentPage * PER_PAGE
 
   const currentPageLisings = pageLisitngs.slice(offset, offset + PER_PAGE)
