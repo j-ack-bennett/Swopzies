@@ -83,7 +83,7 @@ function Profile(props) {
       
       <div className="card">
         <div className="card-content my-listings-margin">
-          <h3 className="is-4">My listings</h3>
+          <h3 className="is-4">My Listings</h3>
           <hr />
             <table>
               <tbody>
