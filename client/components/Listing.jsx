@@ -67,7 +67,12 @@ function Listing(props) {
                         <Link to={`/editlisting/${listingItem.id}`}><button className="button is-primary margin-left">Edit Post</button></Link>
                       </div> :
                       <>
-                        <button onClick={handleClick}>{!bookmarked ? 'Bookmark Listing' : 'Remove Bookmark' }</button>
+                        <div className="buttons has-addons">
+                          {!bookmarked ?
+                          <button className="button is-primary margin-left" onClick={handleClick}>Bookmark Listing</button> :
+                          <button className="button is-danger margin-left" onClick={handleClick}>Remove Bookmark</button>
+                          }
+                        </div>
                       </>
                     }
                     
