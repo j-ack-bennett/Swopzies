@@ -25,7 +25,7 @@ exports.seed = function (knex) {
                     user_id: 3,
                     type: 'offer',
                     title: 'Singing lessons',
-                    description: 'Local teacher with 20+ year\'s experience with music, choirs, stage productions etc. I\'m offering to teach you how to sing. In exchange, I\'d love to be paid in good books, or even a home-made bird feeder to add to lovely big garden.',
+                    description: 'Local teacher with 20+ years\' experience with music, choirs, stage productions etc. I\'m offering to teach you how to sing. In exchange, I\'d love to be paid in good books, or even a home-made bird feeder to add to lovely big garden.',
                     image: '',
                     time: '2021-03-02T14:45:14.382Z'
                 },
