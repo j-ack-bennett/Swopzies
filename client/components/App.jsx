@@ -62,6 +62,9 @@ function App({ auth, dispatch }) {
                 <div className="logo-wrap">
                   <img className="footer-logo" src="logo.png" />
                 </div>
+                <div className="navbar-item">
+                  <p className="footer-subtext">- created by <em>jack-of-all-trades</em> 2021 -</p>
+                </div>
                 <div className="navbar-end">
                   <Link to="/contact" className="button is-black is-outlined">
                     <div className="icon">
