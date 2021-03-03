@@ -181,7 +181,7 @@ function Listings(props) {
 
 const mapStateToProps = (globalState) => {
   return {
-                  listings: globalState.listings,
+    listings: globalState.listings,
     tags: globalState.tags,
   }
 }
