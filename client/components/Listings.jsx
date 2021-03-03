@@ -12,17 +12,47 @@ function Listings(props) {
   const [locationFilter, setLocationFilter] = useState("all")
   const [listings, setListings] = useState([{}])
 
+  //pagenation
+  const [ currentPage, setCurrentPage ] = useState(0)
+
+  
+  
+  
+  
+  
+  
+  
   useEffect(() => {
     filterListings()
   }, [filter, locationFilter])
-
+  
   useEffect(() => {
     setListings(allListings)
   }, [allListings])
-
+  
   useEffect(() => {
     setLocations(findListingLocations())
   }, [listings])
+  
+
+
+  // pagenation
+  const pageLisitngs = allListings.filter(listing => listing.type == type)
+
+  const PER_PAGE = 2
+  const offset = currentPage * PER_PAGE
+
+  const currentPageLisings = pageLisitngs.slice(offset, offset + PER_PAGE)
+
+  const pageCount = Math.ceil(pageLisitngs.length / PER_PAGE);
+
+  function handlePageClick({ selected: selectedPage }) {
+    setCurrentPage(selectedPage);
+  }
+  //pagenation ends
+
+
+
 
   const findListingLocations = () => {
     return allListings.reduce((arr, lst) => {
@@ -67,6 +97,8 @@ function Listings(props) {
       }
     }
   }
+
+
 
   //if tag filter is all, and location filter is all, just use setListings
   //if tag filter is all and location filter is something, just use allListing filtered by location
@@ -113,12 +145,26 @@ function Listings(props) {
         <button onClick={() => setLocationFilter('all')}>reset</button>
       </div>
       <div className="container">
-        {listings.map((listing) => {
+        {console.log(currentPageLisings)}
+        {currentPageLisings.map((listing) => {
           if (listing.type == type) {
             return <ListingCard key={listing.id} listing={listing} />
           }
         })}
       </div>
+      {pageCount}
+      <ReactPaginate
+        previousLabel={"← Previous"}
+        nextLabel={"Next →"}
+        pageCount={pageCount}
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={5}
+        containerClassName={"pagination"}
+        previousLinkClassName={"pagination__link"}
+        nextLinkClassName={"pagination__link"}
+        disabledClassName={"pagination__link--disabled"}
+        activeClassName={"pagination__link--active"}
+      />
     </>
   )
 }
