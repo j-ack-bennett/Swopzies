@@ -28,25 +28,29 @@ const Comms = (props) => {
   } 
 
   return (
-    <div className="field">
-      <div className="control">
-      <p className="listing-details-p has-text-weight-bold">Add a comment:</p>
-        <div className='newCommentThread' >
-          <form className='message' onSubmit={handleSubmit}>
-            <textarea className="textarea is-small" type='text' onChange={handleChange} name="text" required/>
-            <div className="buttons has-addons margin-top">
-            <button className="button is-primary is-fullwidth">
-              Submit
-            </button>
-            </div>
-          </form>
+      <div className="field">
+        <div className="control">
+          { user_id !== listing_id &&
+            <>
+              <p className="listing-details-p has-text-weight-bold">Add a comment:</p>
+              <div className='newCommentThread'>
+                <form className='message' onSubmit={handleSubmit}>
+                  <textarea className="textarea is-large" type='text' onChange={handleChange} name="text" required/>
+                  <div className="buttons has-addons margin-top">
+                  <button className="button is-primary is-fullwidth">
+                    Submit
+                  </button>
+                  </div>
+                </form>
+              </div>
+            </>
+          }
+          <div className='threads'>
+            <CommThread listingId={listing_id} listingUserId={listing_user_id}
+            />
+          </div>
         </div>
-        <div className='threads'>
-          <CommThread listingId={listing_id} listingUserId={listing_user_id}
-          />
-        </div>
-      </div>
-    </div>
+      </div>   
   )
 } 
 

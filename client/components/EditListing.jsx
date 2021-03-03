@@ -121,6 +121,7 @@ function EditListing(props) {
                 name="title"
                 value={oldListing.title}
                 onChange={handleChange}
+                maxLength="70"
               />
             </label>
 
@@ -138,7 +139,13 @@ function EditListing(props) {
             <div className="buttons has-addons">
               <button className="button is-primary is-fullwidth is-size-5"
                 onClick={(e) => handleSubmit(e, tag.id)}>
-                Edit
+                Save
+              </button>
+            </div>
+            <div className="buttons has-addons">
+              <button className="button is-fullwidth is-size-5 is-danger" 
+                onClick={() =>props.history.goBack()}>
+                Cancel
               </button>
             </div>
             </>
