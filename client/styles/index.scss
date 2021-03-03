@@ -139,7 +139,7 @@ p {
  }	
 
 .section {
-    padding: 0;
+  padding: 0;
 }
 
 .nav-title-container {
@@ -224,7 +224,7 @@ p {
     box-shadow: 0 -0.5em 1em 0.500em rgba(10,10,10,.1), 0 0 0 4px rgba(10,10,10,0.02);
 }
 
-.card-content .card-content {
+.card-content-flex {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -255,6 +255,21 @@ p {
   position: relative;
   display: flex;
   align-items: center;
+  justify-content: center;
+  margin-bottom: -34px;
+}
+
+.text-box-listings {
+  // margin-left: 41vw;
+  // margin-top: 4vh;
+  // margin-bottom: 9vh;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  height: 185px;
+  position: relative;
+  display: flex;
+  // align-items: center;
   justify-content: center;
   margin-bottom: -34px;
 }
@@ -474,4 +489,8 @@ label {
 
 .margin-reset {
   margin-left: 5px;
+}
+
+.pagination {
+  font-size: 25px;
 }

@@ -10,7 +10,7 @@ function ListingCard(props) {
  
   return (
     <div className="card">
-      <div className="card-content my-listings-margin">
+      <div className="card-content card-content-flex my-listings-margin">
         <div>
           <Link key={listing.id}
           to={`/listing/${listing.id}`}>

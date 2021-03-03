@@ -85,11 +85,6 @@ function Listings(props) {
 
   return (
     <>
-    <div className="text-box">
-        <Link to="/listingform" className="btn btn-blue btn-animate">
-          Add a Listing
-        </Link>
-      </div>
 
     <div className="container margin-top margin-bottom">
       <div className="add-listing-page">
@@ -101,6 +96,11 @@ function Listings(props) {
               ) : (
                   <h1 className="center-text margin-bottom"> People are Offering!</h1>
                 )}
+              <div className="text-box-listings">
+                <Link to="/listingform" className="btn btn-blue btn-animate">
+                  Add a Listing
+                </Link>
+              </div>
               <div className="inline-flex">
                 <div className="listingForm margin-right-listings">
                   <div className="auto-margin2">
@@ -141,7 +141,9 @@ function Listings(props) {
                   </div>
                   </div>
                   </div> 
-                  <div className="container">
+
+                  <div className="card">
+                  <div className="card-content">
                     {console.log(currentPageLisings)}
                     {currentPageLisings.map((listing) => {
                       if (listing.type == type) {
@@ -149,7 +151,9 @@ function Listings(props) {
                       }
                     })}
                   </div>
-                  <div>
+                  </div>
+
+                  <div className="margin-top">
                     <ReactPaginate
                       previousLabel={"← Previous"}
                       nextLabel={"Next →"}
