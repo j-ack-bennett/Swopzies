@@ -54,14 +54,12 @@ function Listing(props) {
                   <h2 className="title post-title capitalize">{listingItem.title}</h2>
                   <p className="listing-p">{listingItem.description}</p>
                   <br />
-
-                  {img}
-
-                  <div>
+                  <div className="kngrkgherg">
                     <p className="listing-details-p"><span className="has-text-weight-bold">Posted by:</span>&nbsp;&nbsp;&nbsp;&nbsp;{listingItem.username}</p>
                     <p className="listing-details-p"><span className="has-text-weight-bold">Location:</span>&nbsp;&nbsp;&nbsp;&nbsp;{listingItem.location}</p>
                     <p className="listing-details-p capitalize"><span className="has-text-weight-bold">Category:</span>&nbsp;&nbsp;&nbsp;&nbsp;{listingItem.tag_name}</p>
                   </div>
+                  {img}
                   <br />
                   <p className="last-updated"><span className="has-text-weight-bold">Last updated:</span>&nbsp;&nbsp;&nbsp;&nbsp; {moment(listingItem.time).format('LLL')}</p>
                   <br />
@@ -75,7 +73,12 @@ function Listing(props) {
                         <Link to={`/editlisting/${listingItem.id}`}><button className="button is-primary margin-left">Edit Post</button></Link>
                       </div> :
                       <>
-                        <button onClick={handleClick}>{!bookmarked ? 'Bookmark Listing' : 'Remove Bookmark' }</button>
+                        <div className="buttons has-addons">
+                          {!bookmarked ?
+                          <button className="button is-primary margin-left" onClick={handleClick}>Bookmark Listing</button> :
+                          <button className="button is-danger margin-left" onClick={handleClick}>Remove Bookmark</button>
+                          }
+                        </div>
                       </>
                     }
 

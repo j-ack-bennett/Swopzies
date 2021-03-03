@@ -1,31 +1,30 @@
 import React, { useState, useEffect } from "react"
 import { connect } from "react-redux"
 
-import { newListing } from '../actions/listings'
-import { fetchTags } from "../actions/tags"
+import { newListing } from "../actions/listings"
 
 function ListingForm(props) {
+
   const [ form, setForm ] = useState({})
   const [ tag, setTag ] = useState (0)
   const [ image, setImage ] = useState(null);
+  const [type, setType ] = useState(localStorage.getItem("type"))
+
 
   const tags = props.tags
-
-  useEffect(() => {
-    props.dispatch(fetchTags())
-  },[]
-  )
 
   const handleChange = (e) => {
     setForm({
       ...form,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     })
   }
 
-const handleSelect = (e) => {
-  setTag(e.target.value)
-}
+  useEffect(() => {
+    if(form.type){
+      setType(form.type)
+    }
+  }, [form])
 
 const handleFileSelect = (e) => {
   if (e.target.files.length === 1) {
@@ -35,15 +34,12 @@ const handleFileSelect = (e) => {
   }
 }
 
- const handleSubmit = (e) => {
-    e.preventDefault()
+  const handleSelect = (e) => {
+    setTag(e.target.value)
+  }
 
-    // console.log(tag)
-    const newestListing = {
-      ...form,
-      user_id: props.auth.user.id,
-      time: new Date()
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault()
 
     // const data = {
     //   listing: newestListing,
@@ -51,90 +47,162 @@ const handleFileSelect = (e) => {
     // }
 
     // {"listing":{"title":"Dog feeding","description":"I want to feed!","type":"looking","user_id":1,"time":"2021-03-02T10:20:31.974Z"},"tagId":"4"}
-    const formData = new FormData();
+    // const formData = new FormData();
 
-    formData.append("tagId", tag);
-    formData.append("title", newestListing.title);
-    formData.append("description", newestListing.description);
-    formData.append("type", newestListing.type);
-    formData.append("user_id", newestListing.user_id);
-    formData.append("time", newestListing.time.toISOString());
+    // formData.append("tagId", tag);
+    // formData.append("title", newestListing.title);
+    // formData.append("description", newestListing.description);
+    // formData.append("type", newestListing.type);
+    // formData.append("user_id", newestListing.user_id);
+    // formData.append("time", newestListing.time.toISOString());
 
-    if (image !== null) {
-      formData.append("img", image);
+    // if (image !== null) {
+    //   formData.append("img", image);
+    // }
+
+    if (tag == 0) {
+      alert("Please select a category.")
+    } else if (!form.type) {
+      alert("Please select either offering or looking.")
+    } else if (!form.title) {
+      alert("Please add a title to your post.")
+    } else {
+      const newestListing = {
+        ...form,
+        user_id: props.auth.user.id,
+        time: new Date(),
+      }
+
+      const data = {
+        listing: newestListing,
+        tagId: tag,
+      }
+
+      const formData = new FormData();
+
+      formData.append("tagId", tag);
+      formData.append("title", newestListing.title);
+      formData.append("description", newestListing.description);
+      formData.append("type", newestListing.type);
+      formData.append("user_id", newestListing.user_id);
+      formData.append("time", newestListing.time.toISOString());
+
+      if (image !== null) {
+        formData.append("img", image);
+      }
+
+      props.dispatch(newListing(formData))
+
+      props.history.push("/")
     }
-
-    // console.log(data)
-
-    props.dispatch(newListing(formData))
-      // .then(() => setForm({}))
-
-     props.history.push("/")
   }
 
   return (
-    <div className="container">
+    <div className="container add-listing-margin-top">
       <div className="add-listing-page">
         <div className="add-listing-page add-listing-center add-listing-centering">
           <h1 className="center-text">Add a Listing</h1>
-
           <div className="auto-margin">
-          <form className="listingForm">
-            <div className="auto-margin2">
-              <label className="has-text-weight-bold">Category Tags:</label>
-              <select className="capitalize add-listing-dropdown" onChange={handleSelect} name='tag' defaultValue="placeholder">
-                <option disabled={true} value="placeholder"hidden>Select a Category...</option>
-                {tags.map(tag => {
-                  return <option value={tag.id} key={tag.id}>{tag.tag_name}</option>
-                }) // on change on the select tag, value on the option tag.
-                }
-              </select>
-            </div>
-          </form>
-
-          <form className="listingForm radio-buttons">
-            <input onChange={handleChange} className="margin-right-radio" type='radio' name='type' value='looking' />
-            <label className="has-text-weight-bold">I'm looking for something...</label>
-
-            <input onChange={handleChange} className="margin-right-radio" type='radio' name='type' value='offer' />
-            <label className="has-text-weight-bold">I've got something to offer...</label>
-          </form>
-          </div>
-
-          <form className="listingForm">
-            <label className="listing__title has-text-weight-bold ">Title:</label>
-            <input className="input" type="text" name="title" onChange={handleChange}
-            placeholder="Listing title" />
+            <form className="listingForm">
+              <div className="auto-margin2">
+                <label className="has-text-weight-bold is-size-4">Category Tags:</label>
+                <select
+                  className="capitalize add-listing-dropdown is-size-4 margin-bottom"
+                  onChange={handleSelect}
+                  name="tag"
+                  defaultValue="placeholder"
+                >
+                  <option disabled={true} value="placeholder" hidden>
+                    Select a Category...
+                  </option>
+                  {
+                    tags.map((tag) => {
+                      return (
+                        <option value={tag.id} key={tag.id}>
+                          {tag.tag_name}
+                        </option>
+                      )
+                    }) // on change on the select tag, value on the option tag.
+                  }
+                </select>
+              </div>
             </form>
 
-          <form className="listingForm">
-            <label className="listing__description has-text-weight-bold ">Description:</label>
-              <textarea className="textarea"
-              type="text" name="description"
+            <form className="listingForm radio-buttons">
+              <label className="has-text-weight-bold is-size-4">
+                <input
+                  onChange={handleChange}
+                  className="margin-right-radio"
+                  type="radio"
+                  name="type"
+                  value="looking"
+                  checked={type == 'looking'}
+                />
+                  I'm looking for something...
+              </label>
+
+              <label className="has-text-weight-bold is-size-4">
+                <input
+                  onChange={handleChange}
+                  className="margin-right-radio"
+                  type="radio"
+                  name="type"
+                  value="offer"
+                  checked={type == 'offer'}
+                />
+                I've got something to offer...
+              </label>
+            </form>
+          </div>
+
+          <form>
+            <label className="listing__title has-text-weight-bold add-listing-margin is-size-4">
+              Title:
+            </label>
+            <input
+              className="input"
+              type="text"
+              name="title"
               onChange={handleChange}
-              placeholder="Add any details of what you're seeking/offering."  />
+              placeholder="Listing title"
+              maxLength="70"
+            />
           </form>
 
           <div>Add image:
               <input onChange={handleFileSelect} type='file' />
           </div>
 
+          <form>
+            <label className="listing__description has-text-weight-bold add-listing-margin is-size-4">
+              Description:
+            </label>
+            <textarea
+              className="textarea"
+              type="text"
+              name="description"
+              onChange={handleChange}
+              placeholder="Add any details of what you're seeking/offering."
+            />
+          </form>
           <div className="buttons has-addons">
-            <button className="button is-primary is-fullwidth"
-              onClick={ (e) => handleSubmit (e, tag.id)}>
+            <button
+              className="button is-primary is-fullwidth is-size-5"
+              onClick={(e) => handleSubmit(e)}
+            >
               Add
             </button>
           </div>
         </div>
       </div>
     </div>
-    )
+  )
 }
 
 const mapStateToProps = (globalState) => {
   return {
     auth: globalState.auth,
-    tags: globalState.tags
+    tags: globalState.tags,
   }
 }
 

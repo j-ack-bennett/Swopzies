@@ -41,14 +41,16 @@ const CommThread = (props) => {
   }
 
   const handleSubmit = (e, threadId) => {
+    e.preventDefault()
     const newComm = {
       listing_id: listingId,
       user_id: user_id,
       text: comment,
       thread_id: threadId,
-      time: new Date(),
+      time: new Date()
     }
     postToThread(newComm)
+    window.location.reload()
   }
 
   return (
@@ -70,8 +72,7 @@ const CommThread = (props) => {
 
                   <form onSubmit={(e) => handleSubmit(e, flower)}>
                     <label>
-                      
-                      <input type="text" onChange={handleChange} name="text" />
+                      <input type="text" onChange={handleChange} name="text" required/>
                     </label>
                     <input type="submit" value="Reply" />
                   </form>{" "}
@@ -101,6 +102,7 @@ const CommThread = (props) => {
                           type="text"
                           onChange={handleChange}
                           name="text"
+                          required
                         />
                       </label>
                       <input type="submit" value="Reply" />
