@@ -415,6 +415,7 @@ label {
 .add-listing-dropdown {
   padding: 6px;
   font-size: 15px;
+  width: 330px;
 }
 
 .home-font-size {
@@ -443,4 +444,20 @@ label {
 
 .add-listing-margin-top {
   margin-top: 40px;
+}
+
+.inline {
+  display: inline;
+}
+
+.inline-flex {
+  display: inline-flex;
+}
+
+.margin-right-listings {
+  margin-right: 100px;
+}
+
+.margin-reset {
+  margin-left: 5px;
 }

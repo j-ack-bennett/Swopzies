@@ -49,7 +49,7 @@ function Listing(props) {
                   <h2 className="title post-title capitalize">{listingItem.title}</h2>
                   <p className="listing-p">{listingItem.description}</p>
                   <br />
-                  <div>
+                  <div className="kngrkgherg">
                     <p className="listing-details-p"><span className="has-text-weight-bold">Posted by:</span>&nbsp;&nbsp;&nbsp;&nbsp;{listingItem.username}</p>
                     <p className="listing-details-p"><span className="has-text-weight-bold">Location:</span>&nbsp;&nbsp;&nbsp;&nbsp;{listingItem.location}</p>
                     <p className="listing-details-p capitalize"><span className="has-text-weight-bold">Category:</span>&nbsp;&nbsp;&nbsp;&nbsp;{listingItem.tag_name}</p>
