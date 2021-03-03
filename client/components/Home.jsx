@@ -47,7 +47,6 @@ function Home(props) {
           <div className="card">
             <div className="card-content">
               <h3 className="is-4 has-text-centered home-font-size">I'm Looking For...</h3>
-
               <div className="content">
                 <table className="see-more-margin">
                   <tbody>
@@ -57,6 +56,7 @@ function Home(props) {
                     </tr>
                     <tr>
                       <td>
+                        <br></br>
                         {lookingListings.slice(0, 3).map((listing) => {
                           return (
                             <ListingCard key={listing.id} listing={listing} />
@@ -95,6 +95,7 @@ function Home(props) {
                     </tr>
                     <tr>
                       <td>
+                      <br></br>
                         {offeringListings.slice(0, 3).map((listing) => {
                           return (
                             <ListingCard key={listing.id} listing={listing} />

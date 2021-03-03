@@ -21,7 +21,7 @@ function EditListing(props) {
   }, [listings])
 
   useEffect(() => {
-    if(oldListing){
+    if (oldListing) {
       setTag(oldListing.tag_id)
     }
   }, [oldListing])
@@ -57,67 +57,95 @@ function EditListing(props) {
   }
 
   return (
-    <>
-      {oldListing && (
-        <>
-          <form className="listingForm" onSubmit={handleSubmit}>
-            <label>category tags: </label>
-            <select autoFocus name="tag_id" onChange={handleSelect} value={oldListing.tag_id} >
-              {
-                tags.map((tag) => {
-                  return (
-                    <option value={tag.id} key={tag.id} name="tag_name">
-                      {tag.tag_name}
-                    </option>
-                  )
-                }) // on change on the select tag, value on the option tag.
-              }
-            </select>
-            <h3>Type of listing: </h3>
-            <label>             
+    <div className="container add-listing-margin-top">
+      <div className="add-listing-page">
+        <div className="add-listing-page add-listing-center add-listing-centering">
+        <h1 className="center-text">Edit Listing</h1>
+
+        {oldListing && (
+          <>
+          <div className="auto-margin">
+            <form className="listingForm" onSubmit={handleSubmit}>
+              <div className="auto-margin2">
+                <label className="has-text-weight-bold is-size-4">Category Tags:</label>
+                <select className="capitalize add-listing-dropdown is-size-4 margin-bottom" autoFocus name="tag_id" onChange={handleSelect} value={oldListing.tag_id}>
+                  {
+                    tags.map((tag) => {
+                      return (
+                        <option value={tag.id} key={tag.id} name="tag_name">
+                          {tag.tag_name}
+                        </option>
+                      )
+                    }) // on change on the select tag, value on the option tag.
+                  }
+                </select>
+              </div>
+            </form>
+
+            <form className="listingForm radio-buttons">
+              <div>
               <input
+                className="margin-right-radio"
                 type="radio"
                 name="type"
                 value="looking"
                 checked={oldListing.type == "looking"}
                 onChange={handleChange}
-              />
-              I'm looking for something...
-            </label>
-            <label>
+                />
+                <label className="has-text-weight-bold is-size-4">
+                  I'm looking for something...
+                </label>
+              </div>
+
+              <div className="margin-left-offer">
+                <input
+                  className="margin-right-radio"
+                  type="radio"
+                  name="type"
+                  value="offer"
+                  checked={oldListing.type == "offer"}
+                  onChange={handleChange}
+                />
+                <label className="has-text-weight-bold is-size-4">
+                  I've got something to offer...
+                </label>
+                </div>
+              </form>
+            </div>
+
+            <label className="listing__title has-text-weight-bold add-listing-margin is-size-4">
+              Title:
               <input
-                type="radio"
-                name="type"
-                value="offer"
-                checked={oldListing.type == "offer"}
-                onChange={handleChange}
-              />
-              I've got something to offer...
-            </label>
-            <label className="listing__title">
-              Title of listing:
-              <input
+                className="input"
                 type="text"
                 name="title"
                 value={oldListing.title}
                 onChange={handleChange}
               />
             </label>
-            <label className="listing__description">
-              Add a description of your listing:
-              <input
-                className="listing__description--input"
+
+            <label className="listing__description has-text-weight-bold add-listing-margin is-size-4">
+              Description:
+              <textarea
+                className="textarea"
                 type="text"
                 name="description"
                 value={oldListing.description}
                 onChange={handleChange}
               />
             </label>
-            <button className="button">Edit</button>
-          </form>
-        </>
-      )}
-    </>
+
+            <div className="buttons has-addons">
+              <button className="button is-primary is-fullwidth is-size-5"
+                onClick={(e) => handleSubmit(e, tag.id)}>
+                Edit
+              </button>
+            </div>
+            </>
+          )}
+        </div>
+      </div>
+    </div>
   )
 }
 
@@ -130,3 +158,98 @@ const mapStateToProps = (globalState) => {
 }
 
 export default connect(mapStateToProps)(EditListing)
+
+
+
+
+
+
+
+
+
+
+
+{/* <div className="container add-listing-margin-top">
+<div className="add-listing-page">
+  <div className="add-listing-page add-listing-center add-listing-centering">
+    
+    <h1 className="center-text">Edit Listing</h1>
+
+      {oldListing && (
+        <div className="auto-margin">
+          <form className="listingForm" onSubmit={handleSubmit}>
+            <div className="auto-margin2">
+              <label className="has-text-weight-bold is-size-4">Category Tags: </label>
+              <select className="capitalize add-listing-dropdown is-size-4 margin-bottom" autoFocus name="tag_id" onChange={handleSelect} value={oldListing.tag_id} >
+                {
+                  tags.map((tag) => {
+                    return (
+                      <option value={tag.id} key={tag.id} name="tag_name">
+                        {tag.tag_name}
+                      </option>
+                    )
+                  }) // on change on the select tag, value on the option tag.
+                }
+              </select>
+              </div>
+
+              <div className="listingForm radio-buttons">
+                <div>
+                <label className="has-text-weight-bold is-size-4">             
+                  <input
+                    className="margin-right-radio"
+                    type="radio"
+                    name="type"
+                    value="looking"
+                    checked={oldListing.type == "looking"}
+                    onChange={handleChange}
+                  />
+                  I'm looking for something...
+                </label>
+                </div>
+    
+                <div className="margin-left-offer">
+                  <label className="has-text-weight-bold is-size-4">
+                    <input
+                      className="margin-right-radio"
+                      type="radio"
+                      name="type"
+                      value="offer"
+                      checked={oldListing.type == "offer"}
+                      onChange={handleChange}
+                    />
+                    I've got something to offer...
+                  </label>
+                </div>
+              </div>
+            </div>
+
+
+            <label className="listing__title has-text-weight-bold add-listing-margin is-size-4">
+              Title:
+              <input
+                className="input"
+                type="text"
+                name="title"
+                value={oldListing.title}
+                onChange={handleChange}
+              />
+            </label>
+
+            <label className="listing__description has-text-weight-bold add-listing-margin is-size-4">
+              Description:
+              <textarea
+                className="textarea"
+                type="text"
+                name="description"
+                value={oldListing.description}
+                onChange={handleChange}
+              />
+            </label>
+            <div className="buttons has-addons"></div>
+            <button className="button is-primary is-fullwidth is-size-5">Edit</button>
+    </form>
+)}
+</div>
+</div>
+</div> */}
