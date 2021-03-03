@@ -30,7 +30,6 @@ const Comms = (props) => {
   return (
       <div className="field">
         <div className="control">
-
           { user_id !== listing_id &&
             <>
               <p className="listing-details-p has-text-weight-bold">Add a comment:</p>
@@ -46,10 +45,6 @@ const Comms = (props) => {
               </div>
             </>
           }
-
-
-
-
           <div className='threads'>
             <CommThread listingId={listing_id} listingUserId={listing_user_id}
             />
