@@ -21,7 +21,7 @@ This is a list of tech we will be using throughout our project:
 * [Bulma (CSS framework)](https://bulma.io/documentation/)
 * [JWT Auth (Local)](https://jwt.io/)
 * [SCSS/Sass (CSS pre-processor)](https://sass-lang.com/install)
-* [React-paginate] (https://www.npmjs.com/package/react-paginate)
+* [React-paginate](https://npmjs.com/package/react-paginate)
 
 
 ## User Stories
