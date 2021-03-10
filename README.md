@@ -21,7 +21,7 @@ This is a list of tech we will be using throughout our project:
 * [Bulma (CSS framework)](https://bulma.io/documentation/)
 * [JWT Auth (Local)](https://jwt.io/)
 * [SCSS/Sass (CSS pre-processor)](https://sass-lang.com/install)
-* [React-paginate] https://www.npmjs.com/package/react-paginate
+* [React-paginate] (https://www.npmjs.com/package/react-paginate)
 
 
 ## User Stories
@@ -93,23 +93,26 @@ As a registered user:
   | --- | --- |
   | auth | Store information regarding user logins, auth status and auth errors |
   | listings | Store the listings that have been added by users |
-  |MORE TO BE ADDED|MORE TO BE ADDED|
+  | register | Stores information regarding the user registration |
+  | tags | Stores information regarding category tags |
 
  ## Actions
 
   | type | data | purpose |
   | --- | --- | --- |
   | SET_LISTINGS | listings | Stores listings in global state |
-  | FETCH_LISTINGS | listings | Retreive listings from the db and sends to api |
-  |TO BE ADDED|TO BE ADDED|
+  | ADD_LISTING | listing | Adds a newly created single post |
+  | SET_REGO | rego | Stores user registrations in global state |
+  | CLEAR_REGO |  | Clears registration information from state after created |
+  | SET_TAGS | tags | Stores category tags in global state |
 
 ## API (Client - Server)
 
 | Method |      Endpoint      |    Protected    | Usage |                 Response |
 | --- | --- | --- | --- | --- |
-| Post   | /api/auth/login          | Yes | Log In a User              | The Users JWT Token (TO BE CHANGED)|
-| Post   | /api/auth/register       | Yes | Register a User            | The Users JWT Token (TO BE CHANGED)|
-| Patch  | api/v1/profile           | Yes | Update a user profile      | Update a user profile |
+| Post   | /api/auth/login          | Yes | Log In a User              | The Users JWT Token |
+| Post   | /api/auth/register       | Yes | Register a User            | The Users JWT Token |
+| Patch  | /api/v1/profile          | Yes | Update a user profile      | Update a user profile |
 | Get    | /api/v1/listings         | No  | Get Listings               | All Listings |
 | Post   | /api/v1/listings         | No  | Add New Listing            | All Listings |
 | Get    | /api/v1/listings/:id     | No  | Get Listing By ID          | Listings that match ID |
@@ -124,7 +127,7 @@ As a registered user:
 | Post   | /api/v1/comms/           | Yes | Show comment thread        | showing comment thread |
 
 
-  There should be five tables for MVP
+  There should be six tables for MVP
 
 ### Users
   | Column Name | Data Type |
@@ -161,7 +164,7 @@ As a registered user:
   | time | Timestamp |
   | thread_id | integer |
   
-### Listing_Tags
+### Listings_Tags
   | Column Name | Data Type |
   | --- | --- |
   | id | Integer |
@@ -173,6 +176,13 @@ As a registered user:
   | --- | --- |
   | id | Integer |
   | tag_name | String |
+  
+### Users_Listings
+  | Column Name | Data Type |
+  | --- | --- |
+  | id | Integer |
+  | listing_id | Integer |
+  | user_id | Integer |
 
  ---
 
