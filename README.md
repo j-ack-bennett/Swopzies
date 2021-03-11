@@ -71,19 +71,19 @@ As a registered user:
   | --- | --- |
   | Home | View to display each section of the App (I'm looking for. . .), (I can offer . . .) and (Add a Listing) |
   | Landing | View for user when they first enter the App |
-  | Listing | View to display a specific listing and all the details provided by the author including date                                                                      posted/updated. If it is your post a 'delete post' & an 'edit post' button are visible. An 'Add a comment' 
+  | Listing | View to display a specific listing and all the details provided by the author including date                                                                    posted/updated. If it is your post a 'delete post' & an 'edit post' button are visible. An 'Add a comment' 
              section,a text input to allow people to leave a  comment on a listing which can be viewed
-             only by the sender and the author of the listing. |
+             only by the sender and the author of the listing |
   | ListingCard | View of each specific post on the *Listings* page |
   | Editlisting | View of the edit form, so a user can update their own post |
   | ListingForm | View a form containing all inputs required for a new listing, that can be posted |
-  | Listings | View to display the whole page of listings within (I'm looking for. . .) and (I can offer . . .)  |
+  | Listings | View to display the whole page of listings within (I'm looking for. . .) and (I can offer . . .) |
   | Login | View for user to enter their login credentials |
   | Nav | View to display the navigation bar at the top of each component |
   | Profile | View for the user to see their profile information and to see their listings and bookmarked listings |
   | Register | View for user to sign up for the App |
   | Edit profile | view for th euser to edit their profile details |
-  | Contact | A page to contact the admins in regards to any query using the website. Showing a form for the user to submit their details and a message stating the query. |
+  | Contact | A page to contact the admins in regards to any query using the website. Showing a form for the user to submit their details and a message stating the query |
   
  
 
