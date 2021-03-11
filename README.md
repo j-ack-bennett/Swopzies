@@ -1,6 +1,6 @@
-# Jack Of All Trades
+# Swopzies
 
-## Final Group Project
+## Enspiral Dev Academy - Final Group Project
 
 Goods and services are expensive... why not offer a way for the community to come together and trade skills, knowledge and home baked goods.
 
