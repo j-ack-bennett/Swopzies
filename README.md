@@ -71,9 +71,7 @@ As a registered user:
   | --- | --- |
   | Home | View to display each section of the App (I'm looking for. . .), (I can offer . . .) and (Add a Listing) |
   | Landing | View for user when they first enter the App |
-  | Listing | View to display a specific listing and all the details provided by the author including date                                                                    posted/updated. If it is your post a 'delete post' & an 'edit post' button are visible. An 'Add a comment' 
-             section,a text input to allow people to leave a  comment on a listing which can be viewed
-             only by the sender and the author of the listing |
+  | Listing | View to display a specific listing and all the details provided by the author including date posted/updated. If it is your post a 'delete post' & an 'edit post' button are visible. An 'Add a comment' section,a text input to allow people to leave a  comment on a listing which can be viewed only by the sender and the author of the listing |
   | ListingCard | View of each specific post on the *Listings* page |
   | Editlisting | View of the edit form, so a user can update their own post |
   | ListingForm | View a form containing all inputs required for a new listing, that can be posted |
