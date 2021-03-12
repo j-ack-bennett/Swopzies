@@ -15,6 +15,7 @@ import Listing from "./Listing"
 import Contact from "./Contact"
 import Register2 from "./Register2"
 import EditListing from './EditListing'
+import Admin from './Admin'
 import { fetchListings } from '../actions/listings'
 
 
@@ -51,6 +52,7 @@ function App({ auth, dispatch }) {
               <Route path="/editlisting/:id" component={EditListing} />
               <Route path="/listing/:id" component={Listing} />
               <Route path="/register2" component={Register2} />
+              <Route path="/admin" component={Admin} />
             </>
           )}
         <Route path="/contact" component={Contact} />

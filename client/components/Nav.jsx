@@ -45,6 +45,17 @@ const Nav = (props) => {
                           <span className="has-text-white">Kia ora {auth.user.first_name}!</span>
                         </div>
                       </span>
+
+                      {auth.user.is_admin &&
+                      <span className="navbar-item">
+                        <Link to="/admin" className="button is-white is-outlined">
+                          <span className="icon">
+                            <i className="fa fa-home"></i>
+                          </span>
+                          <span>ADMIN</span>
+                        </Link>
+                      </span>}
+
                       <span className="navbar-item">
                         <Link to="/" className="button is-white is-outlined">
                           <span className="icon">
