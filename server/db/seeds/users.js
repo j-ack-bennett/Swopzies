@@ -18,7 +18,8 @@ exports.seed = function (knex) {
             bio: 'Hello! It\'s me your looking for!',
             location: 'Wellington',
             image: '',
-            phone: 0270000000
+            phone: 0270000000,
+            is_admin: true
           },
           {
             id: 2,
